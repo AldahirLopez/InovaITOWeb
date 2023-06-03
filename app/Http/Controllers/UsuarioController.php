@@ -15,13 +15,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
-    function __construct()
-    {
-        $this -> middleware('permission:ver-usuarios|crear-usuarios|editar-usuarios|borrar-usuarios',['only' => ['index'] ]);
-        $this -> middleware('permission:crear-usuarios', ['only' => ['create','store'] ]);
-        $this -> middleware('permission:editar-usuarios',['only' => ['edit', 'update'] ]);
-        $this -> middleware('permission:borrar-usuarios',['only' => ['destroy'] ]);
-    }
     /**
      * Display a listing of the resource.
      *

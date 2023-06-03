@@ -24,7 +24,7 @@ use App\Http\Controllers\EntradasController;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('home');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -34,7 +34,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('productos/listar_inventario', [App\Http\Controllers\ProductosController::class, 'listar'])->name('productos.listar_inventario');
 
-Route::group(['middleware' => ['auth']], function(){
     Route::resource('roles', RolController::class);
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('productos', ProductosController::class);
@@ -43,7 +42,6 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('categorias', CategoriasController::class);
     Route::resource('entradas', EntradasController::class);
     
-});
 
 
 
