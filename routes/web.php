@@ -28,11 +28,15 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/lider', [App\Http\Controllers\liderController::class, 'index'])->name('lider');
 
+Route::get('/participantes', [App\Http\Controllers\participanteController::class, 'index'])->name('participantes');
+Route::get('/asesores', [App\Http\Controllers\AsesorController::class, 'index'])->name('asesores');
+Route::get('/proyectos', [App\Http\Controllers\proyectoController::class, 'index'])->name('proyectos');
 
     
 

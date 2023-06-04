@@ -1,3 +1,3 @@
 <div class="footer-left">
-    WEBOOS AL ALDO &copy; {{ date('Y') }}
+    Derechos reservados &copy; {{ date('Y') }}
 </div>
