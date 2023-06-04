@@ -4,23 +4,23 @@
     </a>
 
     <a class="nav-link {{ Request::is('productos') ? 'active' : '' }}" href="/productos">
-        <i class="fas fa-boxes"></i><span>Inventario</span>
+        <i class="fas fa-user"></i><span>Lider de Proyecto</span>
     </a>
 
     <a class="nav-link {{ Request::is('categorias') ? 'active' : '' }}" href="/categorias">
-    <i class="fas fa-bars"></i><span>Categorias</span>
+    <i class="fas fa-users"></i><span>Participantes</span>
     </a>
 
     <a class="nav-link {{ Request::is('entradas') ? 'active' : '' }}" href="/entradas">
-    <i class="fas fa-truck-ramp-box"></i><span>Entradas de material</span>
+    <i class="fas fa-user-tie"></i><span>Asesores</span>
     </a>
 
     <a class="nav-link {{ Request::is('salidas') ? 'active' : '' }}" href="/salidas">
-    <i class="fas fa-truck-moving"></i></i><span>Salidas de material</span>
+    <i class="fas fa-file-invoice"></i></i><span>Proyectos</span>
     </a>
 
     <a class="nav-link {{ Request::is('obras') ? 'active' : '' }}" href="/obras">
-        <i class="fas fa-building"></i><span>Obras</span>     
+        <i class="fas fa-building"></i><span>Registros</span>     
     </a>
 
     <a class="nav-link {{ Request::is('usuarios') ? 'active' : '' }}" href="/usuarios">

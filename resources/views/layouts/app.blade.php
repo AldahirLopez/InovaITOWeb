@@ -26,12 +26,12 @@
 
 <div id="app">
     <div class="main-wrapper main-wrapper-1">
-        <div class="navbar-bg"></div>
+        <div class="navbar-bg" style="background-color: #FA7A1E;"></div>
         <nav class="navbar navbar-expand-lg main-navbar">
             @include('layouts.header')
 
         </nav>
-        <div class="main-sidebar main-sidebar-postion">
+        <div class="main-sidebar main-sidebar-postion" style="background-color: #FA7A1E;">
             @include('layouts.sidebar')
         </div>
         <!-- Main Content -->
