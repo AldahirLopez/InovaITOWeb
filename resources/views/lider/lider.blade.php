@@ -128,7 +128,38 @@ function validateForm() {
         correoError.style.display = "none";
     }
 
+    var nombres = document.getElementsByName("nombre")[0].value;
+    var apellidoPaterno = document.getElementsByName("apellidoP")[0].value;
+    var apellidoMaterno = document.getElementsByName("apellidoM")[0].value;
+    var correo = document.getElementsByName("correo")[0].value;
+
+    var idPersona = generateIdPersona(nombres, apellidoPaterno, apellidoMaterno, correo);
+    var contrasena = generateContrasena();
+
+    // Mostrar los datos del líder registrado en la terminal
+    //CHECAR ESTA PARTE SI ESTA BIEN:
+    console.log("Datos del líder registrado:");
+    console.log("ID Persona: " + idPersona);
+    console.log("Nombre completo: " + nombres + " " + apellidoPaterno + " " + apellidoMaterno);
+    console.log("Correo electrónico: " + correo);
+    console.log("Contraseña: " + contrasena);
+
     return true;
 }
+
+function generateIdPersona(nombres, apellidoPaterno, apellidoMaterno, correo) {
+    var datosUsuario = nombres + apellidoPaterno + apellidoMaterno + correo;
+    var idGenerada = sha1(datosUsuario).substring(0, 10);
+    return idGenerada.toLowerCase();
+}
+
+function generateContrasena() {
+    var caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$*-_+\\|./?';
+    var contrasena = Array.from({ length: 8 }, function() {
+        return caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    }).join('');
+    return contrasena;
+}
 </script>
+
 @endsection

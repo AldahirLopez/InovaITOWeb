@@ -2,6 +2,10 @@
     <a class="nav-link {{ Request::is('home') ? 'active' : '' }}" href="/home">
     <i class="fas fa-house"></i><span>Dashboard</span>
     </a>
+    
+    <a class="nav-link {{ Request::is('proyectos') ? 'active' : '' }}" href="/proyectos">
+    <i class="fas fa-file-invoice"></i></i><span>Proyectos</span>
+    </a>
 
     <a class="nav-link {{ Request::is('lider') ? 'active' : '' }}" href="/lider">
         <i class="fas fa-user"></i><span>Lider de Proyecto</span>
@@ -13,10 +17,6 @@
 
     <a class="nav-link {{ Request::is('asesor') ? 'active' : '' }}" href="/asesores">
     <i class="fas fa-user-tie"></i><span>Asesores</span>
-    </a>
-
-    <a class="nav-link {{ Request::is('proyectos') ? 'active' : '' }}" href="/proyectos">
-    <i class="fas fa-file-invoice"></i></i><span>Proyectos</span>
     </a>
 
     <a class="nav-link {{ Request::is('obras') ? 'active' : '' }}" href="/obras">

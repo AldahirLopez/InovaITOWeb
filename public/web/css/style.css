@@ -4145,6 +4145,10 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 .order-card {
     color: #fff;
 }
+.bg-c-gris {
+    border-radius: 10px;
+    background: linear-gradient(45deg,#2E2D2F, #2E2D2F);
+}
 .bg-c-blue {
     background: linear-gradient(45deg,#73b4ff, #4099ff);
 }
