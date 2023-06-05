@@ -2,15 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-//Agregamos los controladores 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RolController;
-use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\ProductosController;
-use App\Http\Controllers\ObrasController;
-use App\Http\Controllers\CategoriasController;
-use App\Http\Controllers\SalidasController;
-use App\Http\Controllers\EntradasController;
+use App\Http\Controllers\liderController;
+use App\Http\Controllers\ParticipanteController;
+use App\Http\Controllers\AsesorController;
+use App\Http\Controllers\ProyectoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,12 +27,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('lider', LiderController::class);
+Route::resource('participantes', ParticipanteController::class);
+Route::resource('asesores', AsesorController::class);
+Route::resource('proyectos', ProyectoController::class);
 
-Route::get('/lider', [App\Http\Controllers\liderController::class, 'index'])->name('lider');
-
-Route::get('/participantes', [App\Http\Controllers\participanteController::class, 'index'])->name('participantes');
-Route::get('/asesores', [App\Http\Controllers\AsesorController::class, 'index'])->name('asesores');
-Route::get('/proyectos', [App\Http\Controllers\proyectoController::class, 'index'])->name('proyectos');
 
     
 
