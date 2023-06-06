@@ -6,7 +6,7 @@ use App\Http\Controllers\liderController;
 use App\Http\Controllers\ParticipanteController;
 use App\Http\Controllers\AsesorController;
 use App\Http\Controllers\ProyectoController;
-
+use App\Http\Controllers\CentrosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +31,11 @@ Route::resource('lider', LiderController::class);
 Route::resource('participantes', ParticipanteController::class);
 Route::resource('asesores', AsesorController::class);
 Route::resource('proyectos', ProyectoController::class);
+Route::get('/centroTecnologicos/{selectedValue}', [App\Http\Controllers\CentrosController::class, 'cargarTecnologicos'])->name('centroTecnologicos');
+Route::get('/centroDepartamentos/{selectedValue}', [App\Http\Controllers\CentrosController::class, 'cargarDepartamentos'])->name('centroDepartamentos');
+Route::get('/centros', [App\Http\Controllers\CentrosController::class, 'devolvercentros'])->name('centros');
+
+
 
 
     

@@ -8,65 +8,84 @@
 </section>
 
 <style>
-.form-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
+    .form-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
 
-.form-group {
-    flex-basis: calc(33.33% - 10px);
-}
+    .form-group {
+        flex-basis: calc(33.33% - 10px);
+    }
 
-.input-field {
-    margin-bottom: 20px;
-    border-radius: 10px;
-}
+    .input-field {
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
 
-.input-field label {
-    color: #FFFFFF;
-}
+    .input-field label {
+        color: #FFFFFF;
+    }
 
-.input-field input[type="text"],
-.input-field input[type="email"],
-.input-field select {
-    background-color: #4E4B4D;
-    border-radius: 10px;
-    color: #FFFFFF;
-    border: none;
-    padding: 10px;
-    width: 100%;
-}
+    .input-field input[type="text"],
+    .input-field input[type="email"],
+    .input-field select {
+        background-color: #4E4B4D;
+        border-radius: 10px;
+        color: #FFFFFF;
+        border: none;
+        padding: 10px;
+        width: 100%;
+    }
 
-.input-field input[type="text"]::placeholder,
-.input-field input[type="email"]::placeholder {
-    color: #BEBEBE;
-}
+    .input-field input[type="text"]::placeholder,
+    .input-field input[type="email"]::placeholder {
+        color: #BEBEBE;
+    }
 
-.submit-button {
-    width: 100%;
-    height: 50px;
-    background-color: #FA7A1E;
-    color: #FFFFFF;
-    font-size: 25px;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
+    .submit-button {
+        width: 100%;
+        height: 50px;
+        background-color: #FA7A1E;
+        color: #FFFFFF;
+        font-size: 25px;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
 
-.submit-button:active {
-    transform: scale(0.95);
-}
+    .submit-button:active {
+        transform: scale(0.95);
+    }
 
-.error-message {
-    color: red;
-}
+    .error-message {
+        color: red;
+    }
 </style>
 
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
     <h2 style="color: #FFFFFF; margin-bottom: 20px;">Formulario de Registro de Asesor</h2>
     <form id="registration-form" onsubmit="return validateForm()">
+    @csrf
+        <div class="form-group">
+            <div class="input-field">
+                <label for="institutos" style="color: #FFFFFF;">Tipo de Instituto o Centro de Investigacion</label>
+                <select id="institutos"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-field">
+                <label for="opciones" style="color: #FFFFFF;">Opciones adicionales</label>
+                <select id="CentrosOpciones"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-field">
+                <label for="departamentos" style="color: #FFFFFF;">Opciones adicionales</label>
+                <select id="CentroDepartamentos"></select>
+            </div>
+        </div>
         <div class="form-row">
             <div class="form-group input-field" style="flex-basis: calc(13% - 0px);">
                 <label for="titulo">Titulo(Lic., M.C, Dr.)</label>
@@ -78,13 +97,11 @@
             </div>
             <div class="form-group input-field" style="flex-basis: calc(26% - 0px);">
                 <label for="apellidoPaterno">Primer Apellido</label>
-                <input type="text" id="apellidoPaterno" name="apellidoPaterno" placeholder="Ingrese su primer apellido"
-                    required>
+                <input type="text" id="apellidoPaterno" name="apellidoPaterno" placeholder="Ingrese su primer apellido" required>
             </div>
             <div class="form-group input-field" style="flex-basis: calc(26% - 0px);">
                 <label for="apellidoMaterno">Segundo Apellido</label>
-                <input type="text" id="apellidoMaterno" name="apellidoMaterno"
-                    placeholder="Ingrese su segundo apellido">
+                <input type="text" id="apellidoMaterno" name="apellidoMaterno" placeholder="Ingrese su segundo apellido">
             </div>
         </div>
         <div class="form-row">
@@ -145,77 +162,77 @@
     </form>
 </div>
 <script>
-function validateForm() {
-    var valid = true;
+    function validateForm() {
+        var valid = true;
+
+        var correoInput = document.getElementById("correo");
+        var correoError = document.getElementById("correo-error");
+        var correoPattern = /^[\w-\.]+@(?:[a-zA-Z0-9][a-zA-Z0-9-]+\.)+(edu\.mx|TECNM\.MX|tecnm\.mx|EDU\.MX)$/;
+
+        if (!correoPattern.test(correoInput.value)) {
+            correoError.style.display = "block";
+            valid = false;
+        } else {
+            correoError.style.display = "none";
+        }
+
+        var curpInput = document.getElementById("curp");
+        var curpError = document.getElementById("curp-error");
+        var curpPattern = /^[A-Z]{4}\d{6}[H,M][A-Z]{5}\w\d$/;
+
+        if (!curpPattern.test(curpInput.value)) {
+            curpError.style.display = "block";
+            valid = false;
+        } else {
+            curpError.style.display = "none";
+        }
+
+        var numIneInput = document.getElementById("numIne");
+        var numIneError = document.getElementById("numIne-error");
+        var numInePattern = /^\d{13}$/;
+
+        if (!numInePattern.test(numIneInput.value)) {
+            numIneError.style.display = "block";
+            valid = false;
+        } else {
+            numIneError.style.display = "none";
+        }
+
+        var rfcInput = document.getElementById("rfc");
+        var rfcError = document.getElementById("rfc-error");
+        var rfcPattern = /^[A-Z]{4}\d{6}\w\d$/;
+
+        if (!rfcPattern.test(rfcInput.value)) {
+            rfcError.style.display = "block";
+            valid = false;
+        } else {
+            rfcError.style.display = "none";
+        }
+
+        var telefonoInput = document.getElementById("telefono");
+        var telefonoError = document.getElementById("telefono-error");
+        var telefonoPattern = /^\d{10}$/;
+
+        if (!telefonoPattern.test(telefonoInput.value)) {
+            telefonoError.style.display = "block";
+            valid = false;
+        } else {
+            telefonoError.style.display = "none";
+        }
+
+        return valid;
+    }
 
     var correoInput = document.getElementById("correo");
-    var correoError = document.getElementById("correo-error");
-    var correoPattern = /^[\w-\.]+@(?:[a-zA-Z0-9][a-zA-Z0-9-]+\.)+(edu\.mx|TECNM\.MX|tecnm\.mx|EDU\.MX)$/;
+    correoInput.addEventListener("input", function() {
+        var correoError = document.getElementById("correo-error");
+        var correoPattern = /^[\w-\.]+@(?:[a-zA-Z0-9][a-zA-Z0-9-]+\.)+(edu\.mx|TECNM\.MX|tecnm\.mx|EDU\.MX)$/;
 
-    if (!correoPattern.test(correoInput.value)) {
-        correoError.style.display = "block";
-        valid = false;
-    } else {
-        correoError.style.display = "none";
-    }
-
-    var curpInput = document.getElementById("curp");
-    var curpError = document.getElementById("curp-error");
-    var curpPattern = /^[A-Z]{4}\d{6}[H,M][A-Z]{5}\w\d$/;
-
-    if (!curpPattern.test(curpInput.value)) {
-        curpError.style.display = "block";
-        valid = false;
-    } else {
-        curpError.style.display = "none";
-    }
-
-    var numIneInput = document.getElementById("numIne");
-    var numIneError = document.getElementById("numIne-error");
-    var numInePattern = /^\d{13}$/;
-
-    if (!numInePattern.test(numIneInput.value)) {
-        numIneError.style.display = "block";
-        valid = false;
-    } else {
-        numIneError.style.display = "none";
-    }
-
-    var rfcInput = document.getElementById("rfc");
-    var rfcError = document.getElementById("rfc-error");
-    var rfcPattern = /^[A-Z]{4}\d{6}\w\d$/;
-
-    if (!rfcPattern.test(rfcInput.value)) {
-        rfcError.style.display = "block";
-        valid = false;
-    } else {
-        rfcError.style.display = "none";
-    }
-
-    var telefonoInput = document.getElementById("telefono");
-    var telefonoError = document.getElementById("telefono-error");
-    var telefonoPattern = /^\d{10}$/;
-
-    if (!telefonoPattern.test(telefonoInput.value)) {
-        telefonoError.style.display = "block";
-        valid = false;
-    } else {
-        telefonoError.style.display = "none";
-    }
-
-    return valid;
-}
-
-var correoInput = document.getElementById("correo");
-correoInput.addEventListener("input", function() {
-    var correoError = document.getElementById("correo-error");
-    var correoPattern = /^[\w-\.]+@(?:[a-zA-Z0-9][a-zA-Z0-9-]+\.)+(edu\.mx|TECNM\.MX|tecnm\.mx|EDU\.MX)$/;
-
-    if (!correoPattern.test(correoInput.value)) {
-        correoError.style.display = "block";
-    } else {
-        correoError.style.display = "none";
-    }
-});
+        if (!correoPattern.test(correoInput.value)) {
+            correoError.style.display = "block";
+        } else {
+            correoError.style.display = "none";
+        }
+    });
 </script>
 @endsection
