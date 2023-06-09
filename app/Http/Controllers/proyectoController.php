@@ -9,6 +9,6 @@ class proyectoController extends Controller
 
     public function index()
     {
-        return view('proyectos.ficha_t');
+        return view('proyectos.requerimientos');
     }
 }
