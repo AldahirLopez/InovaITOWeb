@@ -105,8 +105,8 @@
                 <div class="input-field">
                     <label style="color: #FFFFFF;">Nivel:</label>
                     <select name="nivel">
-                        <option value="LICENCIATURA">Licenciatura</option>
-                        <option value="POSGRADO">Posgrado</option>
+                        <option value="NIV02">Licenciatura</option>
+                        <option value="NIV01">Posgrado</option>
                     </select>
                 </div>
             </div>
