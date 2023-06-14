@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class proyectoController extends Controller
+class Ficha_tController extends Controller
 {
 
     public function index()
     {
-        return view('proyectos.proyectos');
+        return view('proyectos.ficha_t');
     }
 }

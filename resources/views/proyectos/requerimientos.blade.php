@@ -227,7 +227,7 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="submit-button">Enviar</button>
+    <button type="submit" class="submit-button">Finalizar requerimientos especiales</button>
 </div>
 
 @endsection

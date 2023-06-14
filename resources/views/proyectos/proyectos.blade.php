@@ -17,7 +17,7 @@
                                     <div class="card-block">
                                         <h5>Ficha tecnica</h5>
                                         <h2 class="text-right"><i class="fa fa-sheet-plastic f-left"></i><span></span></h2>
-                                        <p class="m-b-0 text-right"><a href="#" class="text-white">Agregar</a></p>
+                                        <p class="m-b-0 text-right"><a href="{{ route('ficha_t.index') }}" class="text-white">Agregar</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -27,7 +27,7 @@
                                     <div class="card-block">
                                         <h5>Requerimientos especiales</h5>
                                         <h2 class="text-right"><i class="fa fa-square-check f-left"></i><span></span></h2>
-                                        <p class="m-b-0 text-right"><a href="#" class="text-white">Agregar</a></p>
+                                        <p class="m-b-0 text-right"><a href="{{ route('requerimientos.index') }}" class="text-white">Agregar</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                     <div class="card-block">
                                         <h5>Memoria tecnica</h5>
                                         <h2 class="text-right"><i class="fa fa-file-invoice f-left"></i><span></span></h2>
-                                        <p class="m-b-0 text-right"><a href="#" class="text-white">Agregar</a></p>
+                                        <p class="m-b-0 text-right"><a href="{{ route('memoria_t.index') }}" class="text-white">Agregar</a></p>
                                     </div>
                                 </div>
                             </div>
