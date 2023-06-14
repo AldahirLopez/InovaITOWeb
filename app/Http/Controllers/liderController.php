@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Persona;
+use App\Models\Usuario;
+use App\Models\Estudiante;
 use Illuminate\Http\Request;
 
 class liderController extends Controller
@@ -21,6 +23,7 @@ class liderController extends Controller
         $apellidom = request()->input('apellidoM');
         $matricula = request()->input('matricula');
         $correo = request()->input('correo');
+        $nivel = request()->input('nivel');
 
         //Generar ID Unico
         $datosUsuario = $nombre . $apellidop . $apellidom . $correo;
@@ -46,9 +49,25 @@ class liderController extends Controller
         $persona->Correo_electronico = $correo;
 
         // Asignar otros valores necesarios
+        $usuario = new Usuario();
+        $usuario->Id_usuario = $idGenerada2;
+        $usuario->Nombre_usuario = $correo;
+        $usuario->Contrasena = $hash;
+        $usuario->Id_persona = $idGenerada2;
+        $usuario->Id_rol="ROL02";
 
-        // Guardar la persona en la base de datos
+        $estudiante = new Estudiante();
+        $estudiante->Matricula = $matricula;
+        $estudiante->Id_persona = $idGenerada2;
+        $estudiante->Id_nivel = $nivel;
+
         $persona->save();
+        
+        $estudiante->save();
+
+        $usuario->save();
+        // Guardar la persona en la base de datos
+        
 
         // Redireccionar a la página de listar para mostrar la tabla actualizada
         return view('lider.lider');
