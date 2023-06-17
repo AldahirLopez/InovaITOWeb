@@ -3426,7 +3426,7 @@ body.sidebar-mini .hide-sidebar-mini {
 body.sidebar-mini .main-sidebar {
     width: 65px;
     overflow: initial !important;
-    position: absolute;
+    /*position: absolute;*/
     box-shadow: none;
 }
 
