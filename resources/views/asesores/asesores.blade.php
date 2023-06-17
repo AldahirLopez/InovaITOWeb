@@ -235,4 +235,6 @@
         }
     });
 </script>
+<script src="{{ asset('js/models.js') }}"></script>
+
 @endsection

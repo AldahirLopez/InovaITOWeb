@@ -77,16 +77,12 @@
 </style>
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
     <h2 style="color: #FFFFFF; margin-bottom: 20px;">Formulario de Ficha Técnica</h2>
-    <form id="ficha-tecnica-form" onsubmit="return validateForm()">
+    <form action="{{ route('ficha_t.store') }}" method="POST"  id="ficha-tecnica-form" onsubmit="return validateForm()">
+    @csrf
         <div class="form-row">
             <div class="form-group input-field">
                 <label for="categoria">Categoría</label>
-                <select id="categoria" name="categoria" required>
-                    <option value="">Seleccionar categoría</option>
-                    <option value="Categoria 1">Categoría 1</option>
-                    <option value="Categoria 2">Categoría 2</option>
-                    <option value="Categoria 3">Categoría 3</option>
-                </select>
+                <select name="categoria" id="categoria"></select>
             </div>
             <div class="form-group input-field">
                 <label for="nombreCorto">Nombre Corto</label>
@@ -102,21 +98,11 @@
         <div class="form-row">
             <div class="form-group input-field">
                 <label for="areaAplicacion">Área de Aplicación</label>
-                <select id="areaAplicacion" name="areaAplicacion" required>
-                    <option value="">Seleccionar área de aplicación</option>
-                    <option value="Área 1">Área 1</option>
-                    <option value="Área 2">Área 2</option>
-                    <option value="Área 3">Área 3</option>
-                </select>
+                <select name="areaAplicacion" id="areaAplicacion"></select>
             </div>
             <div class="form-group input-field">
                 <label for="naturalezaTecnica">Naturaleza Técnica</label>
-                <select id="naturalezaTecnica" name="naturalezaTecnica" required>
-                    <option value="">Seleccionar naturaleza técnica</option>
-                    <option value="Naturaleza 1">Naturaleza 1</option>
-                    <option value="Naturaleza 2">Naturaleza 2</option>
-                    <option value="Naturaleza 3">Naturaleza 3</option>
-                </select>
+                <select name="naturalezaTecnica" id="naturalezaTecnica"></select>
             </div>
         </div>
         <div class="form-row">
@@ -138,7 +124,7 @@
                 <div id="resultadosProyecto-counter" class="counter"></div>
             </div>
         </div>
-        <button type="submit" class="submit-button">Enviar</button>
+        <button type="submit" class="submit-button">Registrar</button>
     </form>
 </div>
 
@@ -179,4 +165,5 @@
         resultadosProyectoCounter.textContent = "Caracteres: " + resultadosProyectoInput.value.length + " / " + remainingChars + " restantes";
     });
 </script>
+<script src="{{ asset('js/areas.js') }}"></script>
 @endsection

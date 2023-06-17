@@ -10,6 +10,8 @@ use App\Http\Controllers\CentrosController;
 use App\Http\Controllers\Ficha_tController;
 use App\Http\Controllers\RequerimientosController;
 use App\Http\Controllers\Memoria_tController;
+use App\Http\Controllers\CategoriasController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -40,9 +42,9 @@ Route::resource('memoria_t', Memoria_tController::class);
 Route::get('/centroTecnologicos/{selectedValue}', [App\Http\Controllers\CentrosController::class, 'cargarTecnologicos'])->name('centroTecnologicos');
 Route::get('/centroDepartamentos/{selectedValue}', [App\Http\Controllers\CentrosController::class, 'cargarDepartamentos'])->name('centroDepartamentos');
 Route::get('/centros', [App\Http\Controllers\CentrosController::class, 'devolvercentros'])->name('centros');
-
-
-
+Route::get('/categorias', [App\Http\Controllers\CategoriasController::class, 'devolvercategorias'])->name('categorias');
+Route::get('/areas/{selectedValue}', [App\Http\Controllers\CategoriasController::class, 'cargarAreas'])->name('areas');
+Route::get('/naturalezaTecnica', [App\Http\Controllers\CategoriasController::class, 'cargarNaturaleza'])->name('naturalezaTecnica');
 
     
 

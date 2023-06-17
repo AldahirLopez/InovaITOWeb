@@ -53,7 +53,7 @@
 <script src="{{ asset('assets/js/iziToast.min.js') }}"></script>
 <script src="{{ asset('assets/js/select2.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.nicescroll.js') }}"></script>
-<script src="{{ asset('js/models.js') }}"></script>
+
 
 <!-- Template JS File -->
 <script src="{{ asset('web/js/stisla.js') }}"></script>
