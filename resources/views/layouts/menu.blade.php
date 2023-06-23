@@ -19,12 +19,12 @@
     <i class="fas fa-user-tie"></i><span>Asesores</span>
     </a>
 
-    <a class="nav-link {{ Request::is('obras') ? 'active' : '' }}" href="/obras">
-        <i class="fas fa-building"></i><span>Registros</span>     
+    <a class="nav-link {{ Request::is('obras') ? 'active' : '' }}" href="/registros">
+        <i class="fas fa-notes-medical"></i><span>Registros</span>     
     </a>
 
-    <a class="nav-link {{ Request::is('usuarios') ? 'active' : '' }}" href="/usuarios">
-        <i class=" fas fa-users"></i><span>Usuarios</span>
+    <a class="nav-link {{ Request::is('usuarios') ? 'active' : '' }}" href="/jurado">
+        <i class=" fas fa-users-between-lines"></i><span>Jurado</span>
     </a>
 
     <a class="nav-link {{ Request::is('roles') ? 'active' : '' }} " href="/roles">

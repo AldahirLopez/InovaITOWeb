@@ -60,12 +60,13 @@
 
     .error-message {
         color: red;
+        display: none;
     }
 </style>
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
     <h2 style="color: #FFFFFF; margin-bottom: 20px;">Formulario de Registro de Participantes</h2>
     <form action="{{ route('lider.store') }}" method="POST" id="registration-form" onsubmit="return validateForm()">
-    @csrf
+        @csrf
         <div class="form-row">
             <div class="form-group">
                 <div class="input-field">
@@ -95,9 +96,60 @@
             </div>
             <div class="form-group">
                 <div class="input-field">
+                    <label style="color: #FFFFFF;">Promedio:</label>
+                    <input type="text" name="promedio" placeholder="Ingrese su promedio">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-field">
+                    <label style="color: #FFFFFF;">CURP</label>
+                    <input type="text" id="curp" name="curp" placeholder="Ingrese su CURP" required>
+                    <span id="curp-error" class="error-message" style="display: none;">El CURP no es válido.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-field">
+                    <label style="color: #FFFFFF;">Numero de INE</label>
+                    <input type="text" id="numIne" name="numIne" placeholder="Ingrese su número de INE" required>
+                    <span id="numIne-error" class="error-message" style="display: none;">El número de INE no es
+                        válido.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-field">
                     <label style="color: #FFFFFF;">Correo Institucional:</label>
                     <input type="email" name="correo" id="correo" placeholder="Ingrese correo institucional" required>
-                    <span id="correo-error" class="error-message" style="display: none;">El correo no es un correo institucional válido.</span>
+                    <span id="correo-error" class="error-message" style="display: none;">El correo no es un correo
+                        institucional válido.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-field">
+                    <label style="color: #FFFFFF;">Genero:</label>
+                    <select name="genero">
+                        <option value="GEN01">Masculino</option>
+                        <option value="GEN02">Femenino</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-field">
+                    <label style="color: #FFFFFF;">Expectativa:</label>
+                    <select name="expectativa">
+                        <option value="EXP01">Estudios de posgrado</option>
+                        <option value="EXP02">Incorporacion al mundo laboral</option>
+                        <option value="EXP03">Desarrollar su propia empresa</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-field">
+                    <label style="color: #FFFFFF;">Semestre:</label>
+                    <select name="semestre">
+                        <option value="SEM01">8</option>
+                        <option value="SEM02">9</option>
+                        <option value="SEM03">10</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
@@ -116,38 +168,46 @@
 
 <script>
     function validateForm() {
+        var valid = true;
+
         var correoInput = document.getElementById("correo");
         var correoError = document.getElementById("correo-error");
-
         var correoPattern = /^[\w-\.]+@(?:[a-zA-Z0-9][a-zA-Z0-9-]+\.)+(edu\.mx|TECNM\.MX|tecnm\.mx|EDU\.MX)$/;
 
         if (!correoPattern.test(correoInput.value)) {
             correoError.style.display = "block";
-            return false;
+            valid = false;
         } else {
             correoError.style.display = "none";
         }
 
-        return true;
+        var curpInput = document.getElementById("curp");
+        var curpError = document.getElementById("curp-error");
+        var curpPattern = /^[A-Z]{4}\d{6}[H,M][A-Z]{5}\w\d$/;
+
+        if (!curpPattern.test(curpInput.value)) {
+            curpError.style.display = "block";
+            valid = false;
+        } else {
+            curpError.style.display = "none";
+        }
+
+        var numIneInput = document.getElementById("numIne");
+        var numIneError = document.getElementById("numIne-error");
+        var numInePattern = /^\d{13}$/;
+
+        if (!numInePattern.test(numIneInput.value)) {
+            numIneError.style.display = "block";
+            valid = false;
+        } else {
+            numIneError.style.display = "none";
+        }
+
+        return valid;
     }
-       /* var nombres = document.getElementsByName("nombre")[0].value;
-    var apellidoPaterno = document.getElementsByName("apellidoP")[0].value;
-    var apellidoMaterno = document.getElementsByName("apellidoM")[0].value;
-    var correo = document.getElementsByName("correo")[0].value;
 
-    var idPersona = generateIdPersona(nombres, apellidoPaterno, apellidoMaterno, correo);
-    var contrasena = generateContrasena();
-
-    // Mostrar los datos del líder registrado en la terminal
-    //CHECAR ESTA PARTE SI ESTA BIEN:
-    console.log("Datos del líder registrado:");
-    console.log("ID Persona: " + idPersona);
-    console.log("Nombre completo: " + nombres + " " + apellidoPaterno + " " + apellidoMaterno);
-    console.log("Correo electrónico: " + correo);
-    console.log("Contraseña: " + contrasena);
-*/
     var correoInput = document.getElementById("correo");
-    correoInput.addEventListener("input", function () {
+    correoInput.addEventListener("input", function() {
         var correoError = document.getElementById("correo-error");
         var correoPattern = /^[\w-\.]+@(?:[a-zA-Z0-9][a-zA-Z0-9-]+\.)+(edu\.mx|TECNM\.MX|tecnm\.mx|EDU\.MX)$/;
 
@@ -158,19 +218,29 @@
         }
     });
 
+    var curpInput = document.getElementById("curp");
+    curpInput.addEventListener("input", function() {
+        var curpError = document.getElementById("curp-error");
+        var curpPattern = /^[A-Z]{4}\d{6}[H,M][A-Z]{5}\w\d$/;
 
-function generateIdPersona(nombres, apellidoPaterno, apellidoMaterno, correo) {
-    var datosUsuario = nombres + apellidoPaterno + apellidoMaterno + correo;
-    var idGenerada = sha1(datosUsuario).substring(0, 10);
-    return idGenerada.toLowerCase();
-}
+        if (!curpPattern.test(curpInput.value)) {
+            curpError.style.display = "block";
+        } else {
+            curpError.style.display = "none";
+        }
+    });
 
-function generateContrasena() {
-    var caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$*-_+\\|./?';
-    var contrasena = Array.from({ length: 8 }, function() {
-        return caracteres.charAt(Math.floor(Math.random() * caracteres.length));
-    }).join('');
-    return contrasena;
-}
+    var numIneInput = document.getElementById("numIne");
+    numIneInput.addEventListener("input", function() {
+        var numIneError = document.getElementById("numIne-error");
+        var numInePattern = /^\d{13}$/;
+
+        if (!numInePattern.test(numIneInput.value)) {
+            numIneError.style.display = "block";
+        } else {
+            numIneError.style.display = "none";
+        }
+    });
 </script>
+
 @endsection
