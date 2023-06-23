@@ -78,7 +78,7 @@ class liderController extends Controller
          ];
          
          Mail::send('email', $data, function($msj) use($subject, $for) {
-             $msj->from("tucorreo@gmail.com", "NombreQueApareceráComoEmisor");
+             $msj->from("lhectoralr21@gmail.com", "Datos Login");
              $msj->subject($subject);
              $msj->to($for);
          });
