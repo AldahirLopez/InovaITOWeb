@@ -25,11 +25,11 @@ use App\Http\Controllers\CategoriasController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('auth.login');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//Auth::routes();
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('lider', LiderController::class);
