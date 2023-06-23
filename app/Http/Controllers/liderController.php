@@ -6,6 +6,7 @@ use App\Models\Persona;
 use App\Models\Usuario;
 use App\Models\Estudiante;
 use Illuminate\Http\Request;
+use Mail;
 
 class liderController extends Controller
 {
@@ -65,8 +66,33 @@ class liderController extends Controller
         
         $estudiante->save();
 
-        $usuario->save();
         // Guardar la persona en la base de datos
+         //Enviamos el correo con la clave para que pueda hacer su login 
+         $subject = "Datos de Login";
+         $for = $correo;
+         
+         $data = [
+             'contraena' => $contrasena,
+             'correo' => $correo,
+             // Agrega más variables aquí si es necesario
+         ];
+         
+         Mail::send('email', $data, function($msj) use($subject, $for) {
+             $msj->from("tucorreo@gmail.com", "NombreQueApareceráComoEmisor");
+             $msj->subject($subject);
+             $msj->to($for);
+         });
+
+         //Se guarda 
+        $usuario->save();
+
+
+
+       
+    
+
+
+        
         
 
         // Redireccionar a la página de listar para mostrar la tabla actualizada
