@@ -24,7 +24,7 @@
     </a>
 
     <a class="nav-link {{ Request::is('usuarios') ? 'active' : '' }}" href="/jurado">
-        <i class=" fas fa-users-between-lines"></i><span>Jurado</span>
+        <i class=" fas fa-gavel"></i><span>Jurado</span>
     </a>
 
     <a class="nav-link {{ Request::is('roles') ? 'active' : '' }} " href="/roles">

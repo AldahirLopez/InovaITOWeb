@@ -7,65 +7,74 @@
     </div>
 </section>
 <style>
-    .form-row {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 20px;
-    }
+.custom-input {
+    background-color: #4E4B4D;
+    border-radius: 10px;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px;
+    width: 100%;
+}
 
-    .form-group {
-        flex-basis: calc(33.33% - 10px);
-    }
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
 
-    .input-field {
-        margin-bottom: 20px;
-        border-radius: 10px;
-    }
+.form-group {
+    flex-basis: calc(33.33% - 10px);
+}
 
-    .input-field label {
-        color: #FFFFFF;
-    }
+.input-field {
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
 
-    .input-field input[type="text"],
-    .input-field input[type="email"],
-    .input-field select {
-        background-color: #4E4B4D;
-        border-radius: 10px;
-        color: #FFFFFF;
-        border: none;
-        padding: 10px;
-        width: 100%;
-    }
+.input-field label {
+    color: #FFFFFF;
+}
 
-    .input-field input[type="text"]::placeholder,
-    .input-field input[type="email"]::placeholder {
-        color: #BEBEBE;
-    }
+.input-field input[type="text"],
+.input-field input[type="email"],
+.input-field select {
+    background-color: #4E4B4D;
+    border-radius: 10px;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px;
+    width: 100%;
+}
 
-    .submit-button {
-        width: 100%;
-        height: 50px;
-        background-color: #FA7A1E;
-        color: #FFFFFF;
-        font-size: 25px;
-        border: none;
-        border-radius: 15px;
-        cursor: pointer;
-        transition: background-color 0.3s, color 0.3s;
-    }
+.input-field input[type="text"]::placeholder,
+.input-field input[type="email"]::placeholder {
+    color: #BEBEBE;
+}
 
-    .submit-button:active {
-        transform: scale(0.95);
-    }
+.submit-button {
+    width: 100%;
+    height: 50px;
+    background-color: #FA7A1E;
+    color: #FFFFFF;
+    font-size: 25px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
 
-    .error-message {
-        color: red;
-        display: none;
-    }
+.submit-button:active {
+    transform: scale(0.95);
+}
+
+.error-message {
+    color: red;
+    display: none;
+}
 </style>
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
     <h2 style="color: #FFFFFF; margin-bottom: 20px;">Formulario de Registro de Participantes</h2>
-    <form action="{{ route('lider.store') }}" method="POST" id="registration-form" onsubmit="return validateForm()">
+    <form action="" method="POST" id="registration-form" onsubmit="return validateForm()">
         @csrf
         <div class="form-row">
             <div class="form-group">
@@ -125,7 +134,7 @@
             </div>
             <div class="form-group">
                 <div class="input-field">
-                    <label style="color: #FFFFFF;">Genero:</label>
+                    <label style="color: #FFFFFF;">Género:</label>
                     <select name="genero">
                         <option value="GEN01">Masculino</option>
                         <option value="GEN02">Femenino</option>
@@ -137,7 +146,7 @@
                     <label style="color: #FFFFFF;">Expectativa:</label>
                     <select name="expectativa">
                         <option value="EXP01">Estudios de posgrado</option>
-                        <option value="EXP02">Incorporacion al mundo laboral</option>
+                        <option value="EXP02">Incorporación al mundo laboral</option>
                         <option value="EXP03">Desarrollar su propia empresa</option>
                     </select>
                 </div>
@@ -154,10 +163,23 @@
             </div>
             <div class="form-group">
                 <div class="input-field">
+                    <label style="color: #FFFFFF;">Fecha de Nacimiento:</label>
+                    <input type="date" name="fechaNacimiento" class="custom-input" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-field">
                     <label style="color: #FFFFFF;">Nivel:</label>
                     <select name="nivel">
                         <option value="NIV02">Licenciatura</option>
                         <option value="NIV01">Posgrado</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-field">
+                    <label style="color: #FFFFFF;">Carrera:</label>
+                    <select name="carrera">
                     </select>
                 </div>
             </div>
@@ -167,80 +189,80 @@
 </div>
 
 <script>
-    function validateForm() {
-        var valid = true;
-
-        var correoInput = document.getElementById("correo");
-        var correoError = document.getElementById("correo-error");
-        var correoPattern = /^[\w-\.]+@(?:[a-zA-Z0-9][a-zA-Z0-9-]+\.)+(edu\.mx|TECNM\.MX|tecnm\.mx|EDU\.MX)$/;
-
-        if (!correoPattern.test(correoInput.value)) {
-            correoError.style.display = "block";
-            valid = false;
-        } else {
-            correoError.style.display = "none";
-        }
-
-        var curpInput = document.getElementById("curp");
-        var curpError = document.getElementById("curp-error");
-        var curpPattern = /^[A-Z]{4}\d{6}[H,M][A-Z]{5}\w\d$/;
-
-        if (!curpPattern.test(curpInput.value)) {
-            curpError.style.display = "block";
-            valid = false;
-        } else {
-            curpError.style.display = "none";
-        }
-
-        var numIneInput = document.getElementById("numIne");
-        var numIneError = document.getElementById("numIne-error");
-        var numInePattern = /^\d{13}$/;
-
-        if (!numInePattern.test(numIneInput.value)) {
-            numIneError.style.display = "block";
-            valid = false;
-        } else {
-            numIneError.style.display = "none";
-        }
-
-        return valid;
-    }
+function validateForm() {
+    var valid = true;
 
     var correoInput = document.getElementById("correo");
-    correoInput.addEventListener("input", function() {
-        var correoError = document.getElementById("correo-error");
-        var correoPattern = /^[\w-\.]+@(?:[a-zA-Z0-9][a-zA-Z0-9-]+\.)+(edu\.mx|TECNM\.MX|tecnm\.mx|EDU\.MX)$/;
+    var correoError = document.getElementById("correo-error");
+    var correoPattern = /^[\w-\.]+@(?:[a-zA-Z0-9][a-zA-Z0-9-]+\.)+(edu\.mx|TECNM\.MX|tecnm\.mx|EDU\.MX)$/;
 
-        if (!correoPattern.test(correoInput.value)) {
-            correoError.style.display = "block";
-        } else {
-            correoError.style.display = "none";
-        }
-    });
+    if (!correoPattern.test(correoInput.value)) {
+        correoError.style.display = "block";
+        valid = false;
+    } else {
+        correoError.style.display = "none";
+    }
 
     var curpInput = document.getElementById("curp");
-    curpInput.addEventListener("input", function() {
-        var curpError = document.getElementById("curp-error");
-        var curpPattern = /^[A-Z]{4}\d{6}[H,M][A-Z]{5}\w\d$/;
+    var curpError = document.getElementById("curp-error");
+    var curpPattern = /^[A-Z]{4}\d{6}[H,M][A-Z]{5}\w\d$/;
 
-        if (!curpPattern.test(curpInput.value)) {
-            curpError.style.display = "block";
-        } else {
-            curpError.style.display = "none";
-        }
-    });
+    if (!curpPattern.test(curpInput.value)) {
+        curpError.style.display = "block";
+        valid = false;
+    } else {
+        curpError.style.display = "none";
+    }
 
     var numIneInput = document.getElementById("numIne");
-    numIneInput.addEventListener("input", function() {
-        var numIneError = document.getElementById("numIne-error");
-        var numInePattern = /^\d{13}$/;
+    var numIneError = document.getElementById("numIne-error");
+    var numInePattern = /^\d{13}$/;
 
-        if (!numInePattern.test(numIneInput.value)) {
-            numIneError.style.display = "block";
-        } else {
-            numIneError.style.display = "none";
-        }
-    });
+    if (!numInePattern.test(numIneInput.value)) {
+        numIneError.style.display = "block";
+        valid = false;
+    } else {
+        numIneError.style.display = "none";
+    }
+
+    return valid;
+}
+
+var correoInput = document.getElementById("correo");
+correoInput.addEventListener("input", function() {
+    var correoError = document.getElementById("correo-error");
+    var correoPattern = /^[\w-\.]+@(?:[a-zA-Z0-9][a-zA-Z0-9-]+\.)+(edu\.mx|TECNM\.MX|tecnm\.mx|EDU\.MX)$/;
+
+    if (!correoPattern.test(correoInput.value)) {
+        correoError.style.display = "block";
+    } else {
+        correoError.style.display = "none";
+    }
+});
+
+var curpInput = document.getElementById("curp");
+curpInput.addEventListener("input", function() {
+    var curpError = document.getElementById("curp-error");
+    var curpPattern = /^[A-Z]{4}\d{6}[H,M][A-Z]{5}\w\d$/;
+
+    if (!curpPattern.test(curpInput.value)) {
+        curpError.style.display = "block";
+    } else {
+        curpError.style.display = "none";
+    }
+});
+
+var numIneInput = document.getElementById("numIne");
+numIneInput.addEventListener("input", function() {
+    var numIneError = document.getElementById("numIne-error");
+    var numInePattern = /^\d{13}$/;
+
+    if (!numInePattern.test(numIneInput.value)) {
+        numIneError.style.display = "block";
+    } else {
+        numIneError.style.display = "none";
+    }
+});
 </script>
 
 @endsection
