@@ -3,7 +3,7 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Proyectos Pendientes</h3>
+        <h3 class="page__heading">Proyectos Aprobados</h3>
     </div>
 </section>
 <style>
@@ -70,7 +70,7 @@
 
 </style>
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
-    <form id="pendientes-form" onsubmit="return validateForm()">
+    <form id="aprobados-form" onsubmit="return validateForm()">
         @csrf
         <table class="table table-custom">
             <thead style="background-color: #9D969B;">
@@ -79,7 +79,6 @@
                     <th>CATEGORÍA</th>
                     <th>PARTICIPANTES</th>
                     <th>ESTADO</th>
-                    <th>ACCIONES</th>
                 </tr>
             </thead>
             <tbody>
@@ -89,24 +88,12 @@
                     <td>Categoría 1</td>
                     <td>Participante 1, Participante 2</td>
                     <td>Pendiente</td>
-                    <td>
-                        <label class="switch-container">
-                            <input type="checkbox" name="estado_proyecto[]" value="1">
-                            <span class="slider"></span>
-                        </label>
-                    </td>
                 </tr>
                 <tr>
                     <td>Proyecto 2</td>
                     <td>Categoría 2</td>
                     <td>Participante 3, Participante 4</td>
                     <td>Pendiente</td>
-                    <td>
-                        <label class="switch-container">
-                            <input type="checkbox" name="estado_proyecto[]" value="2">
-                            <span class="slider"></span>
-                        </label>
-                    </td>
                 </tr>
                 <!-- Agrega más filas según tus datos -->
             </tbody>
