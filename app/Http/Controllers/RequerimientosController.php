@@ -9,6 +9,6 @@ class RequerimientosController extends Controller
 
     public function index()
     {
-        return view('proyectos.requerimientos');
+        return view('proyectos.proyectos_pendientes');
     }
 }
