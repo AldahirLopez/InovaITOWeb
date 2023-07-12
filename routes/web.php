@@ -12,6 +12,8 @@ use App\Http\Controllers\RequerimientosController;
 use App\Http\Controllers\Memoria_tController;
 use App\Http\Controllers\JuradoController;
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\ProyectosPController;
+use App\Http\Controllers\ProyectosAController;
 
 
 /*
@@ -37,6 +39,8 @@ Route::resource('lider', LiderController::class);
 Route::resource('participantes', ParticipanteController::class);
 Route::resource('asesores', AsesorController::class);
 Route::resource('proyectos', ProyectoController::class);
+Route::resource('proyectosP', ProyectosPController::class);
+Route::resource('proyectosA', ProyectosAController::class);
 Route::resource('requerimientos', RequerimientosController::class);
 Route::resource('ficha_t', Ficha_tController::class);
 Route::resource('memoria_t', Memoria_tController::class);
