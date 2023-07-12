@@ -144,11 +144,7 @@
             <div class="form-group">
                 <div class="input-field">
                     <label style="color: #FFFFFF;">Expectativa:</label>
-                    <select name="expectativa">
-                        <option value="EXP01">Estudios de posgrado</option>
-                        <option value="EXP02">Incorporación al mundo laboral</option>
-                        <option value="EXP03">Desarrollar su propia empresa</option>
-                    </select>
+                    <select id="expectativa"></select>
                 </div>
             </div>
             <div class="form-group">
@@ -264,5 +260,5 @@ numIneInput.addEventListener("input", function() {
     }
 });
 </script>
-
+<script src="{{ asset('js/participante.js') }}"></script>
 @endsection
