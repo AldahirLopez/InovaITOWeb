@@ -14,7 +14,7 @@ use App\Http\Controllers\JuradoController;
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\ProyectosPController;
 use App\Http\Controllers\ProyectosAController;
-
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,14 +28,12 @@ use App\Http\Controllers\ProyectosAController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('login');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('lider', LiderController::class);
+Route::resource('usuario', UsuarioController::class);
 Route::resource('participantes', ParticipanteController::class);
 Route::resource('asesores', AsesorController::class);
 Route::resource('proyectos', ProyectoController::class);
@@ -45,10 +43,13 @@ Route::resource('requerimientos', RequerimientosController::class);
 Route::resource('ficha_t', Ficha_tController::class);
 Route::resource('memoria_t', Memoria_tController::class);
 Route::resource('jurado', JuradoController::class);
+Route::post('/login', [App\Http\Controllers\UsuarioController::class, 'login'])->name('login');
+Route::get('/logout', [App\Http\Controllers\UsuarioController::class, 'logout'])->name('logout');
 Route::get('/centroTecnologicos/{selectedValue}', [App\Http\Controllers\CentrosController::class, 'cargarTecnologicos'])->name('centroTecnologicos');
 Route::get('/centroDepartamentos/{selectedValue}', [App\Http\Controllers\CentrosController::class, 'cargarDepartamentos'])->name('centroDepartamentos');
 Route::get('/centros', [App\Http\Controllers\CentrosController::class, 'devolvercentros'])->name('centros');
 Route::get('/espectativa', [App\Http\Controllers\ParticipanteController::class, 'devolverEspectativa'])->name('espectativa');
+Route::get('/carrera', [App\Http\Controllers\ParticipanteController::class, 'devolverCarrera'])->name('carrera');
 Route::get('/categorias', [App\Http\Controllers\CategoriasController::class, 'devolvercategorias'])->name('categorias');
 Route::get('/areas/{selectedValue}', [App\Http\Controllers\CategoriasController::class, 'cargarAreas'])->name('areas');
 Route::get('/naturalezaTecnica', [App\Http\Controllers\CategoriasController::class, 'cargarNaturaleza'])->name('naturalezaTecnica');

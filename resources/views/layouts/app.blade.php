@@ -1,3 +1,13 @@
+@php
+if (!Session::has('usuario')) {
+    echo '<form id="logout-form" action="'.route('login').'" method="POST" style="display: none;">';
+    echo csrf_field();
+    echo '</form>';
+    echo '<script>document.getElementById("logout-form").submit();</script>';
+    exit;
+}
+$nombreUsuario = Session::get('usuario')->Nombre_persona;
+@endphp
 <!DOCTYPE html>
 <html>
 <head>

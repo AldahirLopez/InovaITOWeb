@@ -13,9 +13,53 @@ class Formulario {
                 this.espectativa = response;
                 //console.log(espectativa); 
                 this.renderizarEspectativa();
+                this.cargarCarrera();
             }
         };
         xhr.send();
+    }
+
+    cargarCarrera() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "/carrera", true);
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                const carrera = response;
+                this.renderizarCarrera(carrera);
+            } 
+        };
+        xhr.send();
+    }
+
+    renderizarCarrera(carreras) {
+        const selectElement = document.getElementById("carrera");
+
+        // Elimina todas las opciones existentes en el select
+        selectElement.innerHTML = "";
+
+        // Agrega una opción vacía por defecto
+        let emptyOption = document.createElement("option");
+        emptyOption.text = "Seleccione una opción";
+        selectElement.appendChild(emptyOption);
+
+        // Agrega las opciones recibidas al select
+        carreras.forEach((carrera) => {
+            const nombre = carrera.Nombre_carrera;
+            const clave = carrera.Id_carrera;
+
+            const option = document.createElement("option");
+            option.text = nombre;
+            option.value = clave;
+            selectElement.appendChild(option);
+        });
+
+        // Agregar evento de cambio al select
+        selectElement.addEventListener('change', (event) => {
+            const selectedValue = event.target.value;
+            console.log(selectedValue);
+        });
+        
     }
 
     renderizarEspectativa() {

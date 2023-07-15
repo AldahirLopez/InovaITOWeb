@@ -1,61 +1,52 @@
-@extends('layouts.app')
-
+@extends('layouts.auth_app')
+@section('title')
+    Admin Login
+@endsection
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Acceso') }}</div>
+    <div class="card card-primary">
+        <div class="card-header"><h4>Login</h4></div>
 
-                <div class="card-body">
-                    <form method="POST" action="">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo electrónico') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Ingresar') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="">
-                                        {{ __('¿Olvidó su contraseña?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+        <div class="card-body">
+        <form action="{{ route('login') }}" method="POST" id="registration-form">
+                @csrf
+                @if ($errors->any())
+                    <div class="alert alert-danger p-0">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input aria-describedby="emailHelpBlock" id="email" type="email"
+                           class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
+                           placeholder="Enter Email" tabindex="1"
+                           value="{{ (Cookie::get('email') !== null) ? Cookie::get('email') : old('email') }}" autofocus
+                           required>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('email') }}
+                    </div>
                 </div>
-            </div>
+
+                <div class="form-group">
+                    <input aria-describedby="passwordHelpBlock" id="password" type="password"
+                           value="{{ (Cookie::get('password') !== null) ? Cookie::get('password') : null }}"
+                           placeholder="Enter Password"
+                           class="form-control{{ $errors->has('password') ? ' is-invalid': '' }}" name="password"
+                           tabindex="2" required>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('password') }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                        Login
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
-</div>
 @endsection

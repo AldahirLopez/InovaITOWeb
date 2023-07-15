@@ -144,7 +144,7 @@
             <div class="form-group">
                 <div class="input-field">
                     <label style="color: #FFFFFF;">Expectativa:</label>
-                    <select id="expectativa"></select>
+                    <select name="expectativa" id="expectativa"></select>
                 </div>
             </div>
             <div class="form-group">
@@ -175,8 +175,7 @@
             <div class="form-group">
                 <div class="input-field">
                     <label style="color: #FFFFFF;">Carrera:</label>
-                    <select name="carrera">
-                    </select>
+                    <select name="carrera" id="carrera"></select>
                 </div>
             </div>
         </div>
