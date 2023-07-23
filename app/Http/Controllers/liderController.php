@@ -6,7 +6,7 @@ use App\Models\Persona;
 use App\Models\Usuario;
 use App\Models\Estudiante;
 use Illuminate\Http\Request;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 
 class liderController extends Controller
 {
@@ -15,8 +15,6 @@ class liderController extends Controller
     {
         return view('lider.lider');
     }
-
-    
 
     public function store(Request $request)
     {
@@ -80,13 +78,22 @@ class liderController extends Controller
          ];
          
          Mail::send('email', $data, function($msj) use($subject, $for) {
-             $msj->from("lopezaldahir21@gmail.com", "Datos Login");
+             $msj->from("lhectoralr21@gmail.com", "Datos Login");
              $msj->subject($subject);
              $msj->to($for);
          });
 
          //Se guarda 
         $usuario->save();
+
+
+
+       
+    
+
+
+        
+        
 
         // Redireccionar a la página de listar para mostrar la tabla actualizada
         return view('lider.lider');

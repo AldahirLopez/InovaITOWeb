@@ -66,7 +66,7 @@
 
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
     <h2 style="color: #FFFFFF; margin-bottom: 20px;">Formulario de Registro de Jurado</h2>
-    <form id="registration-form" onsubmit="return validateForm()">
+    <form action="{{ route('jurado.store') }}" method="POST" id="registration-form" onsubmit="return validateForm()">
     @csrf
         <div class="form-row">
             <div class="form-group input-field" style="flex-basis: calc(26% - 0px);">
@@ -154,16 +154,9 @@
             numIneError.style.display = "none";
         }
 
-        var rfcInput = document.getElementById("rfc");
-        var rfcError = document.getElementById("rfc-error");
-        var rfcPattern = /^[A-Z]{4}\d{6}\w\d$/;
 
-        if (!rfcPattern.test(rfcInput.value)) {
-            rfcError.style.display = "block";
-            valid = false;
-        } else {
-            rfcError.style.display = "none";
-        }
+
+
 
         var telefonoInput = document.getElementById("telefono");
         var telefonoError = document.getElementById("telefono-error");
