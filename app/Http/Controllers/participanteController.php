@@ -81,4 +81,6 @@ class participanteController extends Controller
         // Redireccionar a la página de listar para mostrar la tabla actualizada
         return view('lider.lider');
     }
+
+
 }
