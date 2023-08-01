@@ -70,6 +70,7 @@
 
 </style>
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
+<a href="/proyectosP" class="btn btn-primary" style="margin-bottom: 10px;">Ver Proyectos Pendientes</a>
     <form id="aprobados-form" onsubmit="return validateForm()">
         @csrf
         <table class="table table-custom">
