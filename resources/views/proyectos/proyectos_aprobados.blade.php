@@ -70,8 +70,8 @@
 
 </style>
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
-<a href="/proyectosP" class="btn btn-primary" style="margin-bottom: 10px;">Ver Proyectos Pendientes</a>
-    <form id="aprobados-form" onsubmit="return validateForm()">
+<a href="/proyectosP" class="btn btn-primary" style="margin-bottom: 10px; background-color: #FA7A1E; border-radius: 20px; color: black;">Ver Proyectos Pendientes</a>
+  <form id="aprobados-form" onsubmit="return validateForm()">
         @csrf
         <table class="table table-custom">
             <thead style="background-color: #9D969B;">

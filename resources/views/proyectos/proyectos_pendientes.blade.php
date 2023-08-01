@@ -7,111 +7,106 @@
     </div>
 </section>
 <style>
-.table-header th {
-    color: #FFFFFF !important;
-}
+    .table-header th {
+        color: #FFFFFF !important;
+    }
 
-.table td {
-    color: #FFFFFF;
-}
+    .table td {
+        color: #FFFFFF;
+    }
 
-.table-custom {
-    background-color: #4E4B4D;
-    border-radius: 20px;
-}
+    .table-custom {
+        background-color: #4E4B4D;
+        border-radius: 20px;
+    }
 
-.switch-container {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 20px;
-}
+    .switch-container {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 20px;
+    }
 
-.switch-container input {
-    display: none;
-}
+    .switch-container input {
+        display: none;
+    }
 
-.slider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    cursor: pointer;
-    border-radius: 34px;
-    background-color: #FF9500;
-    transition: background-color 0.3s ease-in-out;
-}
+    .slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        cursor: pointer;
+        border-radius: 34px;
+        background-color: #FF9500;
+        transition: background-color 0.3s ease-in-out;
+    }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 2px;
-    bottom: 2px;
-    border-radius: 50%;
-    background-color: #FFFFFF;
-    transition: transform 0.3s ease-in-out;
-}
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 2px;
+        bottom: 2px;
+        border-radius: 50%;
+        background-color: #FFFFFF;
+        transition: transform 0.3s ease-in-out;
+    }
 
-.switch-container input:checked + .slider {
-    background-color: #FFFFFF;
-}
+    .switch-container input:checked+.slider {
+        background-color: #FFFFFF;
+    }
 
-.switch-container input:checked + .slider:before {
-    transform: translateX(20px);
-    background-color: #FF9500;
-}
+    .switch-container input:checked+.slider:before {
+        transform: translateX(20px);
+        background-color: #FF9500;
+    }
 
-.switch-container .slider:before {
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
+    .switch-container .slider:before {
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    }
 </style>
+
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
-<a href="/proyectosA" class="btn btn-primary" style="margin-bottom: 10px;">Ver Proyectos Aprobados</a>
+    <a href="/proyectosA" class="btn btn-primary" style="margin-bottom: 10px; background-color: #FA7A1E; border-radius: 20px; color: black;">Ver Proyectos Aprobados</a>
+
     <form id="pendientes-form" onsubmit="return validateForm()">
         @csrf
         <table class="table table-custom">
             <thead style="background-color: #9D969B;">
                 <tr class="table-header">
+                    <th>ID DEL PROYECTO</th>
                     <th>NOMBRE DEL PROYECTO</th>
                     <th>CATEGORÍA</th>
                     <th>PARTICIPANTES</th>
                     <th>ESTADO</th>
+                    <th>DETALLES</th>
                     <th>ACCIONES</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Aquí puedes iterar sobre tus datos para mostrar cada fila de la tabla -->
+                <!-- Aquí iteramos sobre los datos de datosFichaTecnica para mostrar cada fila de la tabla -->
+                @foreach ($datosFichaTecnica as $datos)
                 <tr>
-                    <td>Proyecto 1</td>
-                    <td>Categoría 1</td>
-                    <td>Participante 1, Participante 2</td>
-                    <td>Pendiente</td>
+                    <td>{{ $datos->Id_fichaTecnica }}</td>
+                    <td>{{ $datos->Nombre_corto }}</td>
+                    <td>{{ $datos->nombre_categoria }}</td>
+                    <td>{{ $datos->participantes }}</td>
+                    <td>{{ $datos->estado }}</td>
                     <td>
                         <label class="switch-container">
-                            <input type="checkbox" name="estado_proyecto[]" value="1">
+                            <input type="checkbox" name="estado_proyecto[]" value="{{ $datos->id }}">
                             <span class="slider"></span>
                         </label>
                     </td>
                 </tr>
-                <tr>
-                    <td>Proyecto 2</td>
-                    <td>Categoría 2</td>
-                    <td>Participante 3, Participante 4</td>
-                    <td>Pendiente</td>
-                    <td>
-                        <label class="switch-container">
-                            <input type="checkbox" name="estado_proyecto[]" value="2">
-                            <span class="slider"></span>
-                        </label>
-                    </td>
-                </tr>
-                <!-- Agrega más filas según tus datos -->
+                @endforeach
+                <!-- Fin del ciclo -->
             </tbody>
         </table>
     </form>
 </div>
+
 @endsection

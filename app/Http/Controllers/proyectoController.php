@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Proyecto;
 use Illuminate\Http\Request;
 
 class proyectoController extends Controller
@@ -11,4 +12,6 @@ class proyectoController extends Controller
     {
         return view('proyectos.proyectos');
     }
+
+   
 }
