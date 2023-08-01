@@ -14,6 +14,7 @@ use App\Http\Controllers\JuradoController;
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\ProyectosPController;
 use App\Http\Controllers\ProyectosAController;
+use App\Http\Controllers\Tabla_partController;
 use App\Http\Controllers\UsuarioController;
 
 /*
@@ -35,6 +36,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('lider', LiderController::class);
 Route::resource('usuario', UsuarioController::class);
 Route::resource('participantes', ParticipanteController::class);
+Route::resource('tabla_part', Tabla_partController::class);
 Route::resource('asesores', AsesorController::class);
 Route::resource('proyectos', ProyectoController::class);
 Route::resource('proyectosP', ProyectosPController::class);

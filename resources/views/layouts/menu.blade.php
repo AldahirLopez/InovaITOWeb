@@ -11,7 +11,7 @@
         <i class="fas fa-user"></i><span>Lider de Proyecto</span>
     </a>
 
-    <a class="nav-link {{ Request::is('participante') ? 'active' : '' }}" href="/participantes">
+    <a class="nav-link {{ Request::is('participante') ? 'active' : '' }}" href="/tabla_part">
     <i class="fas fa-users"></i><span>Participantes</span>
     </a>
 
@@ -19,11 +19,11 @@
     <i class="fas fa-user-tie"></i><span>Asesores</span>
     </a>
 
-    <a class="nav-link {{ Request::is('obras') ? 'active' : '' }}" href="/registros">
+    <a class="nav-link {{ Request::is('registros') ? 'active' : '' }}" href="/registros">
         <i class="fas fa-notes-medical"></i><span>Registros</span>     
     </a>
 
-    <a class="nav-link {{ Request::is('usuarios') ? 'active' : '' }}" href="/jurado">
+    <a class="nav-link {{ Request::is('jurado') ? 'active' : '' }}" href="/jurado">
         <i class=" fas fa-gavel"></i><span>Jurado</span>
     </a>
 
@@ -31,7 +31,7 @@
         <i class=" fas fa-user-lock"></i><span>Roles</span>
     </a> 
 
-    <a class="nav-link {{ Request::is('roles') ? 'active' : '' }} " href="/proyectosA">
+    <a class="nav-link {{ Request::is('proyectosA') ? 'active' : '' }} " href="/proyectosA">
         <i class=" fas fa-user-lock"></i><span>Proyectos Aceptados y Pendientes</span>
     </a> 
 
