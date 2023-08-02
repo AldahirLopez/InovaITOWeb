@@ -4,7 +4,7 @@
 
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Registro Lider de Proyecto</h3>
+        <h3 class="page__heading">Registro Líder de Proyecto</h3>
     </div>
 </section>
 <style>
@@ -24,15 +24,15 @@
     }
 
     .input-field label {
-        color: #FFFFFF;
+        color: #2E2D2F;
     }
 
     .input-field input[type="text"],
     .input-field input[type="email"],
     .input-field select {
-        background-color: #4E4B4D;
+        background-color: #BEBEBE;
         border-radius: 10px;
-        color: #FFFFFF;
+        color: #2E2D2F;
         border: none;
         padding: 10px;
         width: 100%;
@@ -40,7 +40,7 @@
 
     .input-field input[type="text"]::placeholder,
     .input-field input[type="email"]::placeholder {
-        color: #BEBEBE;
+        color: #2E2D2F;
     }
 
     .submit-button {
@@ -63,26 +63,26 @@
         color: red;
     }
 </style>
-<div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
-    <h2 style="color: #FFFFFF; margin-bottom: 20px;">Formulario de Registro de Lider</h2>
+<div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
+    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Formulario de Registro de Líder</h2>
     <form action="{{ route('lider.store') }}" method="POST" id="registration-form" onsubmit="return validateForm()">
     @csrf
         <div class="form-row">
             <div class="form-group">
                 <div class="input-field">
-                    <label style="color: #FFFFFF;">Nombre:</label>
+                    <label style="color: #2E2D2F;">Nombre:</label>
                     <input type="text" name="nombre" placeholder="Ingrese nombre" required>
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-field">
-                    <label style="color: #FFFFFF;">Primer Apellido:</label>
+                    <label style="color: #2E2D2F;">Primer Apellido:</label>
                     <input type="text" name="apellidoP" placeholder="Ingrese primer apellido" required>
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-field">
-                    <label style="color: #FFFFFF;">Segundo Apellido:</label>
+                    <label style="color: #2E2D2F;">Segundo Apellido:</label>
                     <input type="text" name="apellidoM" placeholder="Ingrese segundo apellido">
                 </div>
             </div>
@@ -90,20 +90,20 @@
         <div class="form-row">
             <div class="form-group">
                 <div class="input-field">
-                    <label style="color: #FFFFFF;">Matrícula:</label>
+                    <label style="color: #2E2D2F;">Matrícula:</label>
                     <input type="text" name="matricula" pattern="[a-zA-Z0-9]+" placeholder="Ingrese matrícula" required>
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-field">
-                    <label style="color: #FFFFFF;">Correo Institucional:</label>
+                    <label style="color: #2E2D2F;">Correo Institucional:</label>
                     <input type="email" name="correo" id="correo" placeholder="Ingrese correo institucional" required>
                     <span id="correo-error" class="error-message" style="display: none;">El correo no es un correo institucional válido.</span>
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-field">
-                    <label style="color: #FFFFFF;">Nivel:</label>
+                    <label style="color: #2E2D2F;">Nivel:</label>
                     <select name="nivel">
                         <option value="NIV02">Licenciatura</option>
                         <option value="NIV01">Posgrado</option>

@@ -32,7 +32,7 @@
     </a> 
 
     <a class="nav-link {{ Request::is('proyectosA') ? 'active' : '' }} " href="/proyectosA">
-        <i class=" fas fa-user-lock"></i><span>Proyectos Aceptados y Pendientes</span>
+        <i class=" fas fa-folder"></i><span>Proyectos Aceptados y Pendientes Para Aprobar</span>
     </a> 
 
 </li>
