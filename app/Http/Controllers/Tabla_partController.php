@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carrera;
 use App\Models\Estudiante;
 use App\Models\Persona;
 use App\Models\ProyectoParticipante;
+use App\Models\Semestre;
 use Illuminate\Http\Request;
 
 class Tabla_partController extends Controller
@@ -38,16 +40,17 @@ class Tabla_partController extends Controller
                     // Verifica si se encontró una persona con el ID dado
                     if ($persona) {
                         // Accede a los datos de la persona encontrada
-                        $semestre = $personaparticipante->Id_semestre;
-                        $carrera = $personaparticipante->Id_carrera;
+
+                        $semestre = Semestre::where('Id_semestre', $personaparticipante->Id_semestre)->first();
+                        $carrera = Carrera::where('Id_carrera', $personaparticipante->Id_carrera)->first();
                         $matricula = $registro->Matricula;
                         $nombre = $persona->Nombre_persona;
                         $apellido1 = $persona->Apellido1;
                         $apellido2 = $persona->Apellido2;
 
                         $datosPersonas[] = [
-                            'carrera' => $carrera,
-                            'semestre' => $semestre,
+                            'carrera' => $carrera->Nombre_carrera,
+                            'semestre' => $semestre->Numero_semestre,
                             'matricula' => $matricula,
                             'nombre' => $nombre,
                             'apellido1' => $apellido1,

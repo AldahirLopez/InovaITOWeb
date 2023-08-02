@@ -86,15 +86,6 @@ class liderController extends Controller
          //Se guarda 
         $usuario->save();
 
-
-
-       
-    
-
-
-        
-        
-
         // Redireccionar a la página de listar para mostrar la tabla actualizada
         return view('lider.lider');
     }

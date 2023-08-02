@@ -66,7 +66,7 @@
 
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
     <h2 style="color: #FFFFFF; margin-bottom: 20px;">Formulario de Registro de Asesor</h2>
-    <form id="registration-form" onsubmit="return validateForm()">
+    <form action="{{ route('asesores.store') }}" method="POST" id="registration-form" onsubmit="return validateForm()">
     @csrf
         <div class="form-group">
             <div class="input-field">
@@ -83,7 +83,7 @@
         <div class="form-group">
             <div class="input-field">
                 <label for="departamentos" style="color: #FFFFFF;">Opciones adicionales</label>
-                <select id="CentroDepartamentos"></select>
+                <select name="CentroDepartamentos" id="CentroDepartamentos"></select>
             </div>
         </div>
         <div class="form-row">
@@ -127,7 +127,6 @@
             <div class="form-group input-field">
                 <label for="rfc">RFC</label>
                 <input type="text" id="rfc" name="rfc" placeholder="Ingrese su RFC" required>
-                <span id="rfc-error" class="error-message" style="display: none;">El RFC no es válido.</span>
             </div>
             <div class="form-group input-field">
                 <label for="telefono">Telefono</label>

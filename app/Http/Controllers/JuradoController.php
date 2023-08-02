@@ -59,7 +59,7 @@ class JuradoController extends Controller
         $usuario->Nombre_usuario = $correo;
         $usuario->Contrasena = $hash;
         $usuario->Id_persona = $idGenerada2;
-        $usuario->Id_rol = "ROL03";
+        $usuario->Id_rol = "ROL04";
 
         $persona->save();
 
