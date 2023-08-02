@@ -74,7 +74,7 @@
 </style>
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
     <h2 style="color: #FFFFFF; margin-bottom: 20px;">Formulario de Registro de Participantes</h2>
-    <form action="" method="POST" id="registration-form" onsubmit="return validateForm()">
+    <form action="{{ route('participantes.store') }}" method="POST" id="registration-form" onsubmit="return validateForm()">
         @csrf
         <div class="form-row">
             <div class="form-group">
