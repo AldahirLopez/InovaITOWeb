@@ -3,7 +3,7 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Proyectos Pendientes</h3>
+        <h3 class="page__heading">Proyectos Pendientes a aprobar </h3>
     </div>
 </section>
 <style>
@@ -83,7 +83,7 @@
                     <th>PARTICIPANTES</th>
                     <th>ESTADO</th>
                     <th>DETALLES</th>
-                    <th>ACCIONES</th>
+                    <th>ACCION</th>
                 </tr>
             </thead>
             <tbody>
