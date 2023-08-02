@@ -48,9 +48,12 @@ class Tabla_partController extends Controller
                         $apellido1 = $persona->Apellido1;
                         $apellido2 = $persona->Apellido2;
 
+                        $carreraNombre = $carrera ? $carrera->Nombre_carrera : 'No tiene carrera asignada';
+                        $semestreNumero = $semestre ? $semestre->Numero_semestre : 'No tiene semestre asignado';
+
                         $datosPersonas[] = [
-                            'carrera' => $carrera->Nombre_carrera,
-                            'semestre' => $semestre->Numero_semestre,
+                            'carrera' => $carreraNombre,
+                            'semestre' => $semestreNumero,
                             'matricula' => $matricula,
                             'nombre' => $nombre,
                             'apellido1' => $apellido1,
