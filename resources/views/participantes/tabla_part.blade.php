@@ -82,24 +82,18 @@
                 </tr>
             </thead>
             <tbody>
-                @if(isset($proyecto))
+                @foreach($datosPersonas as $datosPersona)
                 <tr>
-                    <td>{{$proyecto->Folio}}</td>
-                    <td>{{$proyecto->Matricula}}</td>
-                    <td>Participante 1, Participante 2</td>
-                    <td>Pendiente</td>
+                    <td>{{ $datosPersona['nombre'] . ' ' . $datosPersona['apellido1'] . ' ' . $datosPersona['apellido2'] }}</td>
+                    <td>{{ $datosPersona['matricula']}}</td>
+                    <td>{{ $datosPersona['semestre']}}</td>
+                    <td>{{ $datosPersona['carrera']}}</td>
                 </tr>
-                @else
-                <tr>
-                    <td>
-                        <p>No se encontró ningún proyecto para este estudiante.</p>
-                    </td>
-                </tr>
-
-                @endif
-
+                @endforeach
             </tbody>
         </table>
     </form>
 </div>
+
+
 @endsection
