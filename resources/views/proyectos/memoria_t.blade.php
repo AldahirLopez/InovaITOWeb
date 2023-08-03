@@ -24,15 +24,15 @@
     }
 
     .input-field label {
-        color: #FFFFFF;
+        color: #2E2D2F;
     }
 
     .input-field input[type="text"],
     .input-field select,
     .input-field textarea {
-        background-color: #4E4B4D;
+        background-color: #BEBEBE;
         border-radius: 10px;
-        color: #FFFFFF;
+        color: #2E2D2F;
         border: none;
         padding: 10px;
         width: 100%;
@@ -68,13 +68,13 @@
     }
 
     .counter {
-        color: #BEBEBE;
+        color: #FA7A1E;
         font-size: 12px;
         margin-top: 5px;
     }
 </style>
-<div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
-    <h2 style="color: #FFFFFF; margin-bottom: 20px;">Formulario de Memoria Técnica</h2>
+<div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
+    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Formulario de Memoria Técnica</h2>
     <form id="memoria-tecnica-form"  onsubmit="return validateForm()">
         <div class="form-row">
             <div class="form-group input-field">
@@ -178,7 +178,7 @@ function countWords(inputId, maxWords) {
         counter.style.color = 'red';
         document.getElementById(inputId).value = text.split(/\s+/).slice(0, maxWords).join(' ');
     } else {
-        counter.style.color = '#BEBEBE';
+        counter.style.color = '#FA7A1E';
     }
 }
 </script>
