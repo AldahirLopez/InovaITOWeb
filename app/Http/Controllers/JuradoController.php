@@ -105,7 +105,7 @@ class JuradoController extends Controller
         $usuario->save();
 
         // Redireccionar a la página de listar para mostrar la tabla actualizada
-        return view('jurado.jurado');
+        return redirect()->route('jurado.index')->with('success', 'Jurado registrado correctamente ');
 
     }
 }

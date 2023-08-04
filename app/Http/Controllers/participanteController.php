@@ -171,7 +171,10 @@ class participanteController extends Controller
             //$matriculas = $participantes->pluck('Matricula')->toArray();
 
             // Pasar la variable $participantes a la vista
-            return view('participantes.tabla_part', compact('datosPersonas'));
+            $mensaje="Participante registrado correctamente";
+            return view('participantes.tabla_part', compact('datosPersonas','mensaje'));
         }
     }
+
+
 }

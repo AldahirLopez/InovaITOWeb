@@ -68,7 +68,8 @@ class Tabla_partController extends Controller
             //$matriculas = $participantes->pluck('Matricula')->toArray();
 
             // Pasar la variable $participantes a la vista
-            return view('participantes.tabla_part', compact('datosPersonas'));
+          $mensaje="";
+            return view('participantes.tabla_part', compact('datosPersonas','mensaje'));
         }
     }
 }

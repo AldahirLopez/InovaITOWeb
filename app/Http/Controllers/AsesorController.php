@@ -119,7 +119,6 @@ class AsesorController extends Controller
         $usuario->save();
 
         // Redireccionar a la página de listar para mostrar la tabla actualizada
-        return view('asesores.asesor');
-
+        return redirect()->route('asesores.index')->with('success', 'Asesor registrado correctamente');
     }
 }

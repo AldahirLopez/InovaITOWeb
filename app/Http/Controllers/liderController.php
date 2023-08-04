@@ -87,6 +87,7 @@ class liderController extends Controller
         $usuario->save();
 
         // Redireccionar a la página de listar para mostrar la tabla actualizada
-        return view('lider.lider');
+        return redirect()->route('lider.index')->with('success', 'Lider registrado correctamente');
+
     }
 }

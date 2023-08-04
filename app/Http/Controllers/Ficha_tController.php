@@ -106,6 +106,8 @@ class Ficha_tController extends Controller
         
 
         // Redireccionar a la página de listar para mostrar la tabla actualizada
-        return view('proyectos.ficha_t');
+       
+        return redirect()->route('proyectos.index')->with('success', 'Ficha Tecnica registrada ');
+        
     }
 }
