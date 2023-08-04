@@ -91,23 +91,13 @@ body {
         <div class="card card-primary left-card" style="background-color: #F2F2F2; height: 500px;">
             <div class="card-header d-flex flex-column align-items-center">
                 <img src="img/logo_innovaITO.png" alt="Logo INNOVAITO" style="max-width: 100%; height: auto;">
-                <h4>ACCESO</h4>
+                <h4>RECUPERAR CONTRASEÑA</h4>
             </div>
             <br>
             <br>
         
             <div class="card-body">
-                <form action="{{ route('login') }}" method="POST" id="registration-form">
-                    @csrf
-                    @if ($errors->any())
-                    <div class="alert alert-danger p-0">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
+                <form action="" method="POST" id="PASSWORD-form">
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input aria-describedby="emailHelpBlock" id="email" type="email"
@@ -121,24 +111,9 @@ body {
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Contraseña</label>
-                        <input aria-describedby="passwordHelpBlock" id="password" type="password"
-                            value="{{ (Cookie::get('password') !== null) ? Cookie::get('password') : null }}"
-                            placeholder="Ingresa Contraseña"
-                            class="form-control{{ $errors->has('password') ? ' is-invalid': '' }}" name="password"
-                            tabindex="2" required>
-                        <div class="invalid-feedback">
-                            {{ $errors->first('password') }}
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4" style="background-color: #2E2D2F;">
-                            INGRESAR
+                            REENVIAR CONTRASEÑA
                         </button>
-                        <br>
-
-                        <a action="{{ route('rContrasena') }}">Recuperar contraseña</a>
                     </div>
                 </form>
             </div>

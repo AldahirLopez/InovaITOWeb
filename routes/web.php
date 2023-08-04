@@ -16,6 +16,7 @@ use App\Http\Controllers\ProyectosPController;
 use App\Http\Controllers\ProyectosAController;
 use App\Http\Controllers\Tabla_partController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\RContrasenaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,7 @@ Route::resource('requerimientos', RequerimientosController::class);
 Route::resource('ficha_t', Ficha_tController::class);
 Route::resource('memoria_t', Memoria_tController::class);
 Route::resource('jurado', JuradoController::class);
+Route::resource('rContrasena', RContrasenaController::class);
 Route::post('/login', [App\Http\Controllers\UsuarioController::class, 'login'])->name('login');
 Route::get('/logout', [App\Http\Controllers\UsuarioController::class, 'logout'])->name('logout');
 Route::get('/centroTecnologicos/{selectedValue}', [App\Http\Controllers\CentrosController::class, 'cargarTecnologicos'])->name('centroTecnologicos');
