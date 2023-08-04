@@ -7,6 +7,7 @@ use App\Models\Espectativa;
 use App\Models\Estudiante;
 use App\Models\Persona;
 use App\Models\ProyectoParticipante;
+use App\Models\Semestre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -147,12 +148,15 @@ class participanteController extends Controller
                     // Verifica si se encontró una persona con el ID dado
                     if ($persona) {
                         // Accede a los datos de la persona encontrada
-                        $semestre = $personaparticipante->Id_semestre;
-                        $carrera = $personaparticipante->Id_carrera;
+                        $semestre = Semestre::where('Id_semestre', $personaparticipante->Id_semestre)->first();
+                        $carrera = Carrera::where('Id_carrera', $personaparticipante->Id_carrera)->first();
                         $matricula = $registro->Matricula;
                         $nombre = $persona->Nombre_persona;
                         $apellido1 = $persona->Apellido1;
                         $apellido2 = $persona->Apellido2;
+
+                        $carreraNombre = $carrera ? $carrera->Nombre_carrera : 'No tiene carrera asignada';
+                        $semestreNumero = $semestre ? $semestre->Numero_semestre : 'No tiene semestre asignado';
 
                         $datosPersonas[] = [
                             'carrera' => $carrera,

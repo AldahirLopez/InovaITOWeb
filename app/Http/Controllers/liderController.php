@@ -5,11 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Persona;
 use App\Models\Usuario;
 use App\Models\Estudiante;
+use App\Services\VerificarCorreoServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class liderController extends Controller
 {
+
+    protected $verificarCorreoService;
+
+    public function __construct(VerificarCorreoServices $verificarCorreoService)
+    {
+        $this->verificarCorreoService = $verificarCorreoService;
+    }
 
     public function index()
     {
@@ -25,6 +33,10 @@ class liderController extends Controller
         $matricula = request()->input('matricula');
         $correo = request()->input('correo');
         $nivel = request()->input('nivel');
+
+        if ($this->verificarCorreoService->verificarCorreoExistente($correo)) {
+            return redirect()->route('lider.lider')->with('error', 'El correo ya está registrado. Intente con otro.');
+        }
 
         //Generar ID Unico
         $datosUsuario = $nombre . $apellidop . $apellidom . $correo;
