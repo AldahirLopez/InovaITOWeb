@@ -34,15 +34,15 @@
     }
 
     .input-field label {
-        color: #FFFFFF;
+        color: #2E2D2F;
     }
 
     .input-field input[type="text"],
     .input-field input[type="email"],
     .input-field select {
-        background-color: #4E4B4D;
+        background-color: #BEBEBE;
         border-radius: 10px;
-        color: #FFFFFF;
+        color: #2E2D2F;
         border: none;
         padding: 10px;
         width: 100%;
@@ -50,7 +50,7 @@
 
     .input-field input[type="text"]::placeholder,
     .input-field input[type="email"]::placeholder {
-        color: #BEBEBE;
+        color: #2E2D2F;
     }
 
     .submit-button {
@@ -74,8 +74,8 @@
     }
 </style>
 
-<div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
-    <h2 style="color: #FFFFFF; margin-bottom: 20px;">Formulario de Registro de Jurado</h2>
+<div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
+    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Formulario de Registro de Jurado</h2>
     <form action="{{ route('jurado.store') }}" method="POST" id="registration-form" onsubmit="return validateForm()">
     @csrf
         <div class="form-row">

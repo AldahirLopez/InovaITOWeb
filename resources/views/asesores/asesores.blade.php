@@ -35,15 +35,15 @@
     }
 
     .input-field label {
-        color: #FFFFFF;
+        color: #2E2D2F;
     }
 
     .input-field input[type="text"],
     .input-field input[type="email"],
     .input-field select {
-        background-color: #4E4B4D;
+        background-color: #BEBEBE;
         border-radius: 10px;
-        color: #FFFFFF;
+        color: #2E2D2F;
         border: none;
         padding: 10px;
         width: 100%;
@@ -51,7 +51,7 @@
 
     .input-field input[type="text"]::placeholder,
     .input-field input[type="email"]::placeholder {
-        color: #BEBEBE;
+        color: #2E2D2F;
     }
 
     .submit-button {
@@ -75,25 +75,25 @@
     }
 </style>
 
-<div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
-    <h2 style="color: #FFFFFF; margin-bottom: 20px;">Formulario de Registro de Asesor</h2>
+<div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
+    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Formulario de Registro de Asesor</h2>
     <form action="{{ route('asesores.store') }}" method="POST" id="registration-form" onsubmit="return validateForm()">
     @csrf
         <div class="form-group">
             <div class="input-field">
-                <label for="institutos" style="color: #FFFFFF;">Tipo de Instituto o Centro de Investigacion</label>
+                <label for="institutos" style="color: #2E2D2F;">Tipo de Instituto o Centro de Investigacion</label>
                 <select id="institutos"></select>
             </div>
         </div>
         <div class="form-group">
             <div class="input-field">
-                <label for="opciones" style="color: #FFFFFF;">Opciones adicionales</label>
+                <label for="opciones" style="color: #2E2D2F;">Opciones adicionales</label>
                 <select id="CentrosOpciones"></select>
             </div>
         </div>
         <div class="form-group">
             <div class="input-field">
-                <label for="departamentos" style="color: #FFFFFF;">Opciones adicionales</label>
+                <label for="departamentos" style="color: #2E2D2F;">Opciones adicionales</label>
                 <select name="CentroDepartamentos" id="CentroDepartamentos"></select>
             </div>
         </div>
@@ -146,7 +146,7 @@
                     válido.</span>
             </div>
             <div class="form-group input-field">
-                <label style="color: #FFFFFF;">Tipo de Asesor:</label>
+                <label style="color: #2E2D2F;">Tipo de Asesor:</label>
                 <select name="nivel">
                     <option value="INTERNO">Interno</option>
                     <option value="EXTERNO">Externo</option>

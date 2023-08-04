@@ -27,11 +27,11 @@
     }
 
     .table td {
-        color: #FFFFFF;
+        color: #2E2D2F;
     }
 
     .table-custom {
-        background-color: #4E4B4D;
+        background-color: #BEBEBE;
         border-radius: 20px;
     }
 
@@ -83,12 +83,12 @@
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     }
 </style>
-<div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
+<div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
     <a href="/participantes" class="btn btn-primary" style="margin-bottom: 10px;">Registrar Participante</a>
     <form id="participantes-form" onsubmit="return validateForm()">
         @csrf
         <table class="table table-custom">
-            <thead style="background-color: #9D969B;">
+            <thead style="background-color: #FF9500;">
                 <tr class="table-header">
                     <th>NOMBRE</th>
                     <th>MATRICULA</th>
