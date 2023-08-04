@@ -23,7 +23,7 @@
                         <div class="row">
 
                             <div class="col-md-6 col-xl-6">
-                            <div class="card {{ $ficha_tecnica_registrada ? ' bg-c-green' : 'bg-c-gris' }} order-card">
+                            <div class="card {{ $ficha_tecnica_registrada ? ' bg-c-green' : 'bg-danger' }} order-card ">
                                     <div class="card-block ">
                                         <h5>Ficha técnica</h5>
                                         <h2 class="text-right"><i class="fa fa-sheet-plastic f-left fa-2x"></i><span></span></h2>
@@ -41,9 +41,9 @@
                                     </div>
                                 </div>
                             </div>
-
+                            
                             <div class="col-md-6 col-xl-6">
-                            <div class="card {{ $memoria_tecnica_registrada ? ' bg-c-green' : 'bg-c-gris' }} order-card">
+                            <div class="card {{ $memoria_tecnica_registrada ? ' bg-c-green' : 'bg-danger' }} order-card">
                                     <div class="card-block">
                                         <h5>Memoria técnica</h5>
                                         <h2 class="text-right"><i class="fa fa-file-invoice f-left fa-2x"></i><span></span></h2>
@@ -53,7 +53,7 @@
                             </div>
 
                             <div class="col-md-6 col-xl-6">
-                                <div class="card {{ $modelo_negocios_registrada ? ' bg-c-green' : 'bg-c-gris' }} order-card">
+                                <div class="card {{ $modelo_negocios_registrada ? ' bg-c-green' : 'bg-danger' }} order-card">
                                     <div class="card-block">
                                         <h5>Modelo de negocios</h5>
                                         <h2 class="text-right"><i class="fa fa-file-invoice-dollar f-left fa-2x"></i><span></span></h2>

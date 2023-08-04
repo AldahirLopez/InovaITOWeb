@@ -23,19 +23,7 @@ $ficha_tecnica_registrada=False;
 
         }
 
-        if($proyecto->Id_memoriaTecnica!=null){
-            $memoria_tecnica_registrada=True;
 
-        }
-
-        if($proyecto->Modelo_negocio!=null){
-            $modelo_negocios_registrada=True;
-
-        }
-
-        if( $ficha_tecnica_registrada && $memoria_tecnica_registrada &&  $modelo_negocios_registrada){
-            $mostrar_participantes=True;
-        }
 
 
 @endphp
@@ -53,7 +41,7 @@ $ficha_tecnica_registrada=False;
     <a class="nav-link {{ Request::is('lider') ? 'active' : '' }}" href="/lider">
         <i class="fas fa-user"></i><span>Lider de Proyecto</span>
     </a>
-    @if ($mostrar_participantes)
+    @if ($ficha_tecnica_registrada)
         <a class="nav-link {{ Request::is('participante') ? 'active' : '' }}" href="/tabla_part">
         <i class="fas fa-users"></i><span>Participantes</span>
         </a>

@@ -4,17 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Categorias;
-
-class Area extends Model
+use App\Models\Proyecto;
+class validacionProyectoA extends Model
 {
     use HasFactory;
+ 
     public $timestamps = false;
     protected $connection = 'mysql';
-    protected $table = 'area';
+    protected $table = 'validacionProyectoA';
 
-    public function categoria()
+    public function proyecto()
     {
-        return $this->belongsTo(Categorias::class, 'Id_categoria', 'Id_categoria');
+        return $this->belongsTo(Proyecto::class, 'Folio', 'Folio');
     }
+
+    
+
+
 }

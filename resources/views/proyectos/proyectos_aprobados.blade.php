@@ -76,26 +76,42 @@
         <table class="table table-custom">
             <thead style="background-color: #9D969B;">
                 <tr class="table-header">
-                    <th>NOMBRE DEL PROYECTO</th>
-                    <th>CATEGORÍA</th>
-                    <th>PARTICIPANTES</th>
-                    <th>ESTADO</th>
+                    <th>Nombre del proyecto</th>
+                    <th>Responsable</th>
+                    <th>Observaciones</th>
+                    <th>Estado</th>
+
                 </tr>
             </thead>
             <tbody>
                 <!-- Aquí puedes iterar sobre tus datos para mostrar cada fila de la tabla -->
-                <tr>
-                    <td>Proyecto 1</td>
-                    <td>Categoría 1</td>
-                    <td>Participante 1, Participante 2</td>
-                    <td>Pendiente</td>
-                </tr>
-                <tr>
-                    <td>Proyecto 2</td>
-                    <td>Categoría 2</td>
-                    <td>Participante 3, Participante 4</td>
-                    <td>Pendiente</td>
-                </tr>
+                    
+
+                
+
+                    @foreach ($proyectosAprobados as $proyectoAprobado)
+                        <tr>
+                            <td>{{$proyectoAprobado->proyecto->ficha->Nombre_corto}}</td>
+                            @if ($proyectoAprobado->Id_asesor)
+                            <td>Asesor:{{$proyectoAprobado->Id_asesor}}</td>
+                            @else
+                            <td>Coordinador:{{$proyectoAprobado->Id_coordinador}}</td>
+                            @endif
+
+                            <td>
+                                {{$proyectoAprobado->Observaciones}}
+                            </td>
+
+                            <td>
+                                @if ($proyectoAprobado->Estado==1)
+                                    Aprobado
+                                 @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                    
+               
+               
                 <!-- Agrega más filas según tus datos -->
             </tbody>
         </table>

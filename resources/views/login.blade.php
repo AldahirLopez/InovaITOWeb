@@ -135,7 +135,7 @@ Admin Login
                         </button>
                         <br>
 
-                        <a href="{{ route('rContrasena.index') }}" class="btn btn-primary">Recuperar Contraseña</a>
+                        <a href="" class="btn btn-primary">Recuperar Contraseña</a>
 
                     </div>
                 </form>

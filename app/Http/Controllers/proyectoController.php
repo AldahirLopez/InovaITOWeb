@@ -42,7 +42,11 @@ class proyectoController extends Controller
             $modelo_negocios_registrada=True;
 
         }
-       
+        
+        
+
+
+
         return view('proyectos.proyectos',compact('ficha_tecnica_registrada','memoria_tecnica_registrada','modelo_negocios_registrada'));
     }
 

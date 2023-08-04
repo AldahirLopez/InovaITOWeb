@@ -72,7 +72,7 @@
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
     <a href="/proyectosA" class="btn btn-primary" style="margin-bottom: 10px; background-color: #FA7A1E; border-radius: 20px; color: black;">Ver Proyectos Aprobados</a>
 
-    <form id="pendientes-form" onsubmit="return validateForm()">
+    <form method="POST" action="{{ route('proyectosA.store') }}">
         @csrf
         <table class="table table-custom">
             <thead style="background-color: #9D969B;">
@@ -80,24 +80,22 @@
                     <th>ID DEL PROYECTO</th>
                     <th>NOMBRE DEL PROYECTO</th>
                     <th>CATEGORÍA</th>
-                    <th>PARTICIPANTES</th>
-                    <th>ESTADO</th>
-                    <th>DETALLES</th>
+                 
+
                     <th>ACCION</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- Aquí iteramos sobre los datos de datosFichaTecnica para mostrar cada fila de la tabla -->
-                @foreach ($datosFichaTecnica as $datos)
+                @foreach ($ProyectosPendientes as $ProyectoPendiente)
                 <tr>
-                    <td>{{ $datos->Id_fichaTecnica }}</td>
-                    <td>{{ $datos->Nombre_corto }}</td>
-                    <td>{{ $datos->nombre_categoria }}</td>
-                    <td>{{ $datos->participantes }}</td>
-                    <td>{{ $datos->estado }}</td>
+                    <td>{{ $ProyectoPendiente->Folio }}</td>
+                    <td>{{ $ProyectoPendiente->ficha->Nombre_corto }}</td>
+                    <td>{{ $ProyectoPendiente->ficha->area->categoria->Nombre_categoria}}</td>
+
                     <td>
                         <label class="switch-container">
-                            <input type="checkbox" name="estado_proyecto[]" value="{{ $datos->id }}">
+                            <input type="checkbox" name="estado_proyecto[]" value="{{$ProyectoPendiente->Folio}}">
                             <span class="slider"></span>
                         </label>
                     </td>
@@ -106,6 +104,7 @@
                 <!-- Fin del ciclo -->
             </tbody>
         </table>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
     </form>
 </div>
 
