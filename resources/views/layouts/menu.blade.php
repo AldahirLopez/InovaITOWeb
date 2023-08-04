@@ -72,6 +72,10 @@ $ficha_tecnica_registrada=False;
         <i class=" fas fa-folder"></i><span>Horarios</span>
     </a> 
 
+    <a class="nav-link {{ Request::is('t_pos') ? 'active' : '' }} " href="/t_pos">
+        <i class=" fas fa-table"></i><span>Tabla de Posiciones</span>
+    </a> 
+
 
 
 
