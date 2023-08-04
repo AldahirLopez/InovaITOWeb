@@ -16,7 +16,9 @@ use App\Http\Controllers\ProyectosPController;
 use App\Http\Controllers\ProyectosAController;
 use App\Http\Controllers\Tabla_partController;
 use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\RContrasenaController;
+
+
+use App\Http\Controllers\horarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +48,7 @@ Route::resource('requerimientos', RequerimientosController::class);
 Route::resource('ficha_t', Ficha_tController::class);
 Route::resource('memoria_t', Memoria_tController::class);
 Route::resource('jurado', JuradoController::class);
-Route::resource('rContrasena', RContrasenaController::class);
+Route::resource('horario', horarioController::class);
 Route::post('/login', [App\Http\Controllers\UsuarioController::class, 'login'])->name('login');
 Route::get('/logout', [App\Http\Controllers\UsuarioController::class, 'logout'])->name('logout');
 Route::get('/centroTecnologicos/{selectedValue}', [App\Http\Controllers\CentrosController::class, 'cargarTecnologicos'])->name('centroTecnologicos');
@@ -57,7 +59,6 @@ Route::get('/carrera', [App\Http\Controllers\ParticipanteController::class, 'dev
 Route::get('/categorias', [App\Http\Controllers\CategoriasController::class, 'devolvercategorias'])->name('categorias');
 Route::get('/areas/{selectedValue}', [App\Http\Controllers\CategoriasController::class, 'cargarAreas'])->name('areas');
 Route::get('/naturalezaTecnica', [App\Http\Controllers\CategoriasController::class, 'cargarNaturaleza'])->name('naturalezaTecnica');
-Route::post('/recuperar-contrasena', [RContrasenaController::class, 'RecuperarContrasena'])->name('recuperar.contrasena');
 
     
 

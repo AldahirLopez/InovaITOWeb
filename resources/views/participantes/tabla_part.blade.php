@@ -6,6 +6,21 @@
         <h3 class="page__heading">Participantes</h3>
     </div>
 </section>
+
+
+
+@if ($mensaje)
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ $mensaje }}  
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+
+
+
+
 <style>
     .table-header th {
         color: #FFFFFF !important;
@@ -93,7 +108,71 @@
             </tbody>
         </table>
     </form>
+
+
+
+
+@php    
+          
+
+use App\Models\Estudiante;
+use App\Models\ProyectoParticipante;
+
+        $usuario = session('usuario');
+        $idpersona = $usuario->Id_persona;
+        $persona = Estudiante::where('Id_persona', $idpersona)->first();
+        $proyecto = ProyectoParticipante::where('Matricula', $persona->Matricula)->first();
+        $folioproyecto = $proyecto->Folio;
+
+        $registros_proyecto = ProyectoParticipante::where('Folio', $folioproyecto)->get();
+        $GEN01 = 0;
+        $GEN02 = 0;
+        $carreras_diferentes = [];
+        $mensajes = [];
+        
+        // Contar el número de registros y clasificar por género y carreras diferentes
+        foreach ($registros_proyecto as $registro) {
+            $estudiante = Estudiante::where('Matricula', $registro->Matricula)->first();
+            if ($estudiante->Id_genero == "GEN01") {
+                $GEN01++;
+            } else {
+                $GEN02++;
+            }
+        
+            if (!in_array($estudiante->Id_carrera, $carreras_diferentes)) {
+                $carreras_diferentes[] = $estudiante->Id_carrera;
+            }
+        }
+        
+        if (count($registros_proyecto) < 3 || count($registros_proyecto) > 5) {
+            $mensajes[] = "El número de participantes no cumple con las condiciones requeridas.";
+        } 
+        elseif($GEN01 == 0 || $GEN02 == 0){
+            $mensajes[] = "No hay al menos un participante de cada género.";
+
+        }       
+        elseif (count($carreras_diferentes) < 2) {
+            $mensajes[] = "No hay al menos 2 carreras diferentes.";
+        }
+
+
+
+@endphp
+
+
+
+@foreach ( $mensajes as  $mensaje )
+    <p>{{ $mensaje}}</p>
+@endforeach
+
+
+
+
+
 </div>
+
+
+
 
 
 @endsection

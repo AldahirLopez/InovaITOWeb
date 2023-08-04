@@ -75,7 +75,8 @@
 </style>
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
     <h2 style="color: #2E2D2F; margin-bottom: 20px;">Formulario de Memoria Técnica</h2>
-    <form id="memoria-tecnica-form"  onsubmit="return validateForm()">
+    <form id="memoria-tecnica-form" onsubmit="return validateForm()" action="{{route('memoria_t.store')}}" method="POST">
+    @csrf
         <div class="form-row">
             <div class="form-group input-field">
                 <label for="descripcion_problematica">Descripción Problemática:</label>

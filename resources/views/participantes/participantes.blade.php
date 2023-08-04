@@ -6,6 +6,10 @@
         <h3 class="page__heading">Registro Participantes</h3>
     </div>
 </section>
+
+
+
+
 <style>
 .custom-input {
     background-color: #4E4B4D;
@@ -182,6 +186,15 @@
         <button class="submit-button" type="submit">Registrar</button>
     </form>
 </div>
+
+
+<div>
+
+
+
+</div>
+
+
 
 <script>
 function validateForm() {
