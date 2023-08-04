@@ -57,6 +57,7 @@ Route::get('/carrera', [App\Http\Controllers\ParticipanteController::class, 'dev
 Route::get('/categorias', [App\Http\Controllers\CategoriasController::class, 'devolvercategorias'])->name('categorias');
 Route::get('/areas/{selectedValue}', [App\Http\Controllers\CategoriasController::class, 'cargarAreas'])->name('areas');
 Route::get('/naturalezaTecnica', [App\Http\Controllers\CategoriasController::class, 'cargarNaturaleza'])->name('naturalezaTecnica');
+Route::post('/recuperar-contrasena', [RContrasenaController::class, 'RecuperarContrasena'])->name('recuperar.contrasena');
 
     
 
