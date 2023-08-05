@@ -17,6 +17,8 @@ use App\Http\Controllers\ProyectosAController;
 use App\Http\Controllers\Tabla_partController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\T_PosicionesController;
+use App\Http\Controllers\RContrasenaController;
+
 
 
 use App\Http\Controllers\horarioController;
@@ -63,7 +65,8 @@ Route::get('/categorias', [App\Http\Controllers\CategoriasController::class, 'de
 Route::get('/areas/{selectedValue}', [App\Http\Controllers\CategoriasController::class, 'cargarAreas'])->name('areas');
 Route::get('/naturalezaTecnica', [App\Http\Controllers\CategoriasController::class, 'cargarNaturaleza'])->name('naturalezaTecnica');
 Route::get('/validar-correo', 'ValidarCorreoController@checkEmail')->name('validar.correo');
-
+Route::post('recuperar-contrasena', [RContrasenaController::class, 'RecuperarContrasena'])->name('recuperar.recuperar');
+Route::get('recuperar-contrasena', [RContrasenaController::class, 'index'])->name('recuperar.index');
 
     
 

@@ -3,6 +3,7 @@
 Admin Login
 @endsection
 @section('content')
+
 <style>
     body {
         background: #2E2D2F;
@@ -135,7 +136,7 @@ Admin Login
                         </button>
                         <br>
 
-                        <a href="" class="btn btn-primary">Recuperar Contraseña</a>
+                        <a href="{{ route('recuperar.index') }}" class="btn btn-primary">Recuperar Contraseña</a>
 
                     </div>
                 </form>

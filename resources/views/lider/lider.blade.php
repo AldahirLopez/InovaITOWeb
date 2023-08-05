@@ -9,13 +9,13 @@
 </section>
 
 @if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('success') }}  
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('success') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
 
 
 <style>
@@ -77,7 +77,7 @@
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
     <h2 style="color: #2E2D2F; margin-bottom: 20px;">Formulario de Registro de Líder</h2>
     <form action="{{ route('lider.store') }}" method="POST" id="registration-form" onsubmit="return validateForm()">
-    @csrf
+        @csrf
         <div class="form-row">
             <div class="form-group">
                 <div class="input-field">
@@ -142,7 +142,7 @@
 
         return true;
     }
-       /* var nombres = document.getElementsByName("nombre")[0].value;
+    /* var nombres = document.getElementsByName("nombre")[0].value;
     var apellidoPaterno = document.getElementsByName("apellidoP")[0].value;
     var apellidoMaterno = document.getElementsByName("apellidoM")[0].value;
     var correo = document.getElementsByName("correo")[0].value;
@@ -159,7 +159,7 @@
     console.log("Contraseña: " + contrasena);
 */
     var correoInput = document.getElementById("correo");
-    correoInput.addEventListener("input", function () {
+    correoInput.addEventListener("input", function() {
         var correoError = document.getElementById("correo-error");
         var correoPattern = /^[\w-\.]+@(?:[a-zA-Z0-9][a-zA-Z0-9-]+\.)+(edu\.mx|TECNM\.MX|tecnm\.mx|EDU\.MX)$/;
 
@@ -171,19 +171,21 @@
     });
 
 
-function generateIdPersona(nombres, apellidoPaterno, apellidoMaterno, correo) {
-    var datosUsuario = nombres + apellidoPaterno + apellidoMaterno + correo;
-    var idGenerada = sha1(datosUsuario).substring(0, 10);
-    return idGenerada.toLowerCase();
-}
+    function generateIdPersona(nombres, apellidoPaterno, apellidoMaterno, correo) {
+        var datosUsuario = nombres + apellidoPaterno + apellidoMaterno + correo;
+        var idGenerada = sha1(datosUsuario).substring(0, 10);
+        return idGenerada.toLowerCase();
+    }
 
-function generateContrasena() {
-    var caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$*-_+\\|./?';
-    var contrasena = Array.from({ length: 8 }, function() {
-        return caracteres.charAt(Math.floor(Math.random() * caracteres.length));
-    }).join('');
-    return contrasena;
-}
+    function generateContrasena() {
+        var caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$*-_+\\|./?';
+        var contrasena = Array.from({
+            length: 8
+        }, function() {
+            return caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+        }).join('');
+        return contrasena;
+    }
 </script>
 
 @endsection

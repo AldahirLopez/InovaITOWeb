@@ -12,5 +12,8 @@ class T_PosicionesController extends Controller
         return view('evaluaciones.tabla_posiciones');
     }
 
+    public function listarproyectos(){
+        
+    }
 
 }

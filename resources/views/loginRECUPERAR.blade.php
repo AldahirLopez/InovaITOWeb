@@ -3,6 +3,25 @@
 Admin Login
 @endsection
 @section('content')
+
+@if (session('success'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('success') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
+@if (session('error'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ session('error') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
 <style>
     body {
         background: #2E2D2F;
@@ -91,8 +110,20 @@ Admin Login
         background-color: #F26E22 !important;
     }
 </style>
+<form method="POST" action="{{ route('login') }}">
+    @csrf
+    <!-- Resto de los campos del formulario -->
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4" style="background-color: #2E2D2F;">
+            Regresar
+        </button>
+    </div>
+</form>
 <div class="row no-gutters">
+
+
     <div class="col-md-6">
+
         <div class="card card-primary left-card" style="background-color: #F2F2F2; height: 500px;">
             <div class="card-header d-flex flex-column align-items-center">
                 <img src="img/logo_innovaITO.png" alt="Logo INNOVAITO" style="max-width: 100%; height: auto;">
@@ -102,7 +133,8 @@ Admin Login
             <br>
 
             <div class="card-body">
-                <form action="{{ route('recuperar.contrasena') }}" method="POST" id="PASSWORD-form">
+
+                <form action="{{ route('recuperar.recuperar') }}" method="POST" id="PASSWORD-form">
                     @csrf
                     <div class="form-group">
                         <label for="email">Email</label>
@@ -120,6 +152,7 @@ Admin Login
                 </form>
             </div>
         </div>
+
     </div>
     <div class="col-md-6">
         <!-- Aquí se muestra la imagen en grande y se alinea a la derecha -->
