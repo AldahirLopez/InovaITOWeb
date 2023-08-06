@@ -10,6 +10,7 @@ use App\Models\ProyectoParticipante;
 use App\Models\Semestre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class participanteController extends Controller
 {
@@ -175,10 +176,92 @@ class participanteController extends Controller
             //$matriculas = $participantes->pluck('Matricula')->toArray();
 
             // Pasar la variable $participantes a la vista
-            $mensaje="Participante registrado correctamente";
-            return view('participantes.tabla_part', compact('datosPersonas','mensaje'));
+
+            return redirect()->route('tabla_part.index')->with('success', 'Participante registrado correctamente');
+
         }
     }
 
+    public function edit(string $matricula)
+    {
+        $personaparticipante = Estudiante::where('Matricula',$matricula)->first();
+        return view('participantes.editar',compact('personaparticipante'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        $personaparticipante = Estudiante::where('Matricula',$id)->first();
+
+        $nombre = request()->input('nombre');
+        $apellidoP = request()->input('apellidoP');
+        $apellidoM = request()->input('apellidoM');
+        $matricula = request()->input('matricula');
+        $promedio = request()->input('promedio');
+        $curp = request()->input('curp');
+        $numIne = request()->input('numIne');
+        $correo = request()->input('correo');
+        $genero = request()->input('genero');
+        $expectativa = request()->input('expectativa');
+        $semestre = request()->input('semestre');
+        $fechaNacimiento = request()->input('fechaNacimiento');
+        $nivel = request()->input('nivel');
+        $carrera = request()->input('carrera');
+
+
+        //Actualizar datos del  estudiante
+
+        DB::table('estudiante')
+        ->where('matricula', $personaparticipante->Matricula)
+        ->update([
+            'Fecha_nacimiento' => $fechaNacimiento,
+            'Promedio' => $promedio,
+            'Id_expectativa'=>$expectativa,
+            'Id_carrera'=>$carrera,
+            'Id_genero'=>$genero,
+            'Id_semestre'=>$semestre,
+            'Id_nivel'=>$nivel,
+
+        ]);
+            //Actualizar datos de la persona
+        DB::table('persona')
+        ->where('Id_persona', $personaparticipante->persona->Id_persona)
+        ->update([
+            'Nombre_persona'=>$nombre,
+            'Apellido1' => $apellidoP,
+            'Apellido2' => $apellidoM,
+            'Correo_electronico'=>$correo,
+            'Num_ine'=>$numIne,
+            'Curp'=>$curp,
+
+        ]);
+
+    
+        
+        return redirect()->route('tabla_part.index')->with('update', 'Participante actualizado correctamente');
+    }
+    public function destroy(string $id)
+    {
+        $personaparticipante = Estudiante::where('Matricula',$id)->first();
+
+        DB::table('proyectoParticipante')
+        ->where('Matricula', $personaparticipante->Matricula)
+        ->delete();
+
+        DB::table('estudiante')
+        ->where('Matricula', $personaparticipante->Matricula)
+        ->delete();
+
+        DB::table('persona')
+        ->where('Id_persona', $personaparticipante->persona->Id_persona)
+        ->delete();
+
+
+
+
+        return redirect()->route('tabla_part.index')->with('delete', 'Participante eliminado correctamente');
+    }
 
 }

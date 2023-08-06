@@ -78,6 +78,7 @@ $nombreUsuario = Session::get('usuario')->Nombre_persona;
 <script src="{{ asset('web/js/scripts.js') }}"></script>
 <script src="{{ mix('assets/js/profile.js') }}"></script>
 <script src="{{ mix('assets/js/custom/custom.js') }}"></script>
+
 @yield('page_js')
 @yield('scripts')
 @yield('js')

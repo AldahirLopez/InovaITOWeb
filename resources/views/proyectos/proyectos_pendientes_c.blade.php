@@ -70,9 +70,9 @@
 </style>
 
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
-    <a href="/proyectosA" class="btn btn-primary" style="margin-bottom: 10px; background-color: #FA7A1E; border-radius: 20px; color: black;">Ver Proyectos Aprobados</a>
+    <a href="/proyectosC" class="btn btn-primary" style="margin-bottom: 10px; background-color: #FA7A1E; border-radius: 20px; color: black;">Ver Proyectos Aprobados</a>
 
-    <form method="POST" action="{{ route('proyectosA.store') }}">
+    <form method="POST" action="{{ route('proyectosC.store') }}">
         @csrf
         <table class="table table-custom">
             <thead style="background-color: #9D969B;">
@@ -82,41 +82,28 @@
                     <th>CATEGORÍA</th>           
                     <th>ACCIONES</th>
                     <th>DESCARGAR</th>
+
             
                 </tr>
             </thead>
             <tbody>
                 <!-- Aquí iteramos sobre los datos de datosFichaTecnica para mostrar cada fila de la tabla -->
                 @foreach ($ProyectosPendientes as $ProyectoPendiente)
-                    @if ($ProyectoPendiente->proyecto->Estado_acreditacion=='0')
-                    <tr>
-                    <td>{{ $ProyectoPendiente->proyecto->Folio }}</td>
-                    <td>{{ $ProyectoPendiente->proyecto->ficha->Nombre_corto }}</td>
-                    <td>{{ $ProyectoPendiente->proyecto->ficha->area->categoria->Nombre_categoria}}</td>
+                <tr>
+                    <td>{{ $ProyectoPendiente->Folio }}</td>
+                    <td>{{ $ProyectoPendiente->ficha->Nombre_corto }}</td>
+                    <td>{{ $ProyectoPendiente->ficha->area->categoria->Nombre_categoria}}</td>
 
-                    <td class="d-flex jjustify-content-center align-items-center">
-                    <div class="d-flex jjustify-content-center align-items-center p-2">
-                        <label>Aprobar</label>
+                    <td>
+                   
+                       
                         <label class="switch-container">
-                            <input type="checkbox" name="estado_proyecto[]" value="{{$ProyectoPendiente->proyecto->Folio}}">
+                            <input type="checkbox" name="estado_proyecto[]" value="{{$ProyectoPendiente->Folio}}">
             
 
                             <span class="slider"></span>
                         </label>
-                    </div>
-                    
-                    <div class="d-flex jjustify-content-center align-items-center p-2">
-
-                    
-                    <label>Editar</label>
-                        <label class="switch-container">
-                            <input type="checkbox" name="estado_proyecto_editar[]" value="{{$ProyectoPendiente->proyecto->Folio}}">
-            
-
-                            <span class="slider"></span>
-                        </label>
-                    </div> 
-
+                 
                     </td>
 
                     <td>
@@ -129,8 +116,6 @@
 
            
                 </tr>
-                    @endif
-                
                 @endforeach
                 <!-- Fin del ciclo -->
             </tbody>

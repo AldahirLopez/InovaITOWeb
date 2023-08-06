@@ -21,7 +21,7 @@
                 <div class="card">
                     <div class="card-body rounded-circle"> <!-- Cambiamos la clase 'rounded' por 'rounded-circle' aquí -->
                         <div class="row">
-
+                            @if ($ficha_tecnica_habilitada)
                             <div class="col-md-6 col-xl-6">
                             <div class="card {{ $ficha_tecnica_registrada ? ' bg-c-green' : 'bg-danger' }} order-card ">
                                     <div class="card-block ">
@@ -31,9 +31,11 @@
                                     </div>
                                 </div>
                             </div>
-
+                            @endif
+                           
+                            @if ($requerimientos_especiales_habilitada)
                             <div class="col-md-6 col-xl-6">
-                                <div class="card bg-c-gris order-card">
+                            <div class="card {{ $requerimientos_especiales_habilitada ? ' bg-c-green' : 'bg-danger' }} order-card ">
                                     <div class="card-block">
                                         <h5>Requerimientos especiales</h5>
                                         <h2 class="text-right"><i class="fa fa-square-check f-left fa-2x"></i><span></span></h2>
@@ -41,26 +43,47 @@
                                     </div>
                                 </div>
                             </div>
-                            
+                            @endif
+                           
+                            @if ($memoria_tecnica_habilitada)
+                                
                             <div class="col-md-6 col-xl-6">
                             <div class="card {{ $memoria_tecnica_registrada ? ' bg-c-green' : 'bg-danger' }} order-card">
                                     <div class="card-block">
                                         <h5>Memoria técnica</h5>
                                         <h2 class="text-right"><i class="fa fa-file-invoice f-left fa-2x"></i><span></span></h2>
-                                        <p class="m-b-0 text-right"><a href="{{ route('memoria_t.index') }}" class="text-white">Agregar</a></p>
+                                            @if ($memoria_tecnica_registrada)
+                                            <p class="m-b-0 text-right text-white">Registrado</p>
+                                            @else
+                                            <p class="m-b-0 text-right"><a href="{{ route('memoria_t.index') }}" class="text-white">Agregar</a></p>
+                                            @endif
+
+
+                                       
                                     </div>
                                 </div>
                             </div>
+                            @endif
 
+
+                            @if ($modelo_negocios_habilitada)
                             <div class="col-md-6 col-xl-6">
                                 <div class="card {{ $modelo_negocios_registrada ? ' bg-c-green' : 'bg-danger' }} order-card">
                                     <div class="card-block">
                                         <h5>Modelo de negocios</h5>
                                         <h2 class="text-right"><i class="fa fa-file-invoice-dollar f-left fa-2x"></i><span></span></h2>
+                                        @if ($modelo_negocios_registrada)
+                                        <p class="m-b-0 text-right text-white">Registrado</p>
+                                        @else
                                         <p class="m-b-0 text-right"><a href="#" class="text-white">Agregar</a></p>
+                                        @endif
+
+                                        
                                     </div>
                                 </div>
                             </div>
+                            @endif
+                          
 
                         </div>
                     </div>
@@ -69,7 +92,6 @@
         </div>
     </div>
 </section>
-
 
 
 @endsection

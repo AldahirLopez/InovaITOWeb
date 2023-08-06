@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Persona;
 use App\Models\Asesor;
 use App\Models\Usuario;
+use App\Models\proyectoAsesor;
+use App\Models\Estudiante;
+use App\Models\ProyectoParticipante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -99,6 +102,22 @@ class AsesorController extends Controller
         
         $asesor->save();
 
+
+
+
+        $usuario = session('usuario');
+        $idpersona = $usuario->Id_persona;
+        $persona = Estudiante::where('Id_persona', $idpersona)->first();
+        $proyecto = ProyectoParticipante::where('Matricula', $persona->Matricula)->first();
+        $folioproyecto = $proyecto->Folio;
+
+     
+        $proyectoAsesor=new proyectoAsesor();
+        $proyectoAsesor->Id_asesor=$asesor->Id_asesor;
+        $proyectoAsesor->Folio=$folioproyecto;
+        $proyectoAsesor->save();
+
+
         //Enviamos el correo con la clave para que pueda hacer su login 
         $subject = "Datos de Login";
         $for = $correo;
@@ -109,8 +128,8 @@ class AsesorController extends Controller
             // Agrega más variables aquí si es necesario
         ];
 
-        Mail::send('email', $data, function($msj) use($subject, $for) {
-            $msj->from("hectoralr21@gmail.com", "Datos Login");
+        Mail::send('email', $data, function ($msj) use ($subject, $for) {
+            $msj->from("lopezaldahir21@gmail.com", "Datos Login");
             $msj->subject($subject);
             $msj->to($for);
         });

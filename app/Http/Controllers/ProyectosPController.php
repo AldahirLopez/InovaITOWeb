@@ -9,13 +9,20 @@ use App\Models\Ficha_Tecnica;
 use App\Models\Persona;
 use App\Models\Proyecto;
 use App\Models\ProyectoParticipante;
+use App\Models\proyectoAsesor;
 use Illuminate\Http\Request;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class ProyectosPController extends Controller
 {
     public function index()
     {
-            $ProyectosPendientes=Proyecto::where('Estado_acreditacion',0)->get();
+
+            //Listamos los proyectos pendientes del asesor
+
+            //*lo k falta es pasar el rol del que ta logueado debe ir el ASE04
+            $ProyectosPendientes=proyectoAsesor::where('Id_asesor',"ASE04")->get();
+
+
             return view('proyectos.proyectos_pendientes',compact('ProyectosPendientes'));
     }
 
@@ -42,4 +49,16 @@ class ProyectosPController extends Controller
             // Por ejemplo, mostrar un mensaje de error o realizar alguna otra acción.
         }
     }
+    public function pdf($id){
+
+        $proyecto=Proyecto::where('Folio',$id)->first();
+        
+        $pdf =PDF::loadView('proyectos.pdf',['proyecto'=>$proyecto]);
+      
+        return $pdf->stream();
+      
+       // return view('proyectos.pdf',compact('proyecto'));
+    }
+
+
 }

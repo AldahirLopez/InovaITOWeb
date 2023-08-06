@@ -70,7 +70,7 @@
 
 </style>
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
-<a href="/proyectosP" class="btn btn-primary" style="margin-bottom: 10px; background-color: #FA7A1E; border-radius: 20px; color: black;">Ver Proyectos Pendientes</a>
+<a href="/proyectosCP" class="btn btn-primary" style="margin-bottom: 10px; background-color: #FA7A1E; border-radius: 20px; color: black;">Ver Proyectos Pendientes</a>
   <form id="aprobados-form" onsubmit="return validateForm()">
         @csrf
         <table class="table table-custom">
@@ -79,10 +79,7 @@
                     <th>Nombre del proyecto</th>
                     <th>Responsable</th>
                     <th>Observaciones</th>
-                    <th>Asesor</th>
-                    <th>Coordinador</th>
-                    
-                   
+                    <th>Estado</th>
 
                 </tr>
             </thead>
@@ -95,31 +92,20 @@
                     @foreach ($proyectosAprobados as $proyectoAprobado)
                         <tr>
                             <td>{{$proyectoAprobado->proyecto->ficha->Nombre_corto}}</td>
-                            @if ($proyectoAprobado->Id_asesor)
-                            <td>Asesor:{{$proyectoAprobado->Id_asesor}}</td>
-                            @else
+                            @if ($proyectoAprobado->Id_coordinador)
+
                             <td>Coordinador:{{$proyectoAprobado->Id_coordinador}}</td>
                             @endif
+
                             <td>
                                 {{$proyectoAprobado->Observaciones}}
                             </td>
 
-
-                            <td>
-                                @if ($proyectoAprobado->Estado==1 | $proyectoAprobado->Estado==2)
-                                    Aprobado
-                                @endif
-                            </td>
                             <td>
                                 @if ($proyectoAprobado->Estado==2)
                                     Aprobado
-                                    
-                                @else
-                                    Pendiente
-                                @endif
+                                 @endif
                             </td>
-
-
                         </tr>
                     @endforeach
                     

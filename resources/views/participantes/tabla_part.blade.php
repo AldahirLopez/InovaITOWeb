@@ -7,17 +7,36 @@
     </div>
 </section>
 
-
-
-@if ($mensaje)
+@if (session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ $mensaje }}  
+        {{ session('success') }}  
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
     @endif
 
+
+    
+
+    
+@if (session('update'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('update') }}  
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+    
+@if (session('delete'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('delete') }}  
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
 
 
 
@@ -82,34 +101,12 @@
     .switch-container .slider:before {
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     }
+    .disable {
+        pointer-events: none;
+        text-decoration:none;
+        
+}
 </style>
-<div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
-    <a href="/participantes" class="btn btn-primary" style="margin-bottom: 10px;">Registrar Participante</a>
-    <form id="participantes-form" onsubmit="return validateForm()">
-        @csrf
-        <table class="table table-custom">
-            <thead style="background-color: #FF9500;">
-                <tr class="table-header">
-                    <th>NOMBRE</th>
-                    <th>MATRICULA</th>
-                    <th>SEMESTRE</th>
-                    <th>CARRERA</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($datosPersonas as $datosPersona)
-                <tr>
-                    <td>{{ $datosPersona['nombre'] . ' ' . $datosPersona['apellido1'] . ' ' . $datosPersona['apellido2'] }}</td>
-                    <td>{{ $datosPersona['matricula']}}</td>
-                    <td>{{ $datosPersona['semestre']}}</td>
-                    <td>{{ $datosPersona['carrera']}}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </form>
-
-
 
 
 @php    
@@ -145,7 +142,7 @@ use App\Models\ProyectoParticipante;
         }
         
         if (count($registros_proyecto) < 3 || count($registros_proyecto) > 5) {
-            $mensajes[] = "El número de participantes no cumple con las condiciones requeridas.";
+          
         } 
         elseif($GEN01 == 0 || $GEN02 == 0){
             $mensajes[] = "No hay al menos un participante de cada género.";
@@ -161,13 +158,70 @@ use App\Models\ProyectoParticipante;
 
 
 
-@foreach ( $mensajes as  $mensaje )
-    <p>{{ $mensaje}}</p>
-@endforeach
+
+<div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
+
+<a href="/participantes" class="btn btn-primary {{ count($registros_proyecto) < 5 ? '' : 'disable' }}" style="margin-bottom: 10px;" >Registrar Participante</a>
 
 
+<table class="table table-custom">
+    <thead style="background-color: #FF9500;">
+        <tr class="table-header">
+            <th>NOMBRE</th>
+            <th>MATRICULA</th>
+            <th>SEMESTRE</th>
+            <th>CARRERA</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($datosPersonas as $datosPersona)
+        <tr>
+            <td>{{ $datosPersona['nombre'] . ' ' . $datosPersona['apellido1'] . ' ' . $datosPersona['apellido2'] }}</td>
+            <td>{{ $datosPersona['matricula']}}</td>
+            <td>{{ $datosPersona['semestre']}}</td>
+            <td>{{ $datosPersona['carrera']}}</td>
+            <td>
+                <a href="{{ route('participantes.edit', ['participante' => $datosPersona['matricula']]) }}" class="btn btn-success">Editar</a>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-{{$datosPersona['matricula']}}">Eliminar</button>
+            </td>
+        </tr>
 
+        <!-- Modal de Eliminación -->
+        <div class="modal fade" id="modal-{{$datosPersona['matricula']}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Estas seguro de eliminar al participante {{$datosPersona['nombre']}}
+      </div>
+      <div class="modal-footer">
+      <form action="{{ route('participantes.destroy', ['participante' => $datosPersona['matricula']]) }}" method="POST">
+          @method('DELETE')
+          @csrf
+          
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Aceptar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+        </div>
 
+        <!-- Fin del Modal -->
+
+        @endforeach
+    </tbody>
+</table>
+
+@if (count($registros_proyecto)>=3)
+<a href="/asesores" class="btn btn-primary" style="margin-bottom: 10px;">Registrar Asesor</a>
+@endif
 
 </div>
 

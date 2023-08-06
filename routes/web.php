@@ -17,8 +17,8 @@ use App\Http\Controllers\ProyectosAController;
 use App\Http\Controllers\Tabla_partController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\T_PosicionesController;
-use App\Http\Controllers\RContrasenaController;
-
+use App\Http\Controllers\proyectosCordController;
+use App\Http\Controllers\proyectosCordPendienteController;
 
 
 use App\Http\Controllers\horarioController;
@@ -52,8 +52,12 @@ Route::resource('ficha_t', Ficha_tController::class);
 Route::resource('memoria_t', Memoria_tController::class);
 Route::resource('jurado', JuradoController::class);
 Route::resource('horario', horarioController::class);
-
 Route::resource('t_pos', T_PosicionesController::class);
+Route::resource('proyectosC', proyectosCordController::class);
+Route::resource('proyectosCP', proyectosCordPendienteController::class);
+
+
+
 Route::post('/login', [App\Http\Controllers\UsuarioController::class, 'login'])->name('login');
 Route::get('/logout', [App\Http\Controllers\UsuarioController::class, 'logout'])->name('logout');
 Route::get('/centroTecnologicos/{selectedValue}', [App\Http\Controllers\CentrosController::class, 'cargarTecnologicos'])->name('centroTecnologicos');
@@ -64,11 +68,10 @@ Route::get('/carrera', [App\Http\Controllers\ParticipanteController::class, 'dev
 Route::get('/categorias', [App\Http\Controllers\CategoriasController::class, 'devolvercategorias'])->name('categorias');
 Route::get('/areas/{selectedValue}', [App\Http\Controllers\CategoriasController::class, 'cargarAreas'])->name('areas');
 Route::get('/naturalezaTecnica', [App\Http\Controllers\CategoriasController::class, 'cargarNaturaleza'])->name('naturalezaTecnica');
-Route::get('/validar-correo', 'ValidarCorreoController@checkEmail')->name('validar.correo');
-Route::post('recuperar-contrasena', [RContrasenaController::class, 'RecuperarContrasena'])->name('recuperar.recuperar');
-Route::get('recuperar-contrasena', [RContrasenaController::class, 'index'])->name('recuperar.index');
+Route::get('/validar-correo', 'App\Http\Controllers\ValidarCorreoController@checkEmail')->name('validar.correo');
 
-    
 
+    //parte del pdf
+    Route::get('proyecto/{folio}/pdf', [App\Http\Controllers\ProyectosPController::class,'pdf'])->name('proyectos.pdf');
 
 
