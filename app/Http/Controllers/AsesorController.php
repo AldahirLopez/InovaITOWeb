@@ -109,8 +109,8 @@ class AsesorController extends Controller
             // Agrega más variables aquí si es necesario
         ];
 
-        Mail::send('email', $data, function ($msj) use ($subject, $for) {
-            $msj->from("lopezaldahir21@gmail.com", "Datos Login");
+        Mail::send('email', $data, function($msj) use($subject, $for) {
+            $msj->from("hectoralr21@gmail.com", "Datos Login");
             $msj->subject($subject);
             $msj->to($for);
         });
