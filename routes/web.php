@@ -69,7 +69,8 @@ Route::get('/categorias', [App\Http\Controllers\CategoriasController::class, 'de
 Route::get('/areas/{selectedValue}', [App\Http\Controllers\CategoriasController::class, 'cargarAreas'])->name('areas');
 Route::get('/naturalezaTecnica', [App\Http\Controllers\CategoriasController::class, 'cargarNaturaleza'])->name('naturalezaTecnica');
 Route::get('/validar-correo', 'App\Http\Controllers\ValidarCorreoController@checkEmail')->name('validar.correo');
-
+Route::get('recuperar', [RContrasenaController::class, 'index'])->name('recuperar.index');
+Route::post('recuperar', [RContrasenaController::class, 'RecuperarContrasena'])->name('recuperar.recuperar');
 
     //parte del pdf
     Route::get('proyecto/{folio}/pdf', [App\Http\Controllers\ProyectosPController::class,'pdf'])->name('proyectos.pdf');
