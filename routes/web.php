@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\liderController;
+use App\Http\Controllers\LiderMenuController;
 use App\Http\Controllers\ParticipanteController;
 use App\Http\Controllers\AsesorController;
 use App\Http\Controllers\ProyectoController;
@@ -57,6 +58,8 @@ Route::resource('proyectosC', proyectosCordController::class);
 Route::resource('proyectosCP', proyectosCordPendienteController::class);
 Route::post('recuperar-contrasena', [RContrasenaController::class, 'RecuperarContrasena'])->name('recuperar.recuperar');
 Route::get('recuperar-contrasena', [RContrasenaController::class, 'index'])->name('recuperar.index');
+Route::get('lid', [LiderMenuController::class, 'index'])->name('lid.index');
+
 
 
 

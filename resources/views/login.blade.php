@@ -94,7 +94,7 @@ Admin Login
 </style>
 <div class="row no-gutters">
     <div class="col-md-6">
-        <div class="card card-primary left-card" style="background-color: #F2F2F2; height: 500px;">
+        <div class="card card-primary left-card" style="background-color: #F2F2F2; height: 520px;">
             <div class="card-header d-flex flex-column align-items-center">
                 <img src="img/logo_innovaITO.png" alt="Logo INNOVAITO" style="max-width: 100%; height: auto;">
                 <h4>ACCESO</h4>
@@ -137,7 +137,9 @@ Admin Login
                         <br>
 
                         <a href="{{ route('recuperar.index') }}" class="btn btn-primary">Recuperar Contraseña</a>
-
+                        <br>
+                        <br>
+                        <a href="{{ route('lid.index') }}" class="btn btn-primary">Registrar Lider</a>
                     </div>
                 </form>
             </div>
@@ -145,7 +147,7 @@ Admin Login
     </div>
     <div class="col-md-6">
         <!-- Aquí se muestra la imagen en grande y se alinea a la derecha -->
-        <div class="card card-primary right-card" style="background-color: #D9D9D9; height: 500px;">
+        <div class="card card-primary right-card" style="background-color: #D9D9D9; height: 520px;">
             <div class="card-body text-right">
                 <!-- Agregamos la clase "text-right" para alinear la imagen a la derecha -->
                 <img src="img/logo_ito.png" alt="Logo ITO">
