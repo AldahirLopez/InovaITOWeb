@@ -4,20 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\rol;
+use App\Models\horario;
 
-class Usuario extends Model
+class sala extends Model
 {
     use HasFactory;
     public $timestamps = false;
     protected $connection = 'mysql';
-    protected $table = 'usuario';
-    protected $Contrasena;
+    protected $table = 'sala';
 
-    public function rol()
+
+    public function horario()
     {
-        return $this->belongsTo(rol::class, 'Id_rol', 'Id_rol');
+        return $this->belongsTo(horario::class, 'Id_horario', 'Id_horario');
     }
-
-
 }

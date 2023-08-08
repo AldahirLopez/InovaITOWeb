@@ -21,8 +21,11 @@ use App\Http\Controllers\T_PosicionesController;
 use App\Http\Controllers\proyectosCordController;
 use App\Http\Controllers\proyectosCordPendienteController;
 use App\Http\Controllers\RContrasenaController;
+use App\Http\Controllers\salaController;
+use App\Http\Controllers\standController;
 
 use App\Http\Controllers\horarioController;
+use App\Http\Controllers\coordinadorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +65,12 @@ Route::get('lid', [LiderMenuController::class, 'index'])->name('lid.index');
 
 
 
+//Parte de la sala y el stand
+Route::resource('sala', salaController::class);
+Route::resource('stand', standController::class);
+//Parte del coordinador
+
+Route::resource('coordinador',coordinadorController::class);
 
 Route::post('/login', [App\Http\Controllers\UsuarioController::class, 'login'])->name('login');
 Route::get('/logout', [App\Http\Controllers\UsuarioController::class, 'logout'])->name('logout');

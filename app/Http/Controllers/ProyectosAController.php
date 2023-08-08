@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\validacionProyectoA;
 use App\Models\validacionProyectoC;
 use Illuminate\Support\Facades\DB;
+use App\Models\Usuario;
 class ProyectosAController extends Controller
 {
 
@@ -32,8 +33,13 @@ class ProyectosAController extends Controller
                     'Estado_acreditacion' =>$estadoAcreditacion
                     
                 ]);
+
+                $usuario = session('usuario');
+                $idpersona = $usuario->Id_persona;
+                $usuarioLogueado=Usuario::where('Id_persona',$idpersona)->first();
+
                 //Aqui debe ir el Id del asesor que este logueado
-                $validacionProyectoA->Id_asesor="ASE02";
+                $validacionProyectoA->Id_asesor=$usuarioLogueado->rol->Id_rol;
                 $validacionProyectoA->Folio=$proyectoAprobado;
                 $validacionProyectoA->Fecha_validacion='2023-08-03';
                 $validacionProyectoA->Observaciones="zi";

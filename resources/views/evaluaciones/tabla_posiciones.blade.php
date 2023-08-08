@@ -82,7 +82,25 @@
                     <th>Calificacion</th>
 
                 </tr>
+
             </thead>
+                @foreach ($proyectos as $proyecto)
+                    
+
+                <tr>
+
+                <td>{{$proyecto->posicion}}</td>
+                <td>{{$proyecto->ficha->Nombre_proyecto}}</td>
+                <td>{{$proyecto->ficha->area->categoria->Nombre_categoria}}</td>
+                <td>{{$proyecto->ficha->area->Nombre_area}}</td>
+                <td>{{$proyecto->Calificacion_global}}</td>
+            
+
+
+                </tr>
+                @endforeach
+
+
             <tbody>
             </tbody>
         </table>

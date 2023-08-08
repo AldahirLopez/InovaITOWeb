@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\validacionProyectoA;
 use App\Models\validacionProyectoC;
+use App\Models\coordinador;
 use Illuminate\Support\Facades\DB;
 class proyectosCordController extends Controller
 {
@@ -54,7 +55,15 @@ class proyectosCordController extends Controller
                     
                 ]);
                 //Aqui debe ir el Id del coordinado que este logueado
-                $validacionProyectoC->Id_coordinador="COR01";
+
+                $usuario = session('usuario');
+                $idpersona = $usuario->Id_persona;
+                $usuarioLogueado=Usuario::where('Id_persona',$idpersona)->first();
+
+                $id_coordinador=coordinador::Where('Id_persona',$usuarioLogueado->Id_persona)->first();
+
+
+                $validacionProyectoC->Id_coordinador=$id_coordinador->Id_coordinador;
                 $validacionProyectoC->Folio=$proyectoAprobado;
                 $validacionProyectoC->Fecha_validacion='2023-08-03';
                 $validacionProyectoC->Observaciones="zi";
