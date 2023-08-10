@@ -7,8 +7,14 @@
     </div>
 </section>
 
-
-
+@if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}  
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
 
 <style>
 .custom-input {
@@ -150,24 +156,6 @@
                     <label style="color: #2E2D2F;">Expectativa:</label>
                     <select name="expectativa" id="expectativa"></select>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="input-field">
-                    <label style="color: #2E2D2F;">Semestre:</label>
-                    <select name="semestre">
-                        <option value="SEM01">8</option>
-                        <option value="SEM02">9</option>
-                        <option value="SEM03">10</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-field">
-                    <label style="color: #2E2D2F;">Fecha de Nacimiento:</label>
-                    <input type="date" name="fechaNacimiento" class="custom-input" required>
-                </div>
-            </div>
-            <div class="form-group">
                 <div class="input-field">
                     <label style="color: #2E2D2F;">Nivel:</label>
                     <select name="nivel">
@@ -178,11 +166,28 @@
             </div>
             <div class="form-group">
                 <div class="input-field">
+                    <label style="color: #2E2D2F;">Semestre:</label>
+                    <select name="semestre">
+                        <option value="SEM01">8</option>
+                        <option value="SEM02">9</option>
+                        <option value="SEM03">10</option>
+                    </select>
+                </div>
+
+                <div class="input-field">
                     <label style="color: #2E2D2F;">Carrera:</label>
                     <select name="carrera" id="carrera"></select>
                 </div>
+
             </div>
-        </div>
+            <div class="form-group">
+                <div class="input-field">
+                    <label style="color: #2E2D2F;">Fecha de Nacimiento:</label>
+                    <input type="date" name="fechaNacimiento" class="custom-input" required>
+                </div>
+            </div>
+       
+            
         <button class="submit-button" type="submit">Registrar</button>
     </form>
 </div>

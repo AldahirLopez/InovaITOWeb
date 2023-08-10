@@ -90,3 +90,5 @@ Route::post('recuperar', [RContrasenaController::class, 'RecuperarContrasena'])-
     Route::get('proyecto/{folio}/pdf', [App\Http\Controllers\ProyectosPController::class,'pdf'])->name('proyectos.pdf');
 
 
+
+

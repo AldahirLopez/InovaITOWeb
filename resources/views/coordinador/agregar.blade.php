@@ -126,6 +126,11 @@
                     <input type="text" name="curp"  placeholder="Ingrese su curp" required>
                 
                 </div>
+
+                <div class="input-field">
+                    <label style="color: #2E2D2F;">Fecha de Nacimiento:</label>
+                    <input type="date" name="fechaNacimiento" class="custom-input" required>
+                </div>
             </div>
 
             <div class="form-group">
@@ -134,6 +139,16 @@
                     <input type="text" name="id_coordinador"  placeholder="Ingrese el id del coordinador" required>
                 
                 </div>
+                
+                <div class="input-field">
+                    <label style="color: #2E2D2F;">Género:</label>
+                    <select name="genero">
+                        <option value="GEN01">Masculino</option>
+                        <option value="GEN02">Femenino</option>
+                    </select>
+                </div>
+
+
             </div>
 
             <div class="form-group input-field">
@@ -146,6 +161,7 @@
 
                 </select>
             </div>
+          
           
         </div>
         <button class="submit-button" type="submit">Registrar</button>

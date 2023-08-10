@@ -17,6 +17,25 @@
     @endif
 
 
+
+@if (session('lider'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('lider') }}  
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('error') }}  
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+
     
 
     
@@ -114,6 +133,7 @@
 
 use App\Models\Estudiante;
 use App\Models\ProyectoParticipante;
+use App\Models\Usuario;
 
         $usuario = session('usuario');
         $idpersona = $usuario->Id_persona;
@@ -152,7 +172,7 @@ use App\Models\ProyectoParticipante;
             $mensajes[] = "No hay al menos 2 carreras diferentes.";
         }
 
-
+        $usuarioLogueado=Usuario::where('Id_persona',$idpersona)->first();
 
 @endphp
 
@@ -182,8 +202,14 @@ use App\Models\ProyectoParticipante;
             <td>{{ $datosPersona['semestre']}}</td>
             <td>{{ $datosPersona['carrera']}}</td>
             <td>
+
+
                 <a href="{{ route('participantes.edit', ['participante' => $datosPersona['matricula']]) }}" class="btn btn-success">Editar</a>
+                
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-{{$datosPersona['matricula']}}">Eliminar</button>
+          
+
+               
             </td>
         </tr>
 

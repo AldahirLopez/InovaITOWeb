@@ -4,23 +4,7 @@ Admin Login
 @endsection
 @section('content')
 
-@if (session('success'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    {{ session('success') }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-@endif
 
-@if (session('error'))
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    {{ session('error') }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-@endif
 
 <style>
     body {
@@ -205,6 +189,17 @@ Admin Login
                             <label style="color: #2E2D2F;">Matrícula:</label>
                             <input type="text" name="matricula" pattern="[a-zA-Z0-9]+" placeholder="Ingrese matrícula" required>
                         </div>
+
+                        <div class="input-field">
+                    <label style="color: #2E2D2F;">Semestre:</label>
+                    <select name="semestre">
+                        @foreach ($semestres as $semestre )
+                        <option value="{{$semestre->Id_semestre}}">{{$semestre->Numero_semestre}}</option>
+                        @endforeach
+                        
+                        
+                    </select>
+                </div>
                     </div>
                     <div class="form-group">
                         <div class="input-field">
@@ -212,6 +207,15 @@ Admin Login
                             <input type="email" name="correo" id="correo" placeholder="Ingrese correo institucional" required>
                             <span id="correo-error" class="error-message" style="display: none;">El correo no es un correo institucional válido.</span>
                         </div>
+
+                        <div class="input-field">
+                            <label style="color: #2E2D2F;">Carrera:</label>
+                            <select name="carrera">
+                            @foreach ($carreras as $carrera )
+                                <option value="{{$carrera->Id_carrera}}">{{$carrera->Nombre_carrera}}</option>
+                            @endforeach                                                     
+                        </select>
+                    </div>
                     </div>
                     <div class="form-group">
                         <div class="input-field">

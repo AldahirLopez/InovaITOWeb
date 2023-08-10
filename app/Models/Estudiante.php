@@ -26,4 +26,6 @@ class Estudiante extends Model
         return $this->belongsTo(Carrera::class, 'Id_carrera', 'Id_carrera');
     }
 
+  
+
 }

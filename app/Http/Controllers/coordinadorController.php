@@ -40,6 +40,27 @@ class coordinadorController extends Controller
         $correo = request()->input('correo');
         $identificacion = request()->input('identificacion');
         $curp = request()->input('curp');
+        $genero = request()->input('genero');
+        $fechaNacimiento = request()->input('fechaNacimiento');
+        //Parte del curp
+        
+        if($genero=="GEN01"){
+            $sexo='H';
+        }else{
+            $sexo='M';
+        }
+
+        //Aqui vamos a ver lo del curp
+        $curpGenerado=$this->CURP($nombre, $apellidop, $apellidom, $sexo, $fechaNacimiento);
+        
+        if(substr($curp, 0, 10)!=substr($curpGenerado,0,10)){
+
+            return redirect('/coordinador')->with('error', 'CURP no valido con los datos ingresados');
+
+        }
+
+       
+
 
         //datos del coordinador
         $id_coordinador = request()->input('id_coordinador');
@@ -58,6 +79,13 @@ class coordinadorController extends Controller
         }
 
         $hash = password_hash($contrasena, PASSWORD_BCRYPT);
+
+
+        if(coordinador::where('Id_persona',$idGenerada2)->exists()){
+            return redirect('/coordinador')->with('duplicado', 'Error:Lider ya existente');
+        }
+
+
 
         $persona = new Persona();
         $persona->Id_persona = $idGenerada2;
@@ -125,4 +153,44 @@ class coordinadorController extends Controller
     {
         //
     }
+
+    public function CURP($nombre, $primerApellido, $segundoApellido, $sexo, $fechaNacimiento) {
+      // Convertir la fecha de nacimiento al formato YYMMDD
+      $fechaNacimientoFormatoCURP = date('ymd', strtotime($fechaNacimiento));
+
+      // Asegurar que el mes y el día de nacimiento tengan dos dígitos
+      $mesNacimiento = substr($fechaNacimientoFormatoCURP, 2, 2);
+      $diaNacimiento = substr($fechaNacimientoFormatoCURP, 4, 2);
+
+      // Obtener la primera vocal interna del primer apellido
+
+      $vocalInterna = $this->obtenerPrimeraVocalInterna($primerApellido);
+
+      // Generar el CURP
+      $curp = strtoupper(
+          substr($primerApellido, 0, 1) .      // Letra inicial del primer apellido
+          $vocalInterna .                       // Primera vocal interna del primer apellido
+          substr($segundoApellido, 0, 1) .     // Letra inicial del segundo apellido
+          substr($nombre, 0, 1) .              // Primera letra del nombre
+          $fechaNacimientoFormatoCURP .        // Año, mes y día de nacimiento
+          $sexo                                // Sexo
+      );
+
+      return $curp;
+   }
+   
+   private function obtenerPrimeraVocalInterna($apellido)
+   {
+    
+       $apellido=strtoupper($apellido);
+       $vocales = ['A', 'E', 'I', 'O', 'U'];
+   
+       for ($i = 1; $i < strlen($apellido); $i++) {
+           if (in_array($apellido[$i], $vocales)) {
+               return $apellido[$i];
+           }
+       }
+   
+       return '';
+   }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Persona;
 use App\Models\Usuario;
 use App\Models\Estudiante;
+use App\Models\Carrera;
+use App\Models\Semestre;
 use App\Services\VerificarCorreoServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -21,7 +23,9 @@ class liderController extends Controller
 
     public function index()
     {
-        return view('lider.lider');
+        $carreras=Carrera::all();
+        $semestres=Semestre::all();
+        return view('lider.lider',compact('carreras','semestres'));
     }
 
     public function store(Request $request)
@@ -33,6 +37,11 @@ class liderController extends Controller
         $matricula = request()->input('matricula');
         $correo = request()->input('correo');
         $nivel = request()->input('nivel');
+        // lo que faltaba de estudiante 
+    
+        $semestre=request()->input('semestre');
+        $carrera=request()->input('carrera');
+
 
         if ($this->verificarCorreoService->verificarCorreoExistente($correo)) {
             return redirect()->route('lider.lider')->with('error', 'El correo ya está registrado. Intente con otro.');
@@ -52,6 +61,11 @@ class liderController extends Controller
         }
 
         $hash = password_hash($contrasena, PASSWORD_BCRYPT);
+
+            //comprobar si esa persona existe 
+        if(Estudiante::where('Id_persona',$idGenerada2)->exists()){
+            return redirect('/')->with('error', 'Error:Lider ya existente');
+        }
 
         // Crear una nueva instancia de la clase Persona y asignar los valores
         $persona = new Persona();
@@ -73,6 +87,8 @@ class liderController extends Controller
         $estudiante->Matricula = $matricula;
         $estudiante->Id_persona = $idGenerada2;
         $estudiante->Id_nivel = $nivel;
+        $estudiante->Id_carrera = $carrera;
+        $estudiante->Id_semestre = $semestre;
 
         $persona->save();
         
@@ -99,7 +115,7 @@ class liderController extends Controller
         $usuario->save();
 
         // Redireccionar a la página de listar para mostrar la tabla actualizada
-        return redirect()->route('lider.index')->with('success', 'Lider registrado correctamente');
+        return redirect('/')->with('success', 'Lider registrado correctamente');
 
     }
 }

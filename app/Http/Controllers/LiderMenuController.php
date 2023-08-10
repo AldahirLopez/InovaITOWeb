@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Persona;
 use App\Models\Usuario;
 use App\Models\Estudiante;
+use App\Models\Carrera;
+use App\Models\Semestre;
 use App\Services\VerificarCorreoServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -20,8 +22,10 @@ class liderMenuController extends Controller
     }
 
     public function index()
-    {
-        return view('lider.liderMenu');
+    {   
+        $carreras=Carrera::all();
+        $semestres=Semestre::all();
+        return view('lider.liderMenu',compact('carreras','semestres'));
     }
 
     public function store(Request $request)

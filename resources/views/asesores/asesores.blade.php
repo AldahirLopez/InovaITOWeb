@@ -15,6 +15,14 @@
             </button>
         </div>
     @endif
+    @if (session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('error') }}  
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
 
 
 
@@ -167,6 +175,22 @@
                 <label for="doctorado">Doctorado</label>
                 <input type="text" id="doctorado" name="doctorado" placeholder="Ingrese su doctorado">
             </div>
+
+
+            <div class="input-field">
+                    <label style="color: #2E2D2F;">Fecha de Nacimiento:</label>
+                    <input type="date" name="fechaNacimiento" class="custom-input" required>
+            </div>
+
+            <div class="input-field">
+                    <label style="color: #2E2D2F;">Género:</label>
+                    <select name="genero">
+                        <option value="GEN01">Masculino</option>
+                        <option value="GEN02">Femenino</option>
+                    </select>
+                </div>
+
+
         </div>
         <button type="submit" class="submit-button">Enviar</button>
     </form>
