@@ -7,9 +7,19 @@
     </div>
 </section>
 
-@if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('success') }}  
+
+
+@if (session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('error') }}  
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+@if (session('c_existente'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('c_existente') }}  
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -102,7 +112,7 @@
             <div class="form-group">
                 <div class="input-field">
                     <label style="color: #2E2D2F;">Segundo Apellido:</label>
-                    <input type="text" name="apellidoM" placeholder="Ingrese segundo apellido">
+                    <input type="text" name="apellidoM" placeholder="Ingrese segundo apellido" required>
                 </div>
             </div>
         </div>
@@ -116,7 +126,7 @@
             <div class="form-group">
                 <div class="input-field">
                     <label style="color: #2E2D2F;">Promedio:</label>
-                    <input type="text" name="promedio" placeholder="Ingrese su promedio">
+                    <input type="text" name="promedio" placeholder="Ingrese su promedio" required>
                 </div>
             </div>
             <div class="form-group">
@@ -191,11 +201,6 @@
         <button class="submit-button" type="submit">Registrar</button>
     </form>
 </div>
-
-
-<div>
-
-
 
 </div>
 

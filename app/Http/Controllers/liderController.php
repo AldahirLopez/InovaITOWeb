@@ -43,9 +43,7 @@ class liderController extends Controller
         $carrera=request()->input('carrera');
 
 
-        if ($this->verificarCorreoService->verificarCorreoExistente($correo)) {
-            return redirect()->route('lider.lider')->with('error', 'El correo ya está registrado. Intente con otro.');
-        }
+     
 
         //Generar ID Unico
         $datosUsuario = $nombre . $apellidop . $apellidom . $correo;
@@ -64,8 +62,15 @@ class liderController extends Controller
 
             //comprobar si esa persona existe 
         if(Estudiante::where('Id_persona',$idGenerada2)->exists()){
-            return redirect('/')->with('error', 'Error:Lider ya existente');
+            return redirect()->route('lid.index')->with('error', 'Error:Lider ya existente');
         }
+
+        if(Persona::where('Correo_electronico',$correo)->first()){
+            return redirect()->route('lid.index')->with('c_existente', 'Error:Correo ya registrado');
+
+        }
+
+
 
         // Crear una nueva instancia de la clase Persona y asignar los valores
         $persona = new Persona();

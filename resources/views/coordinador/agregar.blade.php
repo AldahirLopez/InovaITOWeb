@@ -7,15 +7,37 @@
         <h3 class="page__heading">Registro de Coordinador</h3>
     </div>
 </section>
-@if (session('success'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    {{ session('success') }}
+
+
+@if (session('error'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ session('error') }}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
 @endif
 
+
+@if (session('duplicado'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ session('duplicado') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
+
+
+@if (session('c_existente'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ session('c_existente') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
 
 
 <style>

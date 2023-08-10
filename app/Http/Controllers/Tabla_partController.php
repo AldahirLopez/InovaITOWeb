@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Carrera;
 use App\Models\Estudiante;
 use App\Models\Persona;
+use App\Models\Usuario;
 use App\Models\ProyectoParticipante;
 use App\Models\Semestre;
 use Illuminate\Http\Request;
@@ -50,6 +51,8 @@ class Tabla_partController extends Controller
 
                         $carreraNombre = $carrera ? $carrera->Nombre_carrera : 'No tiene carrera asignada';
                         $semestreNumero = $semestre ? $semestre->Numero_semestre : 'No tiene semestre asignado';
+                        $usuario=Usuario::where('Id_persona',$id_persona)->first();
+                        
 
                         $datosPersonas[] = [
                             'carrera' => $carreraNombre,
@@ -58,6 +61,7 @@ class Tabla_partController extends Controller
                             'nombre' => $nombre,
                             'apellido1' => $apellido1,
                             'apellido2' => $apellido2,
+                            'usuario'=>$usuario,
                         ];
                     }
                 }

@@ -32,7 +32,7 @@ class UsuarioController extends Controller
                 echo "Las contraseñas no coinciden";
             }
         } else {
-            return view('login');
+            return redirect('/')->with('correo', 'Usuario no registrado');
         }
     }
 }

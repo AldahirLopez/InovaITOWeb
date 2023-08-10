@@ -55,11 +55,19 @@ class coordinadorController extends Controller
         
         if(substr($curp, 0, 10)!=substr($curpGenerado,0,10)){
 
-            return redirect('/coordinador')->with('error', 'CURP no valido con los datos ingresados');
+            return redirect('/coordinador/create')->with('error', 'CURP no valido con los datos ingresados');
 
         }
 
-       
+        if(Persona::where('Correo_electronico',$correo)->first()){
+            return redirect('/coordinador/create')->with('c_existente', 'Error:Correo ya registrado');
+
+        }
+
+       $nombre= strtolower($nombre);
+       $apellidop=strtolower($apellidop);
+       $apellidom= strtolower($apellidom);
+       $correo=strtolower($correo);
 
 
         //datos del coordinador
@@ -81,8 +89,11 @@ class coordinadorController extends Controller
         $hash = password_hash($contrasena, PASSWORD_BCRYPT);
 
 
+
+
+     
         if(coordinador::where('Id_persona',$idGenerada2)->exists()){
-            return redirect('/coordinador')->with('duplicado', 'Error:Lider ya existente');
+            return redirect('/coordinador/create')->with('duplicado', 'Error:Coordinador ya existente');
         }
 
 
@@ -155,28 +166,27 @@ class coordinadorController extends Controller
     }
 
     public function CURP($nombre, $primerApellido, $segundoApellido, $sexo, $fechaNacimiento) {
-      // Convertir la fecha de nacimiento al formato YYMMDD
-      $fechaNacimientoFormatoCURP = date('ymd', strtotime($fechaNacimiento));
+        // Convertir la fecha de nacimiento al formato YYMMDD
+        $fechaNacimientoFormatoCURP = date('ymd', strtotime($fechaNacimiento));
 
-      // Asegurar que el mes y el día de nacimiento tengan dos dígitos
-      $mesNacimiento = substr($fechaNacimientoFormatoCURP, 2, 2);
-      $diaNacimiento = substr($fechaNacimientoFormatoCURP, 4, 2);
+        // Asegurar que el mes y el día de nacimiento tengan dos dígitos
+        $mesNacimiento = substr($fechaNacimientoFormatoCURP, 2, 2);
+        $diaNacimiento = substr($fechaNacimientoFormatoCURP, 4, 2);
 
-      // Obtener la primera vocal interna del primer apellido
+        // Obtener la primera vocal interna del primer apellido
+        $vocalInterna = $this->obtenerPrimeraVocalInterna($primerApellido);
 
-      $vocalInterna = $this->obtenerPrimeraVocalInterna($primerApellido);
+        // Generar el CURP
+        $curp = strtoupper(
+            substr($primerApellido, 0, 1) .      // Letra inicial del primer apellido
+            $vocalInterna .                       // Primera vocal interna del primer apellido
+            substr($segundoApellido, 0, 1) .     // Letra inicial del segundo apellido
+            substr($nombre, 0, 1) .              // Primera letra del nombre
+            $fechaNacimientoFormatoCURP .        // Año, mes y día de nacimiento
+            $sexo                                // Sexo
+        );
 
-      // Generar el CURP
-      $curp = strtoupper(
-          substr($primerApellido, 0, 1) .      // Letra inicial del primer apellido
-          $vocalInterna .                       // Primera vocal interna del primer apellido
-          substr($segundoApellido, 0, 1) .     // Letra inicial del segundo apellido
-          substr($nombre, 0, 1) .              // Primera letra del nombre
-          $fechaNacimientoFormatoCURP .        // Año, mes y día de nacimiento
-          $sexo                                // Sexo
-      );
-
-      return $curp;
+        return $curp;
    }
    
    private function obtenerPrimeraVocalInterna($apellido)

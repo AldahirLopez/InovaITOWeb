@@ -86,7 +86,13 @@ class participanteController extends Controller
         
         if(substr($curp, 0, 10)!=substr($curpGenerado,0,10)){
 
-            return redirect('/tabla_part')->with('error', 'Error:El curp no concuerda con los datos');
+            return redirect('/participantes')->with('error', $curpGenerado);
+        }
+
+
+        if(Persona::where('Correo_electronico',$correo)->first()){
+            return redirect('/participantes')->with('c_existente', 'Error:Correo ya registrado');
+
         }
 
         //Generar ID Unico
@@ -172,8 +178,8 @@ class participanteController extends Controller
                         
                         $carreraNombre = $carrera ? $carrera->Nombre_carrera : 'No tiene carrera asignada';
                         $semestreNumero = $semestre ? $semestre->Numero_semestre : 'No tiene semestre asignado';
-                       
 
+                        $usuario=Usuario::where('Id_persona',$id_persona)->first();
                         $datosPersonas[] = [
                             'carrera' => $carrera,
                             'semestre' => $semestre,
@@ -181,6 +187,7 @@ class participanteController extends Controller
                             'nombre' => $nombre,
                             'apellido1' => $apellido1,
                             'apellido2' => $apellido2,
+                            'usuario'=>$usuario,
                            
                         ];
                     }
@@ -199,36 +206,33 @@ class participanteController extends Controller
     }
 
     public function CURP($nombre, $primerApellido, $segundoApellido, $sexo, $fechaNacimiento) {
-        // Convertir la fecha de nacimiento al formato YYMMDD
-        $anioNacimiento = date('y', strtotime($fechaNacimiento));
-        $mesNacimiento = date('m', strtotime($fechaNacimiento));
-        $diaNacimiento = date('d', strtotime($fechaNacimiento));
-   
-        // Obtener la primera vocal interna del primer apellido
-        $vocalInterna = $this->obtenerPrimeraVocalInterna($primerApellido);
-   
-        // Generar el CURP
-        $curp = strtoupper(
-            substr($primerApellido, 0, 1) .      // Letra inicial del primer apellido
-            $vocalInterna .                       // Primera vocal interna del primer apellido
-            substr($segundoApellido, 0, 1) .     // Letra inicial del segundo apellido
-            substr($nombre, 0, 1) .              // Primera letra del nombre
-            substr($anioNacimiento, 1, 1) .      // Penúltimo dígito del año de nacimiento
-            substr($anioNacimiento, 2, 1) .      // Último dígito del año de nacimiento
-            $mesNacimiento[0] .                  // Primer dígito del mes de nacimiento
-            $mesNacimiento[1] .                  // Segundo dígito del mes de nacimiento
-            $diaNacimiento[0] .                  // Primer dígito del día de nacimiento
-            $diaNacimiento[1] .                  // Segundo dígito del día de nacimiento
-            $sexo                                // Sexo
-        );
-   
-        return $curp;
+            // Convertir la fecha de nacimiento al formato YYMMDD
+            $fechaNacimientoFormatoCURP = date('ymd', strtotime($fechaNacimiento));
+
+            // Asegurar que el mes y el día de nacimiento tengan dos dígitos
+            $mesNacimiento = substr($fechaNacimientoFormatoCURP, 2, 2);
+            $diaNacimiento = substr($fechaNacimientoFormatoCURP, 4, 2);
+    
+            // Obtener la primera vocal interna del primer apellido
+            $vocalInterna = $this->obtenerPrimeraVocalInterna($primerApellido);
+    
+            // Generar el CURP
+            $curp = strtoupper(
+                substr($primerApellido, 0, 1) .      // Letra inicial del primer apellido
+                $vocalInterna .                       // Primera vocal interna del primer apellido
+                substr($segundoApellido, 0, 1) .     // Letra inicial del segundo apellido
+                substr($nombre, 0, 1) .              // Primera letra del nombre
+                $fechaNacimientoFormatoCURP .        // Año, mes y día de nacimiento
+                $sexo                                // Sexo
+            );
+    
+            return $curp;
    }
    
    private function obtenerPrimeraVocalInterna($apellido)
    {
        $vocales = ['A', 'E', 'I', 'O', 'U'];
-   
+       $apellido=strtoupper($apellido);
        for ($i = 1; $i < strlen($apellido); $i++) {
            if (in_array($apellido[$i], $vocales)) {
                return $apellido[$i];
@@ -269,6 +273,27 @@ class participanteController extends Controller
         $carrera = request()->input('carrera');
 
 
+
+        if($genero=="GEN01"){
+            $sexo='H';
+        }else{
+            $sexo='M';
+        }
+
+        //Aqui vamos a ver lo del curp
+        $curpGenerado=$this->CURP($nombre, $apellidoP, $apellidoM, $sexo, $fechaNacimiento);
+        
+        if(substr($curp, 0, 10)!=substr($curpGenerado,0,10)){
+
+            return redirect('/participantes')->with('error', 'Error:El curp no concuerda con los datos');
+        }
+        if(Persona::where('Correo_electronico',$correo)->first()){
+            return redirect('/participantes')->with('c_existente', 'Error:Correo ya registrado');
+
+        }
+
+
+
         //Actualizar datos del  estudiante
 
         DB::table('estudiante')
@@ -305,14 +330,7 @@ class participanteController extends Controller
         $personaparticipante = Estudiante::where('Matricula',$id)->first();
         $user=Usuario::where('Id_usuario',$personaparticipante->persona->Id_persona)->first();
         
-        $rol=$user->rol->Id_rol;
-
-
-        if($rol=="ROL02"){
-            return redirect()->route('tabla_part.index')->with('lider', 'No puedes eliminar al lider');
-        }
-
-        
+    
         DB::table('proyectoParticipante')
         ->where('Matricula', $personaparticipante->Matricula)
         ->delete();
