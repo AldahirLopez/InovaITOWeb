@@ -107,8 +107,6 @@
             <td>{{ $sala->Id_sala}}</td>
             <td>{{ $sala->Nombre_sala}}</td>
             <td>{{ $sala->Lugar}}</td>
-            <td>{{ $sala->horario->Fecha}}:{{ $sala->horario->Hora}}</td>
-
         </tr>
 
  

@@ -285,10 +285,10 @@ class participanteController extends Controller
         
         if(substr($curp, 0, 10)!=substr($curpGenerado,0,10)){
 
-            return redirect('/participantes')->with('error', 'Error:El curp no concuerda con los datos');
+            return redirect('/participantes')->with('error', 'Error: El curp no concuerda con los datos');
         }
         if(Persona::where('Correo_electronico',$correo)->first()){
-            return redirect('/participantes')->with('c_existente', 'Error:Correo ya registrado');
+            return redirect('/participantes')->with('c_existente', 'Error: Correo ya registrado');
 
         }
 

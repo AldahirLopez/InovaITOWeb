@@ -160,7 +160,7 @@ use App\Models\Usuario;
 
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
 
-<a href="/participantes" class="btn btn-primary {{ count($registros_proyecto) < 5 ? '' : 'disable' }}" style="margin-bottom: 10px;" >Registrar Participante</a>
+<a href="/participantes" class="btn btn-primary {{ count($registros_proyecto) < 7 ? '' : 'disable' }}" style="margin-bottom: 10px;" >Registrar Participante</a>
 
 
 <table class="table table-custom">

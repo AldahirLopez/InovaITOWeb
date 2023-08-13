@@ -22,8 +22,8 @@ class salaController extends Controller
      */
     public function create()
     {
-        $horarios=Horario::all();
-       return view('sala.agregar',compact('horarios'));
+
+       return view('sala.agregar');
     }
 
     /**
@@ -35,7 +35,6 @@ class salaController extends Controller
         $Sala->Id_sala=$request->id_sala;
         $Sala->Nombre_sala=$request->nombre;
         $Sala->Lugar=$request->lugar;
-        $Sala->Id_horario=$request->id_horario;
 
         $Sala->save();
 

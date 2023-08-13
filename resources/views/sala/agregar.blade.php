@@ -9,11 +9,6 @@
  
 </section>
 
-
-
-
-
-
 <style>
     .form-row {
         display: flex;
@@ -104,16 +99,6 @@
                 <input type="text" name="lugar" placeholder="Ingrese el lugar" maxlength="100" required>
             </div>
 
-            <div class="form-group input-field">
-                <label for="categoria">Horario</label>
-                <select name="id_horario">
-                    @foreach ($horarios as $horario )
-                    <option value="{{$horario->Id_horario}}">{{$horario->Fecha}}  :  {{$horario->Hora}}</option>
-                    @endforeach
-                   
-
-                </select>
-            </div>
 
 
         </div>

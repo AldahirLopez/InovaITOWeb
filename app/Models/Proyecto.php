@@ -19,7 +19,4 @@ class Proyecto extends Model
         return $this->belongsTo(Ficha_Tecnica::class, 'Id_fichaTecnica', 'Id_fichaTecnica');
     }
 
-
-
-
 }
