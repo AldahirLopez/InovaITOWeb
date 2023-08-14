@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Estudiante;
 use App\Models\Memoria_t;
+use App\Models\Proyecto;
+use App\Models\ProyectoParticipante;
 use Illuminate\Http\Request;
 
 class Memoria_tController extends Controller
@@ -64,7 +67,7 @@ class Memoria_tController extends Controller
         $memoria->Estado_arte = $estado_arte;
         $memoria->Descripcion_innovacion = $descripcion_innovacion;
         $memoria->Propuesta_valor = $propuesta_valor;
-        $memoria->Mercado_potencial = $propuesta_valor;
+        $memoria->Mercado_potencial = $mercado_potencial;
         $memoria->Imagen_mercadoPotencial = $imagen_mercado_potencial_blobData;
         $memoria->Viabilidad_tecnica = $viabilidad_tecnica;
         $memoria->Imagen_viabilidadTecnica = $imagen_viabilidad_tecnica_blobData;
@@ -76,6 +79,18 @@ class Memoria_tController extends Controller
         $memoria->Fuentes_consultadas = $fuentes_consultadas;
 
         $memoria->save();
+        
+        $usuario = session('usuario');
+        $idpersona = $usuario->Id_persona;
+        $persona = Estudiante::where('Id_persona', $idpersona)->first();
+        $proyectoParticipante = ProyectoParticipante::where('Matricula', $persona->Matricula)->first();
+        
+        if($proyectoParticipante!=null){
+            $folioproyecto = $proyectoParticipante->Folio;
+
+            $proyecto=Proyecto::where('Folio',$folioproyecto)->first();
+            $proyecto->update(['Id_memoriaTecnica' => $nomenclatura]);
+        }
 
 
 
