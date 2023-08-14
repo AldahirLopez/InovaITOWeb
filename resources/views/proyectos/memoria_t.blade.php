@@ -75,7 +75,7 @@
 </style>
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
     <h2 style="color: #2E2D2F; margin-bottom: 20px;">Formulario de Memoria Técnica</h2>
-    <form id="memoria-tecnica-form" onsubmit="return validateForm()" action="{{route('memoria_t.store')}}" method="POST">
+    <form id="memoria-tecnica-form" onsubmit="return validateForm()" action="{{route('memoria_t.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
         <div class="form-row">
             <div class="form-group input-field">
@@ -111,7 +111,7 @@
         <div class="form-row">
             <div class="form-group input-field">
                 <label for="imagen_mercado_potencial">Imagen Mercado Potencial:</label>
-                <input type="file" name="imagen_mercado_potencial">
+                <input type="file" name="imagen_mercado_potencial" id="imagen_mercado_potencial">
             </div>
             <div class="form-group input-field" style="flex-basis: 100%">
                 <label for="viabilidad_tecnica">Viabilidad Técnica:</label>
@@ -122,7 +122,7 @@
         <div class="form-row">
             <div class="form-group input-field">
                 <label for="imagen_viabilidad_tecnica">Imagen Viabilidad Técnica:</label>
-                <input type="file" name="imagen_viabilidad_tecnica">
+                <input type="file" name="imagen_viabilidad_tecnica" id="imagen_viabilidad_tecnica">
             </div>
             <div class="form-group input-field">
                 <label for="viabilidad_financiera">Viabilidad Financiera:</label>
@@ -133,7 +133,7 @@
         <div class="form-row">
             <div class="form-group input-field">
                 <label for="imagen_viabilidad_financiera">Imagen Viabilidad Financiera:</label>
-                <input type="file" name="imagen_viabilidad_financiera">
+                <input type="file" name="imagen_viabilidad_financiera" id="imagen_viabilidad_financiera">
             </div>
             <div class="form-group input-field">
                 <label for="estrategia_propiedad_intelectual">Estrategia Propiedad Intelectual:</label>
@@ -144,7 +144,7 @@
         <div class="form-row">
             <div class="form-group input-field">
                 <label for="imagen_propiedad_intelectual">Imagen Propiedad Intelectual:</label>
-                <input type="file" name="imagen_propiedad_intelectual">
+                <input type="file" id="imagen_propiedad_intelectual" name="imagen_propiedad_intelectual" multiple>
             </div>
             <div class="form-group input-field" style="flex-basis: 100%">
                 <label for="interpretacion_resultados">Interpretación de Resultados:</label>
