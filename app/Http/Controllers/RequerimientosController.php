@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Requerimientos;
 use Illuminate\Http\Request;
 
 class RequerimientosController extends Controller
@@ -9,7 +10,8 @@ class RequerimientosController extends Controller
 
     public function index()
     {
-        return view('proyectos.requerimientos');
+        $requerimientos = Requerimientos::all();
+        return view('proyectos.requerimientos',compact('requerimientos'));
     }
     public function store(Request $request)
     {

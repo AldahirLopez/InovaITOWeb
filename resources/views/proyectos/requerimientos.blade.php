@@ -191,26 +191,18 @@
                                     <thead>
                                         <tr>
                                             <th style="color: white;">Requerimiento especial</th>
+                                            <th style="color: white;">Descripcion</th>
                                             <th style="color: white;">Seleccionar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($requerimientos as $requerimiento)
                                         <tr>
-                                            <td>Instalación de agua (Solamente en área exterior)</td>
-                                            <td><input type="checkbox" name="requerimiento1"></td>
+                                            <td>{{ $requerimiento->Tipo }}</td>
+                                            <td>{{ $requerimiento->Descripcion }}</td>
+                                            <td><input type="checkbox" name="requerimiento{{ $requerimiento->Id_requerimientoEspecial }}"></td>
                                         </tr>
-                                        <tr>
-                                            <td>Instalación eléctrica de 200 W en el stand</td>
-                                            <td><input type="checkbox" name="requerimiento2"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Espacio externo</td>
-                                            <td><input type="checkbox" name="requerimiento3"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Área de mayor dimensión a la oficial</td>
-                                            <td><input type="checkbox" name="requerimiento4"></td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
