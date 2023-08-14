@@ -37,7 +37,7 @@ $ficha_tecnica_registrada=False;
     <i class="fas fa-house"></i><span>Dashboard</span>
     </a>
     
-    @if ($usuarioLogueado->rol->Id_rol=="ROL03")
+    @if ($usuarioLogueado->rol->Id_rol=="ROL02")
         <a class="nav-link {{ Request::is('proyectos') ? 'active' : '' }}" href="/proyectos">
         <i class="fas fa-file-invoice"></i></i><span>Proyectos</span>
         </a>

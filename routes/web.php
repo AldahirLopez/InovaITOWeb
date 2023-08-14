@@ -24,6 +24,7 @@ use App\Http\Controllers\RContrasenaController;
 use App\Http\Controllers\salaController;
 use App\Http\Controllers\standController;
 use App\Http\Controllers\ConstanciaController;
+use App\Http\Controllers\ModeloController;
 
 
 use App\Http\Controllers\horarioController;
@@ -62,10 +63,11 @@ Route::resource('t_pos', T_PosicionesController::class);
 Route::resource('proyectosC', proyectosCordController::class);
 Route::resource('proyectosCP', proyectosCordPendienteController::class);
 Route::resource('constancia', ConstanciaController::class);
+Route::resource('modelo', ModeloController::class);
 Route::post('recuperar-contrasena', [RContrasenaController::class, 'RecuperarContrasena'])->name('recuperar.recuperar');
 Route::get('recuperar-contrasena', [RContrasenaController::class, 'index'])->name('recuperar.index');
 Route::get('lid', [LiderMenuController::class, 'index'])->name('lid.index');
-
+Route::get('/generate-pdf', [ConstanciaController::class, 'generatePDF'])->name('generate.pdf');
 
 
 //Parte de la sala y el stand
