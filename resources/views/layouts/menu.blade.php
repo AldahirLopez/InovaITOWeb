@@ -62,9 +62,9 @@ $ficha_tecnica_registrada=False;
         </a>
     @endif   
    
-    @if ($usuarioLogueado->rol->Id_rol=="ROL03")
-    <a class="nav-link {{ Request::is('registros') ? 'active' : '' }}" href="/registros">
-        <i class="fas fa-notes-medical"></i><span>Registros</span>     
+    @if ($usuarioLogueado->rol->Id_rol=="ROL02")
+    <a class="nav-link {{ Request::is('constancia') ? 'active' : '' }}" href="/constancia">
+        <i class="fas fa-notes-medical"></i><span>Constancias</span>     
     </a>
     @endif 
     @if ($usuarioLogueado->rol->Id_rol=="ROL03")

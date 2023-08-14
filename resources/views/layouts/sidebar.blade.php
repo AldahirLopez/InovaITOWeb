@@ -1,4 +1,4 @@
-<aside id="sidebar-wrapper" style="background-color: #2E2D2F;">
+<aside id="sidebar-wrapper" style="background: linear-gradient(to bottom, #FFFFFF, #FA7A1E);">
     <div class="sidebar-brand">
         <img class="navbar-brand-full app-header-logo" src="{{ asset('img/logo_innova.png') }}" width="190"
              alt="Infyom Logo">

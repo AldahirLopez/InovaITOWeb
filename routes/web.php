@@ -23,6 +23,8 @@ use App\Http\Controllers\proyectosCordPendienteController;
 use App\Http\Controllers\RContrasenaController;
 use App\Http\Controllers\salaController;
 use App\Http\Controllers\standController;
+use App\Http\Controllers\ConstanciaController;
+
 
 use App\Http\Controllers\horarioController;
 use App\Http\Controllers\coordinadorController;
@@ -59,6 +61,7 @@ Route::resource('horario', horarioController::class);
 Route::resource('t_pos', T_PosicionesController::class);
 Route::resource('proyectosC', proyectosCordController::class);
 Route::resource('proyectosCP', proyectosCordPendienteController::class);
+Route::resource('constancia', ConstanciaController::class);
 Route::post('recuperar-contrasena', [RContrasenaController::class, 'RecuperarContrasena'])->name('recuperar.recuperar');
 Route::get('recuperar-contrasena', [RContrasenaController::class, 'index'])->name('recuperar.index');
 Route::get('lid', [LiderMenuController::class, 'index'])->name('lid.index');
