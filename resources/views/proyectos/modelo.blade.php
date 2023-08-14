@@ -68,7 +68,7 @@
 </style>
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
     <h2 style="color: #2E2D2F; margin-bottom: 20px;">Formulario de Modelo de Negocios</h2>
-    <form action="" method="POST"  id="modelo-negocios-form" onsubmit="return validateForm()">
+    <form action="" method="POST"  id="modelo-negocios-form" onsubmit="return validateForm()" enctype="multipart/form-data">
             <div class="form-group">
                 <div class="input-field">
                     <label for="archivo">Subir Archivo</label>

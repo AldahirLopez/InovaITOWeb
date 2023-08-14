@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Estudiante;
+use App\Models\Proyecto;
+use App\Models\ProyectoParticipante;
 use App\Models\Requerimientos;
+use App\Models\requerimiento_Proyecto;
 use Illuminate\Http\Request;
 
 class RequerimientosController extends Controller
@@ -11,19 +15,40 @@ class RequerimientosController extends Controller
     public function index()
     {
         $requerimientos = Requerimientos::all();
-        return view('proyectos.requerimientos',compact('requerimientos'));
+        return view('proyectos.requerimientos', compact('requerimientos'));
     }
     public function store(Request $request)
     {
-        // Accede a los valores de los checkbox mediante el método input() del objeto Request.
-        $requerimiento1 = $request->input('requerimiento1', false); // false es un valor por defecto si el checkbox no está seleccionado
-        $requerimiento2 = $request->input('requerimiento2', false);
-        $requerimiento3 = $request->input('requerimiento3', false);
-        $requerimiento4 = $request->input('requerimiento4', false);
+        $usuario = session('usuario');
+        $idpersona = $usuario->Id_persona;
+        $persona = Estudiante::where('Id_persona', $idpersona)->first();
+        $proyectoParticipante = ProyectoParticipante::where('Matricula', $persona->Matricula)->first();
 
-        // Realiza aquí las operaciones necesarias con los valores obtenidos.
+        if ($proyectoParticipante != null) {
+            $folioproyecto = $proyectoParticipante->Folio;
 
-        // Por último, puedes redireccionar a otra página o mostrar un mensaje de éxito.
-        return redirect()->route('ruta_destino')->with('success', 'Requerimientos guardados exitosamente');
-    }
+            // Obtener los requerimientos disponibles desde la base de datos
+            $requerimientos = Requerimientos::all();
+
+            // Obtener los datos del formulario
+            $requerimientosSeleccionados = [];
+
+            foreach ($requerimientos as $requerimiento) {
+                if ($request->has("requerimiento{$requerimiento->Id_requerimientoEspecial}")) {
+                    $requerimientosSeleccionados[] = [
+                        'Folio' => $folioproyecto,
+                        'Id_requerimientoEspecial' => $requerimiento->Id_requerimientoEspecial,
+                        // Otros campos que puedas necesitar
+                    ];
+                }
+            }
+
+            // Guardar los requerimientos seleccionados
+            foreach ($requerimientosSeleccionados as $requerimientoSeleccionado) {
+                Requerimiento_Proyecto::create($requerimientoSeleccionado);
+            }
+        }
+
+        return redirect()->route('proyectos.index')->with('success', 'Requerimientos guardados');
+     }
 }
