@@ -24,6 +24,7 @@ class Proyecto extends Model
     protected $fillable = [
         // ... otras columnas permitidas en asignación en masa
         'Id_memoriaTecnica',
+        'Modelo_negocio',
     ];
 
 }

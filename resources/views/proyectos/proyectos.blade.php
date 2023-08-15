@@ -75,7 +75,7 @@
                                         @if ($modelo_negocios_registrada)
                                         <p class="m-b-0 text-right text-white">Registrado</p>
                                         @else
-                                        <p class="m-b-0 text-right"><a href="{{ route('modelo.index') }} class="text-white">Agregar</a></p>
+                                        <p class="m-b-0 text-right"><a href="{{ route('modelo.index') }} " class="text-white">Agregar</a></p>
                                         @endif
 
                                         

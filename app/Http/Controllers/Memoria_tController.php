@@ -79,22 +79,19 @@ class Memoria_tController extends Controller
         $memoria->Fuentes_consultadas = $fuentes_consultadas;
 
         $memoria->save();
-        
+
         $usuario = session('usuario');
         $idpersona = $usuario->Id_persona;
         $persona = Estudiante::where('Id_persona', $idpersona)->first();
         $proyectoParticipante = ProyectoParticipante::where('Matricula', $persona->Matricula)->first();
-        
-        if($proyectoParticipante!=null){
+
+        if ($proyectoParticipante != null) {
             $folioproyecto = $proyectoParticipante->Folio;
 
-            $proyecto=Proyecto::where('Folio',$folioproyecto)->first();
+            $proyecto = Proyecto::where('Folio', $folioproyecto)->first();
             $proyecto->update(['Id_memoriaTecnica' => $nomenclatura]);
+            return redirect()->route('proyectos.index')->with('success', 'Memoria tecnica registrada ');
         }
-
-
-
-
-        return redirect()->route('proyectos.index')->with('success', 'Memoria tecnica registrada ');
+        return redirect()->route('proyectos.index')->with('error', 'Memoria tecnica no registrada ');
     }
 }

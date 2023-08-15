@@ -64,20 +64,20 @@
     .submit-button:active {
         transform: scale(0.95);
     }
-
 </style>
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
     <h2 style="color: #2E2D2F; margin-bottom: 20px;">Formulario de Modelo de Negocios</h2>
-    <form action="" method="POST"  id="modelo-negocios-form" onsubmit="return validateForm()" enctype="multipart/form-data">
-            <div class="form-group">
-                <div class="input-field">
-                    <label for="archivo">Subir Archivo</label>
-                    <input type="file" id="archivo" name="archivo" accept=".pdf,.doc,.docx,.ppt">
-                </div>
+    <form action="{{ route('modelo.store')}}" method="POST" id="modelo-negocios-form">
+        @csrf
+        <div class="form-group">
+            <div class="input-field">
+                <label for="archivo">Subir Link Del Archivo</label>
+                <input type="text" id="archivo" name="archivo">
             </div>
         </div>
-        <br>
-        <button type="submit" class="submit-button">Registrar</button>
-    </form>
+</div>
+<br>
+<input class="submit-button" type="submit" value="Guardar">
+</form>
 </div>
 @endsection

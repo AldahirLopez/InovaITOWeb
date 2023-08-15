@@ -90,6 +90,8 @@ Route::get('/naturalezaTecnica', [App\Http\Controllers\CategoriasController::cla
 Route::get('/validar-correo', 'App\Http\Controllers\ValidarCorreoController@checkEmail')->name('validar.correo');
 Route::get('recuperar', [RContrasenaController::class, 'index'])->name('recuperar.index');
 Route::post('recuperar', [RContrasenaController::class, 'RecuperarContrasena'])->name('recuperar.recuperar');
+Route::post('/filtrar-proyectos', [T_PosicionesController::class,'filtrar'])->name('filtrar-proyectos');
+
 
     //parte del pdf
     Route::get('proyecto/{folio}/pdf', [App\Http\Controllers\ProyectosPController::class,'pdf'])->name('proyectos.pdf');
