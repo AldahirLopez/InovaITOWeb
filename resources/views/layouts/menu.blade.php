@@ -91,8 +91,13 @@ $ficha_tecnica_registrada=False;
     </a> 
     @endif 
     @if ($usuarioLogueado->rol->Id_rol=="ROL03")
-    <a class="nav-link {{ Request::is('horario') ? 'active' : '' }} " href="/horario">
-        <i class=" fas fa-folder"></i><span>Horarios</span>
+    <a class="nav-link {{ Request::is('horario') ? 'active' : '' }} " href="/horariosala">
+        <i class=" fas fa-folder"></i><span>Sala Horarios</span>
+    </a> 
+    @endif  
+    @if ($usuarioLogueado->rol->Id_rol=="ROL03")
+    <a class="nav-link {{ Request::is('horario') ? 'active' : '' }} " href="#">
+        <i class=" fas fa-folder"></i><span>Stand Horarios</span>
     </a> 
     @endif  
     @if ($usuarioLogueado->rol->Id_rol=="ROL03" || $usuarioLogueado->rol->Id_rol=="ROL02"  )

@@ -79,17 +79,17 @@
     <form action="{{ route('jurado.store') }}" method="POST" id="registration-form" onsubmit="return validateForm()">
     @csrf
         <div class="form-row">
-            <div class="form-group input-field" style="flex-basis: calc(26% - 0px);">
+            <div class="form-group input-field">
                 <label for="nombres">Nombre(s)</label>
                 <input type="text" id="nombres" name="nombres" placeholder="Ingrese su nombre(s)" required>
             </div>
-            <div class="form-group input-field" style="flex-basis: calc(26% - 0px);">
+            <div class="form-group input-field" >
                 <label for="apellidoPaterno">Primer Apellido</label>
                 <input type="text" id="apellidoPaterno" name="apellidoPaterno" placeholder="Ingrese su primer apellido" required>
             </div>
-            <div class="form-group input-field" style="flex-basis: calc(26% - 0px);">
+            <div class="form-group input-field">
                 <label for="apellidoMaterno">Segundo Apellido</label>
-                <input type="text" id="apellidoMaterno" name="apellidoMaterno" placeholder="Ingrese su segundo apellido">
+                <input type="text" id="apellidoMaterno" name="apellidoMaterno" placeholder="Ingrese su segundo apellido" required>
             </div>
         </div>
         <div class="form-row">
