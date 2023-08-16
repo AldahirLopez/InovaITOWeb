@@ -14,7 +14,10 @@
         <BR>
         <h2>RECONOCIMIENTO</h2>
         <h2>A</h2>
-        <h3>P</h3>
+        <h3>POR SU DESTACADA PARTICIPACIÓN COMO</h3><h3>-AQUI VA EL ROL-</h3><h3>DEL PROYECTO</h3>
+        <h3>-AQUI VA EL PROYECTO-</h3><h3>, EN LA CATEGORÍA</h3><h3>-AQUI VA LA CATEGORIA-</h3>
+        <h3>INNOVATEC 2023</h3>
+        <h3>CELEBRADO DEL</h3> <h3>-AQUI VA LA FECHA-</h3>
     </div>
 </body>
 </html>
