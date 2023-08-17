@@ -33,9 +33,6 @@ $ficha_tecnica_registrada=False;
 
 
 <li class="side-menus">
-    <a class="nav-link {{ Request::is('home') ? 'active' : '' }}" href="/home">
-    <i class="fas fa-house"></i><span>Dashboard</span>
-    </a>
     
     @if ($usuarioLogueado->rol->Id_rol=="ROL03")
         <a class="nav-link {{ Request::is('proyectos') ? 'active' : '' }}" href="/proyectos">
