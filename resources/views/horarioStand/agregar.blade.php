@@ -74,7 +74,7 @@
 </style>
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
     <h2 style="color: #FFFFFF; margin-bottom: 20px;">Formulario de Registro de horarios de stand</h2>
-    <form action="{{ route('horario.store') }}" method="POST" id="registration-form">
+    <form action="{{ route('horariostand.store') }}" method="POST" id="registration-form">
         @csrf
 
         <div class="form-group input-field">
@@ -88,10 +88,10 @@
 
 
         <div class="form-group input-field">
-            <label for="categoria">Salas</label>
-            <select name="id_sala">
-                @foreach ($salas as $sala )
-                <option value="{{$sala->Id_sala}}">{{$sala->Nombre_sala}}</option>
+            <label for="categoria">Stands</label>
+            <select name="id_stand">
+                @foreach ($stands as $stand )
+                <option value="{{$stand->Id_stand}}">{{$stand->Lugar}}</option>
                 @endforeach
 
 

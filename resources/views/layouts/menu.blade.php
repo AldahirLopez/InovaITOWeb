@@ -62,7 +62,7 @@ $ficha_tecnica_registrada=False;
         </a>
     @endif   
    
-    @if ($usuarioLogueado->rol->Id_rol=="ROL02")
+    @if ($usuarioLogueado->rol->Id_rol=="ROL03")
     <a class="nav-link {{ Request::is('constancia') ? 'active' : '' }}" href="/constancia">
         <i class="fas fa-notes-medical"></i><span>Constancias</span>     
     </a>
@@ -96,7 +96,7 @@ $ficha_tecnica_registrada=False;
     </a> 
     @endif  
     @if ($usuarioLogueado->rol->Id_rol=="ROL03")
-    <a class="nav-link {{ Request::is('horario') ? 'active' : '' }} " href="#">
+    <a class="nav-link {{ Request::is('horario') ? 'active' : '' }} " href="/horariostand">
         <i class=" fas fa-folder"></i><span>Stand Horarios</span>
     </a> 
     @endif  

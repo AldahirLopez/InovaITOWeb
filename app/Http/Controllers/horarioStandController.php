@@ -3,23 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\asignarHSala;
+use App\Models\asignarHStand;
 use App\Models\Ficha_Tecnica;
 use App\Models\Proyecto;
 use Illuminate\Http\Request;
 use App\Models\horario;
 use App\Models\sala;
+use App\Models\stand;
 use Illuminate\Support\Facades\DB;
 
-class horarioController extends Controller
+class horarioStandController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $salas = asignarHSala::all();
-        
-        return view('horario.index', compact('salas'));
+        $stands = asignarHStand::all();
+
+        return view('horarioStand.index', compact('stands'));
     }
 
     /**
@@ -29,12 +31,12 @@ class horarioController extends Controller
     {
 
         $proyectos = Ficha_Tecnica::all();
-        $salas = sala::all();
-        return view('horario.agregar', compact('proyectos', 'salas'));
+        $stands = stand::all();
+        return view('horariostand.agregar', compact('proyectos', 'stands'));
     }
     public function generarIdFHorario()
     {
-        $nomenclatura = 'SALA';
+        $nomenclatura = 'STAND';
 
 
         $numerosAleatorios = array();
@@ -57,33 +59,25 @@ class horarioController extends Controller
      */
     public function store(Request $request)
     {
-        $horariosala = new asignarHSala();
-        $horariosala->Id_sala = $request->id_sala;
+        $horariostand = new asignarHStand();
+        $horariostand->Id_stand = $request->id_stand;
 
-        $horariosala->Hora_inicio = $request->hora1;
-        $horariosala->Hora_final = $request->hora2;
-        $horariosala->Fecha = $request->fecha;
+        $horariostand->Hora_inicio = $request->hora1;
+        $horariostand->Hora_final = $request->hora2;
+        $horariostand->Fecha = $request->fecha;
 
 
         //Consulta del folio del proyecto 
         $proyecto = Proyecto::where('Folio', $request->id_proyecto)->first();
 
-        if ($proyecto!=null) {
-            $horariosala->Folio = $proyecto->Folio;
-            $horariosala->save();
-            return redirect()->route('horario.index')->with('success', 'Horario de sala registrado correctamente');
+        if ($proyecto != null) {
+            $horariostand->Folio = $proyecto->Folio;
+            $horariostand->save();
+            return redirect()->route('horariostand.index')->with('success', 'Horario de sala registrado correctamente');
         } else {
-            return redirect()->route('horario.index')->with('error', 'Horario de sala no registrado correctamente');
-            
+            return redirect()->route('horariostand.index')->with('error', 'Horario de sala no registrado correctamente');
         }
-
-
-
-        
     }
-
-
-
     /**
      * Display the specified resource.
      */
@@ -97,8 +91,8 @@ class horarioController extends Controller
      */
     public function edit(string $id)
     {
-        $horario = horario::where('Id_horario', $id)->first();
-        return view('horario.editar', compact('horario'));
+        $horario = asignarHStand::where('Id_stand', $id)->first();
+        return view('horarioStand.editar', compact('horario'));
     }
 
     /**
@@ -106,16 +100,17 @@ class horarioController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        DB::table('horario')
-            ->where('Id_horario', $id)
+        DB::table('asignarHStand')
+            ->where('Id_stand', $id)
             ->update([
                 'Fecha' => $request->fecha,
-                'Hora' => $request->hora
+                'Hora_inicio' => $request->horainicio,
+                'Hora_final' => $request->horafin
             ]);
 
 
 
-        return redirect()->route('horario.index')->with('update', 'Horario actualizado correctamente');
+        return redirect()->route('horariostand.index')->with('update', 'Horario actualizado correctamente');
     }
 
     /**

@@ -74,21 +74,14 @@
 </style>
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
     <h2 style="color: #FFFFFF; margin-bottom: 20px;">Formulario de Registro de horarios</h2>
-    <form action="{{route('horario.update',['horario'=> $horario->Id_horario])}}" method="POST">
+    <form action="{{route('horariosala.update',['horariosala'=> $horario->Id_sala])}}" method="POST">
         @csrf
         @method('PUT')
         <div class="row">
             <div class="col-6">
                 <div class="input-field">
-                    <label style="color: #FFFFFF;">Folio:</label>
-                    <input type="text" name="folio" class="custom-input" required value="{{$horario->Folio}}">
-                </div>
-            </div>
-
-            <div class="col-6">
-                <div class="input-field">
                     <label style="color: #FFFFFF;">Fecha:</label>
-                    <input type="time" name="fecha" class="custom-input" required value="{{$horario->Fecha}}">
+                    <input type="date" name="fecha" class="custom-input" required value="{{$horario->Fecha}}">
                 </div>
             </div>
         </div>

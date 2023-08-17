@@ -27,7 +27,8 @@ use App\Http\Controllers\ConstanciaController;
 use App\Http\Controllers\ModeloController;
 
 
-use App\Http\Controllers\horarioController;
+use App\Http\Controllers\horarioSalaController;
+use App\Http\Controllers\horarioStandController;
 use App\Http\Controllers\coordinadorController;
 
 /*
@@ -58,7 +59,15 @@ Route::resource('requerimientos', RequerimientosController::class);
 Route::resource('ficha_t', Ficha_tController::class);
 Route::resource('memoria_t', Memoria_tController::class);
 Route::resource('jurado', JuradoController::class);
-Route::resource('horario', horarioController::class);
+Route::resource('horariosala', horarioSalaController::class);
+Route::get('horariosala/{horariosala}/edit', [horarioSalaController::class, 'edit'])->name('horariosala.edit');
+Route::get('horariosala/{horariosala}/destroy', [horarioSalaController::class, 'destroy'])->name('horariosala.destroy');
+Route::resource('horariostand', horarioStandController::class);
+Route::get('horariostand/{horariostand}/edit', [horarioStandController::class, 'edit'])->name('horariostand.edit');
+Route::get('horariostand/{horariostand}/destroy', [horarioStandController::class, 'destroy'])->name('horariostand.destroy');
+
+
+
 Route::resource('t_pos', T_PosicionesController::class);
 Route::resource('proyectosC', proyectosCordController::class);
 Route::resource('proyectosCP', proyectosCordPendienteController::class);
@@ -67,8 +76,8 @@ Route::resource('modelo', ModeloController::class);
 Route::post('recuperar-contrasena', [RContrasenaController::class, 'RecuperarContrasena'])->name('recuperar.recuperar');
 Route::get('recuperar-contrasena', [RContrasenaController::class, 'index'])->name('recuperar.index');
 Route::get('lid', [LiderMenuController::class, 'index'])->name('lid.index');
+Route::get('/generate-pdf', [ConstanciaController::class, 'generatePDF'])->name('generate.pdf');
 Route::get('constancia/PDF', [App\Http\Controllers\ConstanciaController::class,'generatePDF'])->name('generar.pdf');
-
 
 
 //Parte de la sala y el stand
@@ -96,6 +105,7 @@ Route::post('/filtrar-proyectos', [T_PosicionesController::class,'filtrar'])->na
 
     //parte del pdf
     Route::get('proyecto/{folio}/pdf', [App\Http\Controllers\ProyectosPController::class,'pdf'])->name('proyectos.pdf');
+
 
 
 

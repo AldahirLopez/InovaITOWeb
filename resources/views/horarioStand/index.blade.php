@@ -2,13 +2,13 @@
 
 @php
 use App\Models\Ficha_Tecnica;
-use App\Models\sala; // Importa la clase al comienzo de la vista, antes de la sección de contenido
+use App\Models\stand; // Importa la clase al comienzo de la vista, antes de la sección de contenido
 @endphp
 
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Horarios</h3>
+        <h3 class="page__heading">Horarios Stand</h3>
     </div>
 </section>
 @if (session('success'))
@@ -106,12 +106,11 @@ use App\Models\sala; // Importa la clase al comienzo de la vista, antes de la se
 <!-- Resto del código -->
 
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
-    <a href="{{route('horario.create')}}" class="btn btn-primary" style="margin-bottom: 10px;">Registrar horario</a>
+    <a href="{{route('horariostand.create')}}" class="btn btn-primary" style="margin-bottom: 10px;">Registrar horario</a>
     <table class="table table-custom">
         <thead style="background-color: #9D969B;">
             <tr class="table-header">
                 <th>Lugar</th>
-                <th>Sala</th>
                 <th>Nombre Proyecto</th>
                 <th>Fecha</th>
                 <th>Hora </th>
@@ -119,11 +118,11 @@ use App\Models\sala; // Importa la clase al comienzo de la vista, antes de la se
             </tr>
         </thead>
         <tbody>
-            @foreach($salas as $sala)
+            @foreach($stands as $stand)
             <tr>
                 <td>
                     @php
-                    $nomsala = sala::where('Id_sala', $sala->Id_sala)->first();
+                    $nomsala = stand::where('Id_stand', $stand->Id_stand)->first();
                     @endphp
                     @if ($nomsala)
                     {{$nomsala->Lugar}}
@@ -133,17 +132,7 @@ use App\Models\sala; // Importa la clase al comienzo de la vista, antes de la se
                 </td>
                 <td>
                     @php
-                    $nomsala = sala::where('Id_sala', $sala->Id_sala)->first();
-                    @endphp
-                    @if ($nomsala)
-                    {{$nomsala->Nombre_sala}}
-                    @else
-                    Sala no encontrada
-                    @endif
-                </td>
-                <td>
-                    @php
-                    $fichaTecnica = Ficha_Tecnica::where('Id_fichaTecnica', $sala->Folio)->first();
+                    $fichaTecnica = Ficha_Tecnica::where('Id_fichaTecnica', $stand->Folio)->first();
                     @endphp
                     @if ($fichaTecnica)
                     {{$fichaTecnica->Nombre_corto}}
@@ -151,11 +140,11 @@ use App\Models\sala; // Importa la clase al comienzo de la vista, antes de la se
                     Folio no encontrado
                     @endif
                 </td>
-                <td>{{$sala->Fecha}}</td>
-                <td>{{$sala->Hora_inicio}} - {{$sala->Hora_final}}</td>
+                <td>{{$stand->Fecha}}</td>
+                <td>{{$stand->Hora_inicio}} - {{$stand->Hora_final}}</td>
                 <td>
-                    <a href="{{ route('sala.edit', ['sala' => $sala->Id_sala]) }}" class="btn btn-success">Editar</a>
-                    <button class="btn btn-danger">Eliminar</button>
+                    <a href="{{ route('horariostand.edit', ['horariostand' => $stand->Id_stand]) }}" class="btn btn-success">Editar</a>
+                    <a href="{{ route('horariostand.destroy', ['horariostand' => $stand->Id_stand]) }}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
             @endforeach

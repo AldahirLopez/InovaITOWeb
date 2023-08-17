@@ -94,25 +94,17 @@
 <table class="table table-custom">
     <thead style="background-color: #FF9500;">
         <tr class="table-header">
-            <th>ID_SALA</th>
             <th>NOMBRE </th>
             <th>LUGAR</th>
-            <th>HORARIO</th>
-
         </tr>
     </thead>
     <tbody>
         @foreach($salas as $sala)
         <tr>
-            <td>{{ $sala->Id_sala}}</td>
             <td>{{ $sala->Nombre_sala}}</td>
             <td>{{ $sala->Lugar}}</td>
         </tr>
-
- 
-
         <!-- Fin del Modal -->
-
         @endforeach
     </tbody>
 </table>

@@ -106,22 +106,30 @@ class horarioSalaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        DB::table('horario')
-            ->where('Id_horario', $id)
+        DB::table('asignarHSala')
+            ->where('Id_sala', $id)
             ->update([
                 'Fecha' => $request->fecha,
-                'Hora' => $request->hora
+                'Hora_inicio' => $request->horainicio,
+                'Hora_final' => $request->horafin
             ]);
 
 
 
-        return redirect()->route('horario.index')->with('update', 'Horario actualizado correctamente');
+        return redirect()->route('horariosala.index')->with('update', 'Horario actualizado correctamente');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($horariosala)
     {
+        // Retrieve the HorarioSala instance and delete it based on $horariosala
+        // You might need to adjust your model and primary key based on your schema
+        $sala = asignarHSala::findOrFail($horariosala);
+        $sala->delete();
+    
+        // Optionally, you can redirect back to the listing page
+        return redirect()->route('horariosala.index')->with('success', 'Horario eliminado exitosamente.');
     }
 }

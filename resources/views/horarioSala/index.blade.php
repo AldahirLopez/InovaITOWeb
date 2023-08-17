@@ -8,7 +8,7 @@ use App\Models\sala; // Importa la clase al comienzo de la vista, antes de la se
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Horarios</h3>
+        <h3 class="page__heading">Horarios Stand</h3>
     </div>
 </section>
 @if (session('success'))
@@ -154,8 +154,8 @@ use App\Models\sala; // Importa la clase al comienzo de la vista, antes de la se
                 <td>{{$sala->Fecha}}</td>
                 <td>{{$sala->Hora_inicio}} - {{$sala->Hora_final}}</td>
                 <td>
-                    <a href="{{ route('horariosala.edit', ['sala' => $sala->Id_sala]) }}" class="btn btn-success">Editar</a>
-                    <button class="btn btn-danger">Eliminar</button>
+                    <a href="{{ route('horariosala.edit', ['horariosala' => $sala->Id_sala]) }}" class="btn btn-success">Editar</a>
+                    <a href="{{ route('horariosala.destroy', ['horariosala' => $sala->Id_sala]) }}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
             @endforeach

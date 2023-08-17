@@ -8,13 +8,13 @@
 </section>
 
 @if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('success') }}  
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('success') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
 
 
 
@@ -79,43 +79,34 @@
     .switch-container .slider:before {
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     }
+
     .disable {
         pointer-events: none;
-        text-decoration:none;
-        
-}
+        text-decoration: none;
+
+    }
 </style>
 
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
 
-<a href="/stand/create" class="btn btn-primary" style="margin-bottom: 10px;" >Registrar stand</a>
+    <a href="/stand/create" class="btn btn-primary" style="margin-bottom: 10px;">Registrar stand</a>
 
 
-<table class="table table-custom">
-    <thead style="background-color: #FF9500;">
-        <tr class="table-header">
-            <th>ID_STAND</th>
-            <th>LUGAR</th>
-            <th>HORARIO</th>
-
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($stands as $stand)
-        <tr>
-            <td>{{ $stand->Id_stand}}</td>
-            <td>{{ $stand->Lugar}}</td>
-            <td>{{ $stand->horario->Fecha}}:{{ $stand->horario->Hora}}</td>
-
-        </tr>
-
- 
-
-        <!-- Fin del Modal -->
-
-        @endforeach
-    </tbody>
-</table>
+    <table class="table table-custom">
+        <thead style="background-color: #FF9500;">
+            <tr class="table-header">
+                <th>LUGAR</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($stands as $stand)
+            <tr>
+                <td>{{ $stand->Lugar}}</td>
+            </tr>
+            <!-- Fin del Modal -->
+            @endforeach
+        </tbody>
+    </table>
 
 
 </div>
