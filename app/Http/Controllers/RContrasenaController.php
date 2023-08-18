@@ -47,7 +47,7 @@ class RContrasenaController extends Controller
             ];
 
             Mail::send('email', $data, function ($msj) use ($subject, $for) {
-                $msj->from("hectoralr21@gmail.com", "Nuevos datos de inicio de sesiin");
+                $msj->from("hectoralr21@gmail.com", "Nuevos datos de inicio de sesion");
                 $msj->subject($subject);
                 $msj->to($for);
             });

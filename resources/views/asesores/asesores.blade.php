@@ -115,36 +115,36 @@
         <div class="form-row">
             <div class="form-group input-field" style="flex-basis: calc(13% - 0px);">
                 <label for="titulo">Titulo(Lic., M.C, Dr.)</label>
-                <input type="text" id="titulo" name="titulo" placeholder="Ingrese su título" required>
+                <input type="text" id="titulo" name="titulo" placeholder="Ingrese título" required>
             </div>
             <div class="form-group input-field" style="flex-basis: calc(26% - 0px);">
                 <label for="nombres">Nombre(s)</label>
-                <input type="text" id="nombres" name="nombres" placeholder="Ingrese su nombre(s)" required>
+                <input type="text" id="nombres" name="nombres" placeholder="Ingrese nombre(s)" required>
             </div>
             <div class="form-group input-field" style="flex-basis: calc(26% - 0px);">
                 <label for="apellidoPaterno">Primer Apellido</label>
-                <input type="text" id="apellidoPaterno" name="apellidoPaterno" placeholder="Ingrese su primer apellido" required>
+                <input type="text" id="apellidoPaterno" name="apellidoPaterno" placeholder="Ingrese primer apellido" required>
             </div>
             <div class="form-group input-field" style="flex-basis: calc(26% - 0px);">
                 <label for="apellidoMaterno">Segundo Apellido</label>
-                <input type="text" id="apellidoMaterno" name="apellidoMaterno" placeholder="Ingrese su segundo apellido">
+                <input type="text" id="apellidoMaterno" name="apellidoMaterno" placeholder="Ingrese segundo apellido">
             </div>
         </div>
         <div class="form-row">
             <div class="form-group input-field">
                 <label for="correo">Correo Institucional</label>
-                <input type="email" id="correo" name="correo" placeholder="Ingrese su correo institucional" required>
+                <input type="email" id="correo" name="correo" placeholder="Ingrese correo institucional" required>
                 <span id="correo-error" class="error-message" style="display: none;">El correo no es un correo
                     institucional válido.</span>
             </div>
             <div class="form-group input-field">
                 <label for="curp">CURP</label>
-                <input type="text" id="curp" name="curp" placeholder="Ingrese su CURP" required>
+                <input type="text" id="curp" name="curp" placeholder="Ingrese CURP" required>
                 <span id="curp-error" class="error-message" style="display: none;">El CURP no es válido.</span>
             </div>
             <div class="form-group input-field">
                 <label for="numIne">Numero de INE</label>
-                <input type="text" id="numIne" name="numIne" placeholder="Ingrese su número de INE" required>
+                <input type="text" id="numIne" name="numIne" placeholder="Ingrese número de INE" required>
                 <span id="numIne-error" class="error-message" style="display: none;">El número de INE no es
                     válido.</span>
             </div>
@@ -152,11 +152,11 @@
         <div class="form-row">
             <div class="form-group input-field">
                 <label for="rfc">RFC</label>
-                <input type="text" id="rfc" name="rfc" placeholder="Ingrese su RFC" required>
+                <input type="text" id="rfc" name="rfc" placeholder="Ingrese RFC" required>
             </div>
             <div class="form-group input-field">
                 <label for="telefono">Telefono</label>
-                <input type="text" id="telefono" name="telefono" placeholder="Ingrese su número de teléfono" required>
+                <input type="text" id="telefono" name="telefono" placeholder="Ingrese número de teléfono" required>
                 <span id="telefono-error" class="error-message" style="display: none;">El número de teléfono no es
                     válido.</span>
             </div>
@@ -172,15 +172,15 @@
         <div class="form-row">
             <div class="form-group input-field">
                 <label for="licenciatura">Licenciatura</label>
-                <input type="text" id="licenciatura" name="licenciatura" placeholder="Ingrese su licenciatura">
+                <input type="text" id="licenciatura" name="licenciatura" placeholder="Ingrese licenciatura">
             </div>
             <div class="form-group input-field">
                 <label for="maestria">Maestria</label>
-                <input type="text" id="maestria" name="maestria" placeholder="Ingrese su maestría">
+                <input type="text" id="maestria" name="maestria" placeholder="Ingrese maestría">
             </div>
             <div class="form-group input-field">
                 <label for="doctorado">Doctorado</label>
-                <input type="text" id="doctorado" name="doctorado" placeholder="Ingrese su doctorado">
+                <input type="text" id="doctorado" name="doctorado" placeholder="Ingrese doctorado">
             </div>
 
 
