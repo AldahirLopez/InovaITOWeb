@@ -4,7 +4,38 @@
 use App\Models\Ficha_Tecnica;
 use App\Models\stand; // Importa la clase al comienzo de la vista, antes de la sección de contenido
 @endphp
+@php
+use App\Models\Proyecto;
+use App\Models\Estudiante;
+use App\Models\Persona;
+use App\Models\Usuario;
+use App\Models\ProyectoParticipante;
 
+$ficha_tecnica_registrada=False;
+$requerimientos_especiales_registrada=False;
+$mostrar_participantes=False;
+$memoria_tecnica_registrada=False;
+$modelo_negocios_registrada=False;
+
+$usuario = session('usuario');
+$idpersona = $usuario->Id_persona;
+$usuarioLogueado=Usuario::where('Id_persona',$idpersona)->first();
+$persona = Estudiante::where('Id_persona', $idpersona)->first();
+$proyectoParticipante = ProyectoParticipante::where('Matricula', $persona->Matricula)->first();
+
+if($proyectoParticipante!=null){
+$folioproyecto = $proyectoParticipante->Folio;
+
+$proyecto=Proyecto::where('Folio',$folioproyecto)->first();
+
+if($proyecto->Id_fichaTecnica!=null){
+$ficha_tecnica_registrada=True;
+
+}
+
+}
+
+@endphp
 @section('content')
 <section class="section">
     <div class="section-header">
@@ -106,7 +137,9 @@ use App\Models\stand; // Importa la clase al comienzo de la vista, antes de la s
 <!-- Resto del código -->
 
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
+    @if ($usuarioLogueado->rol->Id_rol=="ROL01")
     <a href="{{route('horariostand.create')}}" class="btn btn-primary" style="margin-bottom: 10px;">Registrar horario</a>
+    @endif
     <table class="table table-custom">
         <thead style="background-color: #9D969B;">
             <tr class="table-header">
@@ -114,7 +147,9 @@ use App\Models\stand; // Importa la clase al comienzo de la vista, antes de la s
                 <th>Nombre Proyecto</th>
                 <th>Fecha</th>
                 <th>Hora </th>
+                @if ($usuarioLogueado->rol->Id_rol=="ROL01")
                 <th>Acciones</th>
+                @endif
             </tr>
         </thead>
         <tbody>
@@ -142,10 +177,12 @@ use App\Models\stand; // Importa la clase al comienzo de la vista, antes de la s
                 </td>
                 <td>{{$stand->Fecha}}</td>
                 <td>{{$stand->Hora_inicio}} - {{$stand->Hora_final}}</td>
+                @if ($usuarioLogueado->rol->Id_rol=="ROL01")
                 <td>
                     <a href="{{ route('horariostand.edit', ['horariostand' => $stand->Id_stand]) }}" class="btn btn-success">Editar</a>
                     <a href="{{ route('horariostand.destroy', ['horariostand' => $stand->Id_stand]) }}" class="btn btn-danger">Eliminar</a>
                 </td>
+                @endif
             </tr>
             @endforeach
         </tbody>
