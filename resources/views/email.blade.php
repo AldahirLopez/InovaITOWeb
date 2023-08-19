@@ -4,7 +4,7 @@
     <title>Correo personalizado</title>
 </head>
 <body>
-    <h1>Bienvenido(a) al INOVATEC</h1>
+    <h1>Bienvenido(a) al INNOVATEC</h1>
     <p>Este es su correo y su Contraseña para ingresar</p>
     <h2>Nombre: {{$correo}}</h2>
     <h2>Contraseña: {{$contraena}}</h2>
