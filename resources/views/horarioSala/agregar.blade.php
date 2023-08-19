@@ -129,7 +129,7 @@
 <div>
 </div>
 <script>
-    document.getElementById("miFormulario").addEventListener("submit", function(event) {
+    document.getElementById("registration-form").addEventListener("submit", function(event) {
         var horaInicio = document.getElementsByName("hora1")[0].value;
         var horaFin = document.getElementsByName("hora2")[0].value;
         var fechaSeleccionada = new Date(document.getElementsByName("fecha")[0].value);
