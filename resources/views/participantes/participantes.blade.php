@@ -138,7 +138,7 @@
             </div>
             <div class="form-group">
                 <div class="input-field">
-                    <label style="color: #2E2D2F;">Numero de INE</label>
+                    <label style="color: #2E2D2F;">Número de INE</label>
                     <input type="text" id="numIne" name="numIne" placeholder="Ingrese su número de INE" required>
                     <span id="numIne-error" class="error-message" style="display: none;">El número de INE no es
                         válido.</span>

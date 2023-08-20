@@ -3,7 +3,7 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Registro Proyecto</h3>
+        <h3 class="page__heading">Proyecto</h3>
     </div>
 
     @if (session('success'))

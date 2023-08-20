@@ -4,7 +4,7 @@
 
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Ficha Técnica</h3>
+        <h3 class="page__heading">Proyecto</h3>
     </div>
 </section>
 <style>
@@ -76,7 +76,7 @@
     }
 </style>
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
-    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Formulario de Ficha Técnica</h2>
+    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Ficha Técnica</h2>
     <form action="{{ route('ficha_t.store') }}" method="POST"  id="ficha-tecnica-form" onsubmit="return validateForm()">
     @csrf
         <div class="form-row">
@@ -85,29 +85,29 @@
                 <select name="categoria" id="categoria"></select>
             </div>
             <div class="form-group input-field">
-                <label for="nombreCorto">Nombre Corto</label>
-                <input type="text" id="nombreCorto" name="nombreCorto" placeholder="Ingrese el nombre corto" maxlength="30" required>
+                <label for="nombreCorto">Nombre corto</label>
+                <input type="text" id="nombreCorto" name="nombreCorto" placeholder="Ingrese nombre corto" maxlength="30" required>
                 <div id="nombreCorto-counter" class="counter"></div>
             </div>
             <div class="form-group input-field">
-                <label for="nombreDescriptivo">Nombre Descriptivo</label>
-                <input type="text" id="nombreDescriptivo" name="nombreDescriptivo" placeholder="Ingrese el nombre descriptivo" maxlength="100" required>
+                <label for="nombreDescriptivo">Nombre descriptivo</label>
+                <input type="text" id="nombreDescriptivo" name="nombreDescriptivo" placeholder="Ingrese nombre descriptivo" maxlength="100" required>
                 <div id="nombreDescriptivo-counter" class="counter"></div>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group input-field">
-                <label for="areaAplicacion">Área de Aplicación</label>
+                <label for="areaAplicacion">Área de aplicación</label>
                 <select name="areaAplicacion" id="areaAplicacion"></select>
             </div>
             <div class="form-group input-field">
-                <label for="naturalezaTecnica">Naturaleza Técnica</label>
+                <label for="naturalezaTecnica">Naturaleza técnica</label>
                 <select name="naturalezaTecnica" id="naturalezaTecnica"></select>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group input-field">
-                <label for="objetivoProyecto">Objetivo del Proyecto</label>
+                <label for="objetivoProyecto">Objetivo del proyecto</label>
                 <textarea id="objetivoProyecto" name="objetivoProyecto" placeholder="Ingrese el objetivo del proyecto" maxlength="500" required></textarea>
                 <div id="objetivoProyecto-counter" class="counter"></div>
             </div>

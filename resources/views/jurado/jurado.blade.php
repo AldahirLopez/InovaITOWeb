@@ -3,7 +3,7 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Registro Jurado</h3>
+        <h3 class="page__heading">Jurado</h3>
     </div>
 </section>
 
@@ -75,27 +75,27 @@
 </style>
 
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
-    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Formulario de Registro de Jurado</h2>
+    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Registrar Jurado</h2>
     <form action="{{ route('jurado.store') }}" method="POST" id="registration-form" onsubmit="return validateForm()">
     @csrf
         <div class="form-row">
             <div class="form-group input-field">
                 <label for="nombres">Nombre(s)</label>
-                <input type="text" id="nombres" name="nombres" placeholder="Ingrese su nombre(s)" required>
+                <input type="text" id="nombres" name="nombres" placeholder="Ingrese nombre(s)" required>
             </div>
             <div class="form-group input-field" >
                 <label for="apellidoPaterno">Primer Apellido</label>
-                <input type="text" id="apellidoPaterno" name="apellidoPaterno" placeholder="Ingrese su primer apellido" required>
+                <input type="text" id="apellidoPaterno" name="apellidoPaterno" placeholder="Ingrese primer apellido" required>
             </div>
             <div class="form-group input-field">
                 <label for="apellidoMaterno">Segundo Apellido</label>
-                <input type="text" id="apellidoMaterno" name="apellidoMaterno" placeholder="Ingrese su segundo apellido" required>
+                <input type="text" id="apellidoMaterno" name="apellidoMaterno" placeholder="Ingrese segundo apellido" required>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group input-field">
                 <label for="correo">Correo Institucional</label>
-                <input type="email" id="correo" name="correo" placeholder="Ingrese su correo institucional" required>
+                <input type="email" id="correo" name="correo" placeholder="Ingrese correo institucional" required>
                 <span id="correo-error" class="error-message" style="display: none;">El correo no es un correo
                     institucional válido.</span>
             </div>
@@ -105,7 +105,7 @@
                 <span id="curp-error" class="error-message" style="display: none;">El CURP no es válido.</span>
             </div>
             <div class="form-group input-field">
-                <label for="numIne">Numero de INE</label>
+                <label for="numIne">Número de INE</label>
                 <input type="text" id="numIne" name="numIne" placeholder="Ingrese su número de INE" required>
                 <span id="numIne-error" class="error-message" style="display: none;">El número de INE no es
                     válido.</span>
@@ -118,13 +118,13 @@
                 <span id="rfc-error" class="error-message" style="display: none;">El RFC no es válido.</span>
             </div>
             <div class="form-group input-field">
-                <label for="telefono">Telefono</label>
+                <label for="telefono">Teléfono</label>
                 <input type="text" id="telefono" name="telefono" placeholder="Ingrese su número de teléfono" required>
                 <span id="telefono-error" class="error-message" style="display: none;">El número de teléfono no es
                     válido.</span>
             </div>
         </div>
-        <button type="submit" class="submit-button">Enviar</button>
+        <button type="submit" class="submit-button">Registrar</button>
     </form>
 </div>
 <script>

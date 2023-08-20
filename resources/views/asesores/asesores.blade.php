@@ -3,7 +3,7 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Registro Asesores</h3>
+        <h3 class="page__heading">Asesor</h3>
     </div>
 </section>
 
@@ -34,6 +34,15 @@
     @endif
 
 <style>
+    .custom-input {
+    background-color: #BEBEBE;
+    border-radius: 10px;
+    color: #2E2D2F;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    }
+
     .form-row {
         display: flex;
         justify-content: space-between;
@@ -91,12 +100,12 @@
 </style>
 
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
-    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Formulario de Registro de Asesor</h2>
+    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Registro de Asesor</h2>
     <form action="{{ route('asesores.store') }}" method="POST" id="registration-form" onsubmit="return validateForm()">
     @csrf
         <div class="form-group">
             <div class="input-field">
-                <label for="institutos" style="color: #2E2D2F;">Tipo de Instituto o Centro de Investigacion</label>
+                <label for="institutos" style="color: #2E2D2F;">Tipo de Instituto o Centro de Investigación</label>
                 <select id="institutos"></select>
             </div>
         </div>
@@ -155,7 +164,7 @@
                 <input type="text" id="rfc" name="rfc" placeholder="Ingrese RFC" required>
             </div>
             <div class="form-group input-field">
-                <label for="telefono">Telefono</label>
+                <label for="telefono">Teléfono</label>
                 <input type="text" id="telefono" name="telefono" placeholder="Ingrese número de teléfono" required>
                 <span id="telefono-error" class="error-message" style="display: none;">El número de teléfono no es
                     válido.</span>
@@ -175,7 +184,7 @@
                 <input type="text" id="licenciatura" name="licenciatura" placeholder="Ingrese licenciatura">
             </div>
             <div class="form-group input-field">
-                <label for="maestria">Maestria</label>
+                <label for="maestria">Maestría</label>
                 <input type="text" id="maestria" name="maestria" placeholder="Ingrese maestría">
             </div>
             <div class="form-group input-field">
@@ -199,7 +208,7 @@
 
 
         </div>
-        <button type="submit" class="submit-button">Enviar</button>
+        <button type="submit" class="submit-button">Registrar</button>
     </form>
 </div>
 <script>

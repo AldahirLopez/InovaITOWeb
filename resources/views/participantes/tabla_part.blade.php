@@ -163,10 +163,10 @@ if (count($registros_proyecto) < 3 || count($registros_proyecto)> 5) {
             <table class="table table-custom">
                 <thead style="background-color: #FF9500;">
                     <tr class="table-header">
-                        <th>NOMBRE</th>
-                        <th>MATRICULA</th>
-                        <th>SEMESTRE</th>
-                        <th>CARRERA</th>
+                        <th>Nombre</th>
+                        <th>Matrícula</th>
+                        <th>Semestre</th>
+                        <th>Carrera</th>
                         @if ($usuarioLogueado->rol->Id_rol=="ROL02" )
                         <th>Acciones</th>
                         @endif

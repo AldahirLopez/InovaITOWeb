@@ -42,7 +42,7 @@ $ficha_tecnica_registrada=True;
 
     @if ($usuarioLogueado->rol->Id_rol=="ROL010" || $usuarioLogueado->rol->Id_rol=="ROL07")
     <a class="nav-link {{ Request::is('lider') ? 'active' : '' }}" href="/lider">
-        <i class="fas fa-user"></i><span>Lider de Proyecto</span>
+        <i class="fas fa-user"></i><span>Líder de Proyecto</span>
     </a>
     @endif
 
@@ -90,12 +90,12 @@ $ficha_tecnica_registrada=True;
     @endif
     @if ($usuarioLogueado->rol->Id_rol=="ROL03" || $usuarioLogueado->rol->Id_rol=="ROL01" || $usuarioLogueado->rol->Id_rol=="ROL07")
     <a class="nav-link {{ Request::is('horario') ? 'active' : '' }} " href="/horariosala">
-        <i class=" fas fa-folder"></i><span>Sala Horarios</span>
+        <i class=" fas fa-solid fa-calendar"></i><span>Sala Horarios</span>
     </a>
     @endif
     @if ($usuarioLogueado->rol->Id_rol=="ROL03" || $usuarioLogueado->rol->Id_rol=="ROL01" || $usuarioLogueado->rol->Id_rol=="ROL07")
     <a class="nav-link {{ Request::is('horario') ? 'active' : '' }} " href="/horariostand">
-        <i class=" fas fa-folder"></i><span>Stand Horarios</span>
+        <i class=" fas fa-regular fa-calendar"></i><span>Stand Horarios</span>
     </a>
     @endif
     @if ($usuarioLogueado->rol->Id_rol=="ROL01" || $usuarioLogueado->rol->Id_rol=="ROL07")
