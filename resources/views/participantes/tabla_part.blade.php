@@ -232,9 +232,4 @@ if (count($registros_proyecto) < 3 || count($registros_proyecto)> 5) {
             @endif
 
         </div>
-
-
-
-
-
-        @endsection
+@endsection

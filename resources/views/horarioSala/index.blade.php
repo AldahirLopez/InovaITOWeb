@@ -138,7 +138,7 @@ $ficha_tecnica_registrada=True;
 <!-- Resto del código -->
 
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
-    @if ($usuarioLogueado->rol->Id_rol=="ROL01")
+    @if ($usuarioLogueado->rol->Id_rol=="ROL01" || $usuarioLogueado->rol->Id_rol=="ROL07")
     <a href="{{route('horariosala.create')}}" class="btn btn-primary" style="margin-bottom: 10px;">Registrar horario</a>
     @endif
     <table class="table table-custom">
@@ -149,7 +149,7 @@ $ficha_tecnica_registrada=True;
                 <th>Nombre Proyecto</th>
                 <th>Fecha</th>
                 <th>Hora </th>
-                @if ($usuarioLogueado->rol->Id_rol=="ROL01")
+                @if ($usuarioLogueado->rol->Id_rol=="ROL01" || $usuarioLogueado->rol->Id_rol=="ROL07" )
                 <th>Acciones</th>
                 @endif
             </tr>
@@ -189,7 +189,7 @@ $ficha_tecnica_registrada=True;
                 </td>
                 <td>{{$sala->Fecha}}</td>
                 <td>{{$sala->Hora_inicio}} - {{$sala->Hora_final}}</td>
-                @if ($usuarioLogueado->rol->Id_rol=="ROL01")
+                @if ($usuarioLogueado->rol->Id_rol=="ROL01" || $usuarioLogueado->rol->Id_rol=="ROL07" )
                 <td>
                     <a href="{{ route('horariosala.edit', ['horariosala' => $sala->Id_sala]) }}" class="btn btn-success">Editar</a>
                     <a href="{{ route('horariosala.destroy', ['horariosala' => $sala->Id_sala]) }}" class="btn btn-danger">Eliminar</a>
