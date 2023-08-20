@@ -71,6 +71,26 @@
     <h2 style="color: #2E2D2F; margin-bottom: 20px;">Generación de Constancias</h2>
     <form action="{{ route('generar.pdf') }}" method="POST" id="constancias-form">
         @csrf
+         <!-- Input desplegable para seleccionar instituto tecnológico -->
+         <div class="input-field">
+    <label for="instituto">Seleccionar Instituto</label>
+    <select id="instituto" name="instituto">
+        @foreach ($institutos as $instituto)
+        <option value="{{ $instituto->Clave_tecnologico}}">{{ $instituto->Nombre_tecnologico }}</option>
+        @endforeach
+    </select>
+</div>
+
+<!-- Agregar inputs para coordinador y director -->
+<div class="input-field">
+    <label for="coordinador">Nombre del Coordinador</label>
+    <input type="text" id="coordinador" name="coordinador">
+</div>
+
+<div class="input-field">
+    <label for="director">Nombre del Director</label>
+    <input type="text" id="director" name="director">
+</div>
 
         <!-- Input desplegable para seleccionar proyecto -->
         <div class="input-field">
@@ -82,13 +102,13 @@
             </select>
         </div>
 
-        <!-- Input desplegable para seleccionar participante (inicialmente deshabilitado) -->
+        <!-- Input desplegable para seleccionar participante (inicialmente deshabilitado) 
         <div class="input-field" id="participanteDiv" style="display: none;">
             <label for="participante">Seleccionar Participante</label>
             <select id="participante" name="participante">
-                <!-- Opciones de participantes relacionados con el proyecto seleccionado -->
+                 Opciones de participantes relacionados con el proyecto seleccionado 
             </select>
-        </div>
+        </div>-->
 
         <a class="btn btn-primary" href="{{ route('generar.pdf') }}">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download"
