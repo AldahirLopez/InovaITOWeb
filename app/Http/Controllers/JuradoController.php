@@ -7,15 +7,19 @@ use App\Models\Persona;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-
+use Illuminate\Support\Facades\DB;
 
 class JuradoController extends Controller
 {
 
     public function index()
     {
-        return view('jurado.jurado');
+        $jurados=Jurado::all();
+        return view('jurado.index',compact('jurados'));
     }
+
+
+   
     public function store(Request $request)
     {
         $nombres = request()->input('nombres');
@@ -108,4 +112,32 @@ class JuradoController extends Controller
         return redirect()->route('jurado.index')->with('success', 'Jurado registrado correctamente ');
 
     }
+
+
+    public function destroy($id){
+
+        $jurado = Jurado::where('Id_jurado',$id)->first();
+ 
+  
+        DB::table('jurado')
+        ->where('Id_jurado', $jurado->Id_jurado)
+        ->delete();
+    
+    
+        DB::table('usuario')
+        ->where('Id_persona', $jurado->persona->Id_persona)
+        ->delete();
+    
+        DB::table('persona')
+        ->where('Id_persona', $jurado->persona->Id_persona)
+        ->delete();
+    
+    
+        return redirect()->route('jurado.index')->with('delete', 'Jurado eliminado correctamente');
+
+    }
+
+
+
+
 }

@@ -92,25 +92,22 @@
     <input type="text" id="director" name="director">
 </div>
 
-        <!-- Input desplegable para seleccionar proyecto -->
-        <div class="input-field">
-            <label for="proyecto">Seleccionar Proyecto</label>
-            <select id="proyecto" name="proyecto">
-                @foreach ($proyectos as $proyecto)
-                <option value="{{ $proyecto->Folio }}">{{ $proyecto->ficha->Nombre_corto }}</option>
-                @endforeach
-            </select>
-        </div>
+<div class="input-field">
+    <label for="proyecto">Seleccionar Proyecto</label>
+    <select id="proyecto" name="proyecto">
+        @foreach ($proyectos as $proyecto)
+        <option value="{{ $proyecto->Folio }}">{{ $proyecto->ficha->Nombre_corto }}</option>
+        @endforeach
+    </select>
+</div>
 
-        <!-- Input desplegable para seleccionar participante (inicialmente deshabilitado) 
-        <div class="input-field" id="participanteDiv" style="display: none;">
-            <label for="participante">Seleccionar Participante</label>
-            <select id="participante" name="participante">
-                 Opciones de participantes relacionados con el proyecto seleccionado 
-            </select>
-        </div>-->
+<div class="input-field">
+    <label for="matricula">Seleccionar Matrícula</label>
+    <select id="matricula" name="matricula">
 
-        <button class="btn btn-primary" href="{{ route('generar.pdf') }}">
+    </select>
+</div>
+<button class="btn btn-primary" href="{{ route('generar.pdf') }}">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download"
                 viewBox="0 0 16 16">
                 <path
@@ -123,24 +120,28 @@
 </div>
 
 <script>
-// Manejo del evento de cambio en el input de proyecto
-const proyectoInput = document.getElementById('proyecto');
-const participanteDiv = document.getElementById('participanteDiv');
-const participanteInput = document.getElementById('participante');
+const proyectoSelect = document.getElementById('proyecto');
+const matriculaSelect = document.getElementById('matricula');
 
-proyectoInput.addEventListener('change', function() {
-    // Aquí puedes agregar lógica para cargar las opciones de participantes
-    // relacionados con el proyecto seleccionado y habilitar el input de participante.
+proyectoSelect.addEventListener('change', function() {
+    const selectedValue = proyectoSelect.value;
+    
+  
+    fetch(`/obtener-participantes?proyecto=${selectedValue}`)
+        .then(response => response.json())
+        .then(data => {
+     
 
-    // Por ejemplo, si solo quieres mostrar el input de participante después
-    // de seleccionar un proyecto, puedes usar el siguiente código:
-
-    if (proyectoInput.value !== '') {
-        participanteDiv.style.display = 'block';
-    } else {
-        participanteDiv.style.display = 'none';
-    }
+            data.forEach(participante => {
+                const option = document.createElement('option');
+                option.value = participante.Matricula;
+                option.textContent = participante.Nombre;
+                matriculaSelect.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Error al obtener los participantes:', error);
+        });
 });
 </script>
-
 @endsection

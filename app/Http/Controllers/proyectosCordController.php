@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\validacionProyectoA;
 use App\Models\validacionProyectoC;
 use App\Models\coordinador;
+use App\Models\Usuario;
 use Illuminate\Support\Facades\DB;
 class proyectosCordController extends Controller
 {

@@ -109,4 +109,4 @@ Route::post('/filtrar-proyectos', [T_PosicionesController::class,'filtrar'])->na
 
 
 
-
+    Route::get('/obtener-participantes', 'App\Http\Controllers\proyectoController@obtenerParticipantes');

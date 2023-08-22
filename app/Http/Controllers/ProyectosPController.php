@@ -10,6 +10,8 @@ use App\Models\Persona;
 use App\Models\Proyecto;
 use App\Models\ProyectoParticipante;
 use App\Models\proyectoAsesor;
+use App\Models\Usuario;
+use App\Models\Asesor;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 class ProyectosPController extends Controller
@@ -20,7 +22,15 @@ class ProyectosPController extends Controller
             //Listamos los proyectos pendientes del asesor
 
             //*lo k falta es pasar el rol del que ta logueado debe ir el ASE04
-            $ProyectosPendientes=proyectoAsesor::where('Id_asesor',"ASE04")->get();
+
+            $usuario = session('usuario');
+            $idpersona = $usuario->Id_persona;
+            $usuarioLogueado=Usuario::where('Id_persona',$idpersona)->first();
+
+            $id_Asesor=Asesor::Where('Id_asesor',$usuarioLogueado->Id_persona)->first();
+
+
+            $ProyectosPendientes=proyectoAsesor::where('Id_asesor',$id_Asesor)->get();
 
 
             return view('proyectos.proyectos_pendientes',compact('ProyectosPendientes'));

@@ -18,9 +18,9 @@
         <h3>OTORGAN EL PRESENTE</h3>
         <BR>
         <h2>RECONOCIMIENTO</h2>
-        <h2>A</h2>
+        <h2>A {{$nombre_participante}}</h2>
         <h3>POR SU DESTACADA PARTICIPACIÓN COMO</h3>
-        <h3>-AQUI VA EL ROL-</h3>
+        <h3>{{$rol_participante}}</h3>
         <h3>DEL PROYECTO</h3>
         <h3>{{ $nombreProyecto }}</h3>
         <h3>, EN LA CATEGORÍA</h3>

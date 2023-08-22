@@ -69,7 +69,26 @@ class proyectoController extends Controller
         'ficha_tecnica_registrada','requerimientos_especiales_registrada','memoria_tecnica_registrada','modelo_negocios_registrada','proyecto'));
     }
 
+    public function obtenerParticipantes(Request $request)
+    {
+        $folioProyecto = $request->input('proyecto');
 
+        // Realiza una consulta para obtener los participantes del proyecto
+        $participantes = ProyectoParticipante::where('Folio', $folioProyecto)->get();
+       
+        $datosParticipantes = [];
+        
+        foreach ($participantes as $participante) {
+            $datosParticipantes[] = [
+                'Matricula' => $participante->Matricula,
+                'Nombre' => $participante->estudiante->persona->Nombre_persona, 
+                
+            ];
+        }
+    
+        
+        return response()->json($datosParticipantes);
+    }
 
 
 
