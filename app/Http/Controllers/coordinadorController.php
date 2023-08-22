@@ -7,7 +7,8 @@ use App\Models\persona;
 use App\Models\Usuario;
 use App\Models\coordinador;
 use App\Models\tecnologico;
-
+use App\Models\validacionProyectoC;
+use Illuminate\Support\Facades\DB;
 class coordinadorController extends Controller
 {
     /**
@@ -160,10 +161,7 @@ class coordinadorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
-    }
+   
 
     public function CURP($nombre, $primerApellido, $segundoApellido, $sexo, $fechaNacimiento) {
         // Convertir la fecha de nacimiento al formato YYMMDD
@@ -203,4 +201,35 @@ class coordinadorController extends Controller
    
        return '';
    }
+
+
+   public function destroy($id){
+        
+    $coordinador = coordinador::where('Id_coordinador',$id)->first();
+ 
+    validacionProyectoC::where('Id_coordinador', $coordinador->Id_coordinador)->delete();
+    
+    
+
+    DB::table('coordinadorActividad')
+    ->where('Id_coordinador', $coordinador->Id_coordinador)
+    ->delete();
+
+
+    DB::table('coordinador')
+    ->where('Id_coordinador', $coordinador->Id_coordinador)
+    ->delete();
+
+
+    DB::table('usuario')
+    ->where('Id_persona', $coordinador->persona->Id_persona)
+    ->delete();
+
+    DB::table('persona')
+    ->where('Id_persona', $coordinador->persona->Id_persona)
+    ->delete();
+
+
+    return redirect()->route('coordinador.index')->with('delete', 'Coordinador eliminado correctamente');
+}
 }

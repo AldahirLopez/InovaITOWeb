@@ -3,18 +3,9 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Coordinadores registrado</h3>
+        <h3 class="page__heading">Asesodres registrado</h3>
     </div>
 </section>
-
-@if (session('success'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    {{ session('success') }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-@endif
 
 @if (session('delete'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -24,8 +15,6 @@
     </button>
 </div>
 @endif
-
-
 
 
 <style>
@@ -99,33 +88,43 @@
 
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
 
-    <a href="/coordinador/create" class="btn btn-primary" style="margin-bottom: 10px;">Registrar coordinador</a>
+    <a href="/asesores/create" class="btn btn-primary" style="margin-bottom: 10px;">Registrar asesor</a>
 
 
     <table class="table table-custom">
         <thead style="background-color: #FF9500;">
             <tr class="table-header">
-                <th>ID_COORDINADOR</th>
+                <th>ID_ASESOR</th>
                 <th>Nombre</th>
-                <th>Tecnologico</th>
-                <th>Accion</th>
+                <th>RFC</th>
+                <th>Abreviatura profesional</th>
+                <th>Licenciatura</th>
+                <th>Maestria</th>
+                <th>Doctorado</th>
+                <th>Departamento</th>
+                <th>Acciones</th>
+      
 
             </tr>
         </thead>
         <tbody>
-            @foreach($coordinadores as $coordinador)
+            @foreach($asesores as $asesor)
 
             <tr>
-                <td>{{ $coordinador->Id_coordinador}}</td>
-                <td>{{ $coordinador->persona->Nombre_persona}}</td>
-                <td>{{ $coordinador->tecnologico->Nombre_tecnologico}}</td>
-                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-{{$coordinador->Id_coordinador}}">Eliminar</button></td>
+                <td>{{ $asesor->Id_asesor}}</td>
+                <td>{{ $asesor->persona->Nombre_persona}}</td>
+                <td>{{ $asesor->RFC}}</td>
+                <td>{{ $asesor->Abreviatura_profesional}}</td>
+                <td>{{ $asesor->Licenciatura}}</td>
+                <td>{{ $asesor->Maestria}}</td>
+                <td>{{ $asesor->Doctorado}}</td>
+                <td>{{ $asesor->departamento->Nombre_departamento}}</td>
+                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-{{$asesor->Id_asesor}}">Eliminar</button></td>
+
             </tr>
 
-
-
-            <!-- Modal de Eliminación -->
-            <div class="modal fade" id="modal-{{$coordinador->Id_coordinador}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                   <!-- Modal de Eliminación -->
+                   <div class="modal fade" id="modal-{{$asesor->Id_asesor}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -135,10 +134,10 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    Estas seguro de eliminar al coordinador {{ $coordinador->persona->Nombre_persona}}
+                                    Estas seguro de eliminar al asesor {{ $asesor->persona->Nombre_persona}}
                                 </div>
                                 <div class="modal-footer">
-                                    <form action="{{ route('coordinador.destroy', ['coordinador' => $coordinador->Id_coordinador]) }}" method="POST">
+                                    <form action="{{ route('asesores.destroy', ['asesore' => $asesor->Id_asesor]) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
 
@@ -152,6 +151,7 @@
 
                     <!-- Fin del Modal -->
 
+         
             @endforeach
         </tbody>
     </table>

@@ -10,14 +10,23 @@ use App\Models\Estudiante;
 use App\Models\ProyectoParticipante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
 class AsesorController extends Controller
 {
 
     public function index()
     {
-        return view('asesores.asesores');
+
+        $asesores=Asesor::all();
+        return view('asesores.index',compact('asesores'));
     }
+
+
+    public function create(){
+            return view('asesores.asesores');
+    }
+
 
     public function store(Request $request)
     {
@@ -55,12 +64,12 @@ class AsesorController extends Controller
         
         if(substr($curp, 0, 10)!=substr($curpGenerado,0,10)){
 
-            return redirect('/asesores')->with('error', 'CURP no valido con los datos ingresados');
+            return redirect('/asesores/create')->with('error', 'CURP no valido con los datos ingresados');
 
         }
 
         if(Persona::where('Correo_electronico',$correo)->first()){
-            return redirect('/asesores')->with('c_existente', 'Error:Correo ya registrado');
+            return redirect('/asesores/create')->with('c_existente', 'Error:Correo ya registrado');
 
         }
 
@@ -208,4 +217,33 @@ class AsesorController extends Controller
      
          return '';
      }
+
+
+     
+    public function destroy($id){
+        
+        $asesor = Asesor::where('Id_asesor',$id)->first();
+     
+    
+        DB::table('asesorCargo')
+        ->where('Id_asesor', $asesor->Id_asesor)
+        ->delete();
+
+
+        DB::table('asesor')
+        ->where('Id_asesor', $asesor->Id_asesor)
+        ->delete();
+
+        DB::table('usuario')
+        ->where('Id_persona', $asesor->persona->Id_persona)
+        ->delete();
+
+        DB::table('persona')
+        ->where('Id_persona', $asesor->persona->Id_persona)
+        ->delete();
+
+
+        return redirect()->route('asesores.index')->with('delete', 'Asesor eliminado correctamente');
+}
+
 }

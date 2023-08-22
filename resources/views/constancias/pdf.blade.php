@@ -24,7 +24,7 @@
         <h3>DEL PROYECTO</h3>
         <h3>{{ $nombreProyecto }}</h3>
         <h3>, EN LA CATEGORÍA</h3>
-        <h3>-AQUI VA LA CATEGORIA-</h3>
+        <h3>-{{$categoria}}-</h3>
         <h3>INNOVATEC 2023</h3>
         <h3>CELEBRADO DEL</h3>
         <h3>-AQUI VA LA FECHA-</h3>

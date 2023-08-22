@@ -13,6 +13,7 @@ class coordinador extends Model
     public $timestamps = false;
     protected $connection = 'mysql';
     protected $table = 'coordinador';
+    
 
     public function persona()
     {

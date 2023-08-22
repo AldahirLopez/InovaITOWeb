@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 use App\Models\Proyecto;
 use App\Models\tecnologico;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\Pdf;
+
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Mail;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class ConstanciaController extends Controller
@@ -25,19 +25,32 @@ class ConstanciaController extends Controller
 
     public function show(Request $request)
 {
-    $nombreProyecto = $request->input('proyecto');
-    $instituto = $request->input('instituto');
-    $coordinador = $request->input('coordinador');
-    $director = $request->input('director');
+    
 
-    $pdfContent = view('constancias.pdf', [
-        'nombreProyecto' => $nombreProyecto,
-        'instituto' => $instituto,
-        'coordinador' => $coordinador,
-        'director' => $director,
-    ])->render();
-
-    $pdf = PDF::loadHtml($pdfContent);
-    return $pdf->stream('constancia.pdf');
 }
+
+    public function generate2PDF(Request $request){
+        
+        $proyecto=Proyecto::find($request->proyecto);
+        $nombre_proyecto=$proyecto->ficha->Nombre_proyecto;
+        $categoria_proyecto=$proyecto->ficha->area->categoria->Nombre_categoria;
+        $instituto = tecnologico::where('Clave_tecnologico',$request->input('instituto'))->first();;
+        $nombre_instituto=$instituto->Nombre_tecnologico;
+    $datos = [
+        'nombreProyecto' => $nombre_proyecto,
+        'instituto' => $nombre_instituto,
+        'coordinador' => $request->input('coordinador'),
+        'director' => $request->input('director'),
+        'categoria'=>$categoria_proyecto,
+    ];
+
+    $pdf = Pdf::loadView('constancias.pdf', $datos);
+    return $pdf->download('constancia.pdf');
+
+
+    }
+
+
+
+
 }

@@ -77,7 +77,7 @@ Route::post('recuperar-contrasena', [RContrasenaController::class, 'RecuperarCon
 Route::get('recuperar-contrasena', [RContrasenaController::class, 'index'])->name('recuperar.index');
 Route::get('lid', [LiderMenuController::class, 'index'])->name('lid.index');
 Route::get('/generate-pdf', [ConstanciaController::class, 'generatePDF'])->name('generate.pdf');
-Route::get('constancia/PDF', [App\Http\Controllers\ConstanciaController::class,'generatePDF'])->name('generar.pdf');
+Route::post('constancia/PDF', [App\Http\Controllers\ConstanciaController::class,'generate2PDF'])->name('generar.pdf');
 
 
 //Parte de la sala y el stand
