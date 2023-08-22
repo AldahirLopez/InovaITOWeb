@@ -143,7 +143,7 @@
 
         if (!horaInicioValida || !horaFinValida || !fechaValida) {
             event.preventDefault(); // Evitar el envío del formulario si no pasa las validaciones
-            alert("Por favor, verifica los campos de hora y fecha.");
+            alert("Seleccione una fecha actual, la hora de inicio debe estar entre las 8am y 8pm respectivamente");
         }
     });
 

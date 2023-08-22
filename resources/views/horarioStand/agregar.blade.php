@@ -133,4 +133,31 @@
 
 
 </div>
+<script>
+    document.getElementById("registration-form").addEventListener("submit", function(event) {
+        var horaInicio = document.getElementsByName("hora1")[0].value;
+        var horaFin = document.getElementsByName("hora2")[0].value;
+        var fechaSeleccionada = new Date(document.getElementsByName("fecha")[0].value);
+        var fechaActual = new Date();
+        var limiteSuperiorFecha = new Date();
+        limiteSuperiorFecha.setDate(limiteSuperiorFecha.getDate() + 3);
+
+        var horaInicioValida = validarHora(horaInicio);
+        var horaFinValida = validarHora(horaFin);
+        var fechaValida = fechaSeleccionada >= fechaActual && fechaSeleccionada <= limiteSuperiorFecha;
+
+        if (!horaInicioValida || !horaFinValida || !fechaValida) {
+            event.preventDefault(); // Evitar el envío del formulario si no pasa las validaciones
+            alert("Seleccione una fecha actual, la hora de inicio debe estar entre las 8am y 8pm respectivamente");
+        }
+    });
+
+    function validarHora(hora) {
+        var parts = hora.split(":");
+        var horaNumero = parseInt(parts[0]);
+        var minutoNumero = parseInt(parts[1]);
+
+        return (horaNumero >= 7 && horaNumero < 20) && (minutoNumero >= 0 && minutoNumero <= 59);
+    }
+</script>
 @endsection
