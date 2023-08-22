@@ -94,64 +94,54 @@
     <table class="table table-custom">
         <thead style="background-color: #FF9500;">
             <tr class="table-header">
-                <th>ID_ASESOR</th>
-                <th>Nombre</th>
-                <th>RFC</th>
                 <th>Abreviatura profesional</th>
-                <th>Licenciatura</th>
-                <th>Maestria</th>
-                <th>Doctorado</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
                 <th>Departamento</th>
                 <th>Acciones</th>
-      
-
             </tr>
         </thead>
         <tbody>
             @foreach($asesores as $asesor)
 
             <tr>
-                <td>{{ $asesor->Id_asesor}}</td>
-                <td>{{ $asesor->persona->Nombre_persona}}</td>
-                <td>{{ $asesor->RFC}}</td>
                 <td>{{ $asesor->Abreviatura_profesional}}</td>
-                <td>{{ $asesor->Licenciatura}}</td>
-                <td>{{ $asesor->Maestria}}</td>
-                <td>{{ $asesor->Doctorado}}</td>
+                <td>{{ $asesor->persona->Nombre_persona}} </td>
+                <td>{{ $asesor->persona->Apellido1}} {{ $asesor->persona->Apellido2}}</td>
                 <td>{{ $asesor->departamento->Nombre_departamento}}</td>
                 <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-{{$asesor->Id_asesor}}">Eliminar</button></td>
 
             </tr>
 
-                   <!-- Modal de Eliminación -->
-                   <div class="modal fade" id="modal-{{$asesor->Id_asesor}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    Estas seguro de eliminar al asesor {{ $asesor->persona->Nombre_persona}}
-                                </div>
-                                <div class="modal-footer">
-                                    <form action="{{ route('asesores.destroy', ['asesore' => $asesor->Id_asesor]) }}" method="POST">
-                                        @method('DELETE')
-                                        @csrf
+            <!-- Modal de Eliminación -->
+            <div class="modal fade" id="modal-{{$asesor->Id_asesor}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Estas seguro de eliminar al asesor {{ $asesor->persona->Nombre_persona}}
+                        </div>
+                        <div class="modal-footer">
+                            <form action="{{ route('asesores.destroy', ['asesore' => $asesor->Id_asesor]) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
 
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                        <button type="submit" class="btn btn-primary">Aceptar</button>
-                                    </form>
-                                </div>
-                            </div>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Aceptar</button>
+                            </form>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Fin del Modal -->
+            <!-- Fin del Modal -->
 
-         
+
             @endforeach
         </tbody>
     </table>

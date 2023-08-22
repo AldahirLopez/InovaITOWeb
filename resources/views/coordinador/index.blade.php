@@ -105,7 +105,6 @@
     <table class="table table-custom">
         <thead style="background-color: #FF9500;">
             <tr class="table-header">
-                <th>ID_COORDINADOR</th>
                 <th>Nombre</th>
                 <th>Tecnologico</th>
                 <th>Accion</th>
@@ -116,8 +115,7 @@
             @foreach($coordinadores as $coordinador)
 
             <tr>
-                <td>{{ $coordinador->Id_coordinador}}</td>
-                <td>{{ $coordinador->persona->Nombre_persona}}</td>
+                <td>{{ $coordinador->persona->Nombre_persona}} {{ $coordinador->persona->Apellido1}} {{ $coordinador->persona->Apellido2}}</td>
                 <td>{{ $coordinador->tecnologico->Nombre_tecnologico}}</td>
                 <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-{{$coordinador->Id_coordinador}}">Eliminar</button></td>
             </tr>
@@ -129,7 +127,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>

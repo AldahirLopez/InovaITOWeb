@@ -105,13 +105,10 @@
     <table class="table table-custom">
         <thead style="background-color: #FF9500;">
             <tr class="table-header">
-                <th>ID_JURADO</th>
                 <th>Nombre</th>
                 <th>Apellidos</th>
                 <th>Telefono</th>
                 <th>Correo</th>
-                <th>RFC</th>
-                <th>CURP</th>
                 <th>Acciones</th>
 
             </tr>
@@ -120,13 +117,10 @@
             @foreach($jurados as $jurado)
 
             <tr>
-                <td>{{ $jurado->Id_jurado}}</td>
                 <td>{{ $jurado->persona->Nombre_persona}}</td>
                 <td>{{ $jurado->persona->Apellido1}} {{$jurado->persona->Apellido2}}</td>
                 <td>{{ $jurado->persona->Telefono}}</td>
                 <td>{{ $jurado->persona->Correo_electronico}}</td>
-                <td>{{ $jurado->RFC}}</td>
-                <td>{{ $jurado->persona->Curp}}</td>
                 <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-{{$jurado->Id_jurado}}">Eliminar</button></td>
             </tr>
 
@@ -134,31 +128,31 @@
 
             <!-- Modal de Eliminación -->
             <div class="modal fade" id="modal-{{$jurado->Id_jurado}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    Estas seguro de eliminar al jurado {{ $jurado->persona->Nombre_persona}}
-                                </div>
-                                <div class="modal-footer">
-                                    <form action="{{ route('jurado.destroy', ['jurado' => $jurado->Id_jurado]) }}" method="POST">
-                                        @method('DELETE')
-                                        @csrf
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Estas seguro de eliminar al jurado {{ $jurado->persona->Nombre_persona}}
+                        </div>
+                        <div class="modal-footer">
+                            <form action="{{ route('jurado.destroy', ['jurado' => $jurado->Id_jurado]) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
 
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                        <button type="submit" class="btn btn-primary">Aceptar</button>
-                                    </form>
-                                </div>
-                            </div>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Aceptar</button>
+                            </form>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Fin del Modal -->
+            <!-- Fin del Modal -->
 
             @endforeach
         </tbody>
