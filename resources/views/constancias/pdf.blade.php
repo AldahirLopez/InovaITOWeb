@@ -20,18 +20,17 @@
         <h2>RECONOCIMIENTO</h2>
         <h2>A {{$nombre_participante}}</h2>
         <h3>POR SU DESTACADA PARTICIPACIÓN COMO</h3>
-        <h3>{{$rol_participante}}</h3>
-        <h3>DEL PROYECTO</h3>
-        <h3>{{ $nombreProyecto }}</h3>
-        <h3>, EN LA CATEGORÍA</h3>
-        <h3>-{{$categoria}}-</h3>
-        <h3>INNOVATEC 2023</h3>
-        <h3>CELEBRADO DEL</h3>
-        <h3>-AQUI VA LA FECHA-</h3>
-
+        <h3>{{$rol_participante}}</h3><h3>DEL PROYECTO</h3><h3>{{ $nombreProyecto }}</h3>
+        <h3>, EN LA CATEGORÍA</h3><h3>-{{$categoria}}-</h3>
+        <h3>EN EL EVENTO INNOVATEC 2023</h3>
+        <h3>CELEBRADO DEL</h3> <h3>-AQUI VA LA FECHA-</h3>
         <h3>Instituto: {{ $instituto }}</h3>
-        <h3>Coordinador: {{ $coordinador }}</h3>
-        <h3>Director: {{ $director }}</h3>
+
+        <div style="display: flex;">
+            <div>
+                <h3 style="flex: 1; text-align: left;">Coordinador: {{ $coordinador }}</h3> <h3 style="flex: 1; text-align: right;">Director: {{ $director }}</h3>
+        
+        </div>
     </div>
 </body>
 

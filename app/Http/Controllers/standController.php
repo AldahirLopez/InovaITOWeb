@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\stand;
 use App\Models\Horario;
+use App\Models\evaluacionStand;
+use App\Models\asignarHStand;
+use Illuminate\Support\Facades\DB;
 class standController extends Controller
 {
     /**
@@ -67,6 +70,20 @@ class standController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $stand=stand::where('Id_stand',$id)->first();
+
+
+        if($stand!=null){
+            
+           
+            evaluacionStand::where('Id_stand', $stand->Id_stand)->delete();
+            asignarHStand::where('Id_stand', $stand->Id_stand)->delete();
+
+            DB::table('stand')
+            ->where('Id_stand', $stand->Id_stand)
+            ->delete();
+        }
+
+        return redirect()->route('stand.index')->with('delete','Stand eliminada correctamente');
     }
 }

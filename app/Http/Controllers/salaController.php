@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Horario;
 use App\Models\sala;
-
+use Illuminate\Support\Facades\DB;
 class salaController extends Controller
 {
     /**
@@ -72,6 +72,17 @@ class salaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       
+        $sala=sala::where('Id_sala',$id)->first();
+
+        if($sala!=null){
+            
+            DB::table('sala')
+            ->where('Id_sala', $sala->Id_sala)
+            ->delete();
+        }
+
+        return redirect()->route('sala.index')->with('delete','Sala eliminada correctamente');
+
     }
 }

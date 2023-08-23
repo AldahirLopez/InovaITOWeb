@@ -29,7 +29,7 @@ class UsuarioController extends Controller
                 Session::put('usuario', $consulta);
                 return view('home');
             } else {
-                echo "Las contraseñas no coinciden";
+                return redirect('/')->with('passoword', 'Contraseñas no coinciden');
             }
         } else {
             return redirect('/')->with('correo', 'Usuario no registrado');

@@ -61,7 +61,7 @@ class ConstanciaController extends Controller
     ];
 
     $pdf = Pdf::loadView('constancias.pdf', $datos);
-    return $pdf->download('constancia.pdf');
+    return $pdf->stream('constancia.pdf');
 
 
     }

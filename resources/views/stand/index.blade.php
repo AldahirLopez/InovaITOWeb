@@ -16,6 +16,15 @@
 </div>
 @endif
 
+@if (session('delete'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('delete') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
 
 
 <style>
@@ -96,14 +105,48 @@
         <thead style="background-color: #FF9500;">
             <tr class="table-header">
                 <th>LUGAR</th>
+                <th>ACCION</th>
             </tr>
         </thead>
         <tbody>
             @foreach($stands as $stand)
             <tr>
                 <td>{{ $stand->Lugar}}</td>
+                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-{{$stand->Id_stand}}">Eliminar</button></td>
             </tr>
+          
+ <!-- Modal de Eliminación -->
+ <div class="modal fade" id="modal-{{$stand->Id_stand}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Estas seguro de eliminar el stand {{ $stand->Lugar}}
+                        </div>
+                        <div class="modal-footer">
+                            <form action="{{ route('stand.destroy', ['stand' => $stand->Id_stand]) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Aceptar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Fin del Modal -->
+
+
+
+
+
             @endforeach
         </tbody>
     </table>

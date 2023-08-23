@@ -15,7 +15,14 @@
             </button>
         </div>
     @endif
-
+    @if (session('delete'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('delete') }}  
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
 
 
 <style>
@@ -96,6 +103,7 @@
         <tr class="table-header">
             <th>NOMBRE </th>
             <th>LUGAR</th>
+            <th>ACCION</th>
         </tr>
     </thead>
     <tbody>
@@ -103,8 +111,42 @@
         <tr>
             <td>{{ $sala->Nombre_sala}}</td>
             <td>{{ $sala->Lugar}}</td>
+            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-{{$sala->Id_sala}}">Eliminar</button></td>
         </tr>
-        <!-- Fin del Modal -->
+        
+
+
+
+ <!-- Modal de Eliminación -->
+ <div class="modal fade" id="modal-{{$sala->Id_sala}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Estas seguro de eliminar la sala {{ $sala->Nombre_sala}}
+                        </div>
+                        <div class="modal-footer">
+                            <form action="{{ route('sala.destroy', ['sala' => $sala->Id_sala]) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Aceptar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fin del Modal -->
+
+
+
         @endforeach
     </tbody>
 </table>
