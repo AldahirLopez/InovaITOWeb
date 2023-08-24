@@ -34,6 +34,8 @@ class proyectoController extends Controller
         $persona = Estudiante::where('Id_persona', $idpersona)->first();
         $proyectoParticipante = ProyectoParticipante::where('Matricula', $persona->Matricula)->first();
         
+        $proyecto = null;
+        
         if($proyectoParticipante!=null){
             $folioproyecto = $proyectoParticipante->Folio;
 

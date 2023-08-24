@@ -228,8 +228,67 @@ if (count($registros_proyecto) < 3 || count($registros_proyecto)> 5) {
             </table>
 
             @if (count($registros_proyecto)>=3 && $usuarioLogueado->rol->Id_rol=="ROL02" )
-            <a href="/asesores" class="btn btn-primary" style="margin-bottom: 10px;">Registrar Asesor</a>
+            <a href="{{ route('asesores.create') }}" class="btn btn-primary" style="margin-bottom: 10px;">Registrar Asesor</a>
             @endif
 
         </div>
-@endsection
+        <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
+
+            <table class="table table-custom">
+                <thead style="background-color: #FF9500;">
+                    <tr class="table-header">
+                        <th>Abreviatura profesional</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Departamento</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($datosAsesores as $datosAsesor)
+
+                    <tr>
+                        <td>{{ $datosAsesor->Abreviatura_profesional}}</td>
+                        <td>{{ $datosAsesor->persona->Nombre_persona}} </td>
+                        <td>{{ $datosAsesor->persona->Apellido1}} {{ $asesor->persona->Apellido2}}</td>
+                        <td>{{ $datosAsesor->departamento->Nombre_departamento}}</td>
+                        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-{{$datosAsesor->Id_asesor}}">Eliminar</button></td>
+
+                    </tr>
+
+                    <!-- Modal de Eliminación -->
+                    <div class="modal fade" id="modal-{{$datosAsesor->Id_asesor}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Estas seguro de eliminar al asesor {{ $datosAsesor->persona->Nombre_persona}}
+                                </div>
+                                <div class="modal-footer">
+                                    <form action="{{ route('asesoresproyectos.destroy', ['asesore' => $asesor->Id_asesor]) }}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-primary">Aceptar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fin del Modal -->
+
+
+                    @endforeach
+                </tbody>
+            </table>
+
+
+        </div>
+        @endsection
