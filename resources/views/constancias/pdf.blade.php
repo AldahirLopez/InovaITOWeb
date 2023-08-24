@@ -14,22 +14,19 @@
 
     <div style="text-align: center; margin-top: 140px;">
         <h3>EL INSTITUTO TECNOLÓGICO NACIONAL DE MÉXICO </h3>
-        <h3>A TRAVES DEL INSTITUTO TECNOLÓGICO DE OAXACA</h3>
+        <h3>A TRAVES DEL {{ strtoupper($instituto) }}</h3>
         <h3>OTORGAN EL PRESENTE</h3>
         <BR>
         <h2>RECONOCIMIENTO</h2>
-        <h2>A {{$nombre_participante}}</h2>
+        <h2>A {{strtoupper($nombre_participante)}}</h2>
         <h3>POR SU DESTACADA PARTICIPACIÓN COMO</h3>
-        <h3>{{$rol_participante}}</h3><h3>DEL PROYECTO</h3><h3>{{ $nombreProyecto }}</h3>
-        <h3>, EN LA CATEGORÍA</h3><h3>-{{$categoria}}-</h3>
+        <h3>{{strtoupper($rol_participante)}} DEL PROYECTO {{ strtoupper($nombreProyecto) }}, </h3>
+        <h3>EN LA CATEGORÍA {{strtoupper($categoria)}} </h3>
         <h3>EN EL EVENTO INNOVATEC 2023</h3>
         <h3>CELEBRADO DEL</h3> <h3>-AQUI VA LA FECHA-</h3>
-        <h3>Instituto: {{ $instituto }}</h3>
-
         <div style="display: flex;">
             <div>
-                <h3 style="flex: 1; text-align: left;">Coordinador: {{ $coordinador }}</h3> <h3 style="flex: 1; text-align: right;">Director: {{ $director }}</h3>
-        
+                <h3 style="flex: 1; text-align: left;">Coordinador: {{ strtoupper($coordinador) }}</h3> <h3 style="flex: 1; text-align: right;">Director: {{ $director }}</h3>     
         </div>
     </div>
 </body>
