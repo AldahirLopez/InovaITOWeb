@@ -99,7 +99,7 @@ $editado=false;
 
         </li>
         <li class="nav-item">
-            <span class="nav-link">{{ $nombreUsuario }}</span>
+            <span class="nav-link">{{ $nombreUsuario }} {{$usuarioLogueado->rol->Nombre_rol}}</span>
         </li>
     </ul>
 </form>
