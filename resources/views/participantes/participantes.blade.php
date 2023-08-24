@@ -10,87 +10,87 @@
 
 
 @if (session('error'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{ session('error') }}  
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ session('error') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
 @if (session('c_existente'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{ session('c_existente') }}  
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ session('c_existente') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
 
 <style>
-.custom-input {
-    background-color: #BEBEBE;
-    border-radius: 10px;
-    color: #2E2D2F;
-    border: none;
-    padding: 10px;
-    width: 100%;
-}
+    .custom-input {
+        background-color: #BEBEBE;
+        border-radius: 10px;
+        color: #2E2D2F;
+        border: none;
+        padding: 10px;
+        width: 100%;
+    }
 
-.form-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
+    .form-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
 
-.form-group {
-    flex-basis: calc(33.33% - 10px);
-}
+    .form-group {
+        flex-basis: calc(33.33% - 10px);
+    }
 
-.input-field {
-    margin-bottom: 20px;
-    border-radius: 10px;
-}
+    .input-field {
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
 
-.input-field label {
-    color: #2E2D2F;
-}
+    .input-field label {
+        color: #2E2D2F;
+    }
 
-.input-field input[type="text"],
-.input-field input[type="email"],
-.input-field select {
-    background-color: #BEBEBE;
-    border-radius: 10px;
-    color: #2E2D2F;
-    border: none;
-    padding: 10px;
-    width: 100%;
-}
+    .input-field input[type="text"],
+    .input-field input[type="email"],
+    .input-field select {
+        background-color: #BEBEBE;
+        border-radius: 10px;
+        color: #2E2D2F;
+        border: none;
+        padding: 10px;
+        width: 100%;
+    }
 
-.input-field input[type="text"]::placeholder,
-.input-field input[type="email"]::placeholder {
-    color: #2E2D2F;
-}
+    .input-field input[type="text"]::placeholder,
+    .input-field input[type="email"]::placeholder {
+        color: #2E2D2F;
+    }
 
-.submit-button {
-    width: 100%;
-    height: 50px;
-    background-color: #FA7A1E;
-    color: #FFFFFF;
-    font-size: 25px;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
+    .submit-button {
+        width: 100%;
+        height: 50px;
+        background-color: #FA7A1E;
+        color: #FFFFFF;
+        font-size: 25px;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
 
-.submit-button:active {
-    transform: scale(0.95);
-}
+    .submit-button:active {
+        transform: scale(0.95);
+    }
 
-.error-message {
-    color: red;
-    display: none;
-}
+    .error-message {
+        color: red;
+        display: none;
+    }
 </style>
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
     <h2 style="color: #2E2D2F; margin-bottom: 20px;">Formulario de Registro de Participantes</h2>
@@ -178,17 +178,8 @@
                 <div class="input-field">
                     <label style="color: #2E2D2F;">Semestre:</label>
                     <select name="semestre">
-                        <option value="SEM01">1</option>
-                        <option value="SEM02">2</option>
-                        <option value="SEM03">3</option>
-                        <option value="SEM01">4</option>
-                        <option value="SEM02">5</option>
-                        <option value="SEM03">6</option>
-                        <option value="SEM01">7</option>
-                        <option value="SEM02">8</option>
-                        <option value="SEM03">9</option>
-                        <option value="SEM01">10</option>
-                        <option value="SEM02">11</option>
+                        <option value="SEM01">8</option>
+                        <option value="SEM02">9</option>
                         <option value="SEM03">10</option>
                     </select>
                 </div>
@@ -205,9 +196,9 @@
                     <input type="date" name="fechaNacimiento" class="custom-input" required>
                 </div>
             </div>
-       
-            
-        <button class="submit-button" type="submit">Registrar</button>
+
+
+            <button class="submit-button" type="submit">Registrar</button>
     </form>
 </div>
 
@@ -216,80 +207,80 @@
 
 
 <script>
-function validateForm() {
-    var valid = true;
+    function validateForm() {
+        var valid = true;
+
+        var correoInput = document.getElementById("correo");
+        var correoError = document.getElementById("correo-error");
+        var correoPattern = /^[\w-\.]+@(?:[a-zA-Z0-9][a-zA-Z0-9-]+\.)+(edu\.mx|TECNM\.MX|tecnm\.mx|EDU\.MX)$/;
+
+        if (!correoPattern.test(correoInput.value)) {
+            correoError.style.display = "block";
+            valid = false;
+        } else {
+            correoError.style.display = "none";
+        }
+
+        var curpInput = document.getElementById("curp");
+        var curpError = document.getElementById("curp-error");
+        var curpPattern = /^[A-Z]{4}\d{6}[H,M][A-Z]{5}\w\d$/;
+
+        if (!curpPattern.test(curpInput.value)) {
+            curpError.style.display = "block";
+            valid = false;
+        } else {
+            curpError.style.display = "none";
+        }
+
+        var numIneInput = document.getElementById("numIne");
+        var numIneError = document.getElementById("numIne-error");
+        var numInePattern = /^\d{13}$/;
+
+        if (!numInePattern.test(numIneInput.value)) {
+            numIneError.style.display = "block";
+            valid = false;
+        } else {
+            numIneError.style.display = "none";
+        }
+
+        return valid;
+    }
 
     var correoInput = document.getElementById("correo");
-    var correoError = document.getElementById("correo-error");
-    var correoPattern = /^[\w-\.]+@(?:[a-zA-Z0-9][a-zA-Z0-9-]+\.)+(edu\.mx|TECNM\.MX|tecnm\.mx|EDU\.MX)$/;
+    correoInput.addEventListener("input", function() {
+        var correoError = document.getElementById("correo-error");
+        var correoPattern = /^[\w-\.]+@(?:[a-zA-Z0-9][a-zA-Z0-9-]+\.)+(edu\.mx|TECNM\.MX|tecnm\.mx|EDU\.MX)$/;
 
-    if (!correoPattern.test(correoInput.value)) {
-        correoError.style.display = "block";
-        valid = false;
-    } else {
-        correoError.style.display = "none";
-    }
+        if (!correoPattern.test(correoInput.value)) {
+            correoError.style.display = "block";
+        } else {
+            correoError.style.display = "none";
+        }
+    });
 
     var curpInput = document.getElementById("curp");
-    var curpError = document.getElementById("curp-error");
-    var curpPattern = /^[A-Z]{4}\d{6}[H,M][A-Z]{5}\w\d$/;
+    curpInput.addEventListener("input", function() {
+        var curpError = document.getElementById("curp-error");
+        var curpPattern = /^[A-Z]{4}\d{6}[H,M][A-Z]{5}\w\d$/;
 
-    if (!curpPattern.test(curpInput.value)) {
-        curpError.style.display = "block";
-        valid = false;
-    } else {
-        curpError.style.display = "none";
-    }
+        if (!curpPattern.test(curpInput.value)) {
+            curpError.style.display = "block";
+        } else {
+            curpError.style.display = "none";
+        }
+    });
 
     var numIneInput = document.getElementById("numIne");
-    var numIneError = document.getElementById("numIne-error");
-    var numInePattern = /^\d{13}$/;
+    numIneInput.addEventListener("input", function() {
+        var numIneError = document.getElementById("numIne-error");
+        var numInePattern = /^\d{13}$/;
 
-    if (!numInePattern.test(numIneInput.value)) {
-        numIneError.style.display = "block";
-        valid = false;
-    } else {
-        numIneError.style.display = "none";
-    }
-
-    return valid;
-}
-
-var correoInput = document.getElementById("correo");
-correoInput.addEventListener("input", function() {
-    var correoError = document.getElementById("correo-error");
-    var correoPattern = /^[\w-\.]+@(?:[a-zA-Z0-9][a-zA-Z0-9-]+\.)+(edu\.mx|TECNM\.MX|tecnm\.mx|EDU\.MX)$/;
-
-    if (!correoPattern.test(correoInput.value)) {
-        correoError.style.display = "block";
-    } else {
-        correoError.style.display = "none";
-    }
-});
-
-var curpInput = document.getElementById("curp");
-curpInput.addEventListener("input", function() {
-    var curpError = document.getElementById("curp-error");
-    var curpPattern = /^[A-Z]{4}\d{6}[H,M][A-Z]{5}\w\d$/;
-
-    if (!curpPattern.test(curpInput.value)) {
-        curpError.style.display = "block";
-    } else {
-        curpError.style.display = "none";
-    }
-});
-
-var numIneInput = document.getElementById("numIne");
-numIneInput.addEventListener("input", function() {
-    var numIneError = document.getElementById("numIne-error");
-    var numInePattern = /^\d{13}$/;
-
-    if (!numInePattern.test(numIneInput.value)) {
-        numIneError.style.display = "block";
-    } else {
-        numIneError.style.display = "none";
-    }
-});
+        if (!numInePattern.test(numIneInput.value)) {
+            numIneError.style.display = "block";
+        } else {
+            numIneError.style.display = "none";
+        }
+    });
 </script>
 <script src="{{ asset('js/participante.js') }}"></script>
 @endsection
