@@ -233,7 +233,7 @@ if (count($registros_proyecto) < 3 || count($registros_proyecto)> 5) {
 
         </div>
         <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
-
+        <h3 class="page__heading">Asesores</h3>
             <table class="table table-custom">
                 <thead style="background-color: #FF9500;">
                     <tr class="table-header">

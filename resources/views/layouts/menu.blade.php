@@ -78,14 +78,14 @@ $ficha_tecnica_registrada=True;
         <i class=" fas fa-user-lock"></i><span>Roles</span>
     </a>
     @endif
-    @if ($usuarioLogueado->rol->Id_rol=="ROL03" || $usuarioLogueado->rol->Id_rol=="ROL07")
+    @if ($usuarioLogueado->rol->Id_rol=="ROL03")
     <a class="nav-link {{ Request::is('proyectosA') ? 'active' : '' }} " href="/proyectosA">
         <i class=" fas fa-folder"></i><span>Proyectos Asesor</span>
     </a>
     @endif
 
 
-    @if ($usuarioLogueado->rol->Id_rol=="ROL01" || $usuarioLogueado->rol->Id_rol=="ROL07")
+    @if ($usuarioLogueado->rol->Id_rol=="ROL01")
     <a class="nav-link {{ Request::is('proyectosC') ? 'active' : '' }} " href="/proyectosC">
         <i class=" fas fa-folder"></i><span>Proyectos Coordinador</span>
     </a>

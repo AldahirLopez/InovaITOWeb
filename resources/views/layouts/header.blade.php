@@ -1,4 +1,3 @@
-
 @php
 use App\Models\Proyecto;
 use App\Models\Estudiante;
@@ -17,21 +16,21 @@ $idpersona = $usuario->Id_persona;
 $usuarioLogueado=Usuario::where('Id_persona',$idpersona)->first();
 $editar="";
 $editado=false;
-    if($usuarioLogueado->rol->Id_rol=="ROL02"){
-        $estudiante=Estudiante::where('Id_persona',$idpersona)->first();
+if($usuarioLogueado->rol->Id_rol=="ROL02"){
+$estudiante=Estudiante::where('Id_persona',$idpersona)->first();
 
-        $proyectoParticipante= ProyectoParticipante::where('Matricula', $estudiante->Matricula)->get();
-        
-        $proyecto=Proyecto::where('Folio',$proyectoParticipante[0]->Folio)->first();
-          
-        if($proyecto->memoria==null && $proyecto->Modelo_negocio==null){
-           $editar="El asesor te mando a corregir la memoria tecnica y el modelo de negocios / o falta agregarlos";
-          }else{
-           $editado=true;
+$proyectoParticipante= ProyectoParticipante::where('Matricula', $estudiante->Matricula)->get();
 
-          }
+$proyecto=Proyecto::where('Folio',$proyectoParticipante[0]->Folio)->first();
 
-        }
+if($proyecto->memoria==null && $proyecto->Modelo_negocio==null){
+$editar="El asesor te mando a corregir la memoria tecnica y el modelo de negocios / o falta agregarlos";
+}else{
+$editado=true;
+
+}
+
+}
 
 
 
@@ -39,7 +38,13 @@ $editado=false;
 
 
 
-
+<style>
+  .nav-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
 
 
 
@@ -57,40 +62,40 @@ $editado=false;
         </li>
         <li class="nav-item dropdown">
             <a href="#" data-toggle="dropdown" class="nav-link nav-link-lg">
-            <i class="fas fa-bell"></i>
-            @if ($usuarioLogueado->rol->Id_rol=="ROL03")
+                <i class="fas fa-bell"></i>
+                @if ($usuarioLogueado->rol->Id_rol=="ROL03")
                 <span class="badge badge-danger">{{$numero_proyectos_pendientes_asesor}}</span>
-           
-            
+
+
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                 <p>Tienes {{$numero_proyectos_pendientes_asesor}} proyectos pendientes</p>
+                <p>Tienes {{$numero_proyectos_pendientes_asesor}} proyectos pendientes</p>
             </div>
             @endif
 
 
             @if ($usuarioLogueado->rol->Id_rol=="ROL01" || $usuarioLogueado->rol->Id_rol=="ROL07")
-                <span class="badge badge-danger">{{$numero_proyectos_pendientes_coordinador}}</span>
-           
-            
+            <span class="badge badge-danger">{{$numero_proyectos_pendientes_coordinador}}</span>
+
+
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                 <p>Tienes {{$numero_proyectos_pendientes_coordinador}} proyectos pendientes</p>
+                <p>Tienes {{$numero_proyectos_pendientes_coordinador}} proyectos pendientes</p>
             </div>
             @endif
 
 
             @if ($usuarioLogueado->rol->Id_rol=="ROL02")
-                <span class="badge badge-danger">@if ($editado==false)
-                    1
+            <span class="badge badge-danger">@if ($editado==false)
+                1
                 @else
-                    0
+                0
                 @endif</span>
-           
-            
+
+
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                 <p>{{$editar}}</p>
+                <p>{{$editar}}</p>
             </div>
             @endif
 
@@ -99,7 +104,10 @@ $editado=false;
 
         </li>
         <li class="nav-item">
-            <span class="nav-link">{{ $nombreUsuario }} {{$usuarioLogueado->rol->Nombre_rol}}</span>
+            <span class="nav-link">
+                <i class="fas fa-user"></i> NOMBRE: {{ strtoupper($nombreUsuario) }} &nbsp;
+                <i class="fas fa-user-tag"></i> ROL: {{ strtoupper($usuarioLogueado->rol->Nombre_rol) }}
+            </span>
         </li>
     </ul>
 </form>
