@@ -82,13 +82,13 @@
                     <th>CATEGORÍA</th>           
                     <th>ACCIONES</th>
                     <th>DESCARGAR</th>
-            
+                  
                 </tr>
             </thead>
             <tbody>
-                <!-- Aquí iteramos sobre los datos de datosFichaTecnica para mostrar cada fila de la tabla -->
+              
                 @foreach ($ProyectosPendientes as $ProyectoPendiente)
-                    @if ($ProyectoPendiente->proyecto->Estado_acreditacion=='0')
+                    @if ($ProyectoPendiente->proyecto->Estado_acreditacion=='0' || $ProyectoPendiente->proyecto->Estado_acreditacion==NULL)
                     <tr>
                     <td>{{ $ProyectoPendiente->proyecto->Folio }}</td>
                     <td>{{ $ProyectoPendiente->proyecto->ficha->Nombre_corto }}</td>
@@ -115,7 +115,7 @@
 
                             <span class="slider"></span>
                         </label>
-                    </div> 
+                    </div>  
 
                     </td>
 

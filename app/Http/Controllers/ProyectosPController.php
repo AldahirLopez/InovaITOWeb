@@ -19,19 +19,16 @@ class ProyectosPController extends Controller
     public function index()
     {
 
-            //Listamos los proyectos pendientes del asesor
-
-            //*lo k falta es pasar el rol del que ta logueado debe ir el ASE04
 
             $usuario = session('usuario');
             $idpersona = $usuario->Id_persona;
             $usuarioLogueado=Usuario::where('Id_persona',$idpersona)->first();
 
-            $id_Asesor=Asesor::Where('Id_asesor',$usuarioLogueado->Id_persona)->first();
+            $asesor=Asesor::Where('Id_persona',$idpersona)->first();
 
-
-            $ProyectosPendientes=proyectoAsesor::where('Id_asesor',$id_Asesor)->get();
-
+          
+            $ProyectosPendientes=proyectoAsesor::where('Id_asesor',$asesor->Id_asesor)->get();
+            
 
             return view('proyectos.proyectos_pendientes',compact('ProyectosPendientes'));
     }

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\proyectoAsesor;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Pagination\Paginator;
@@ -34,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
 
 
 
-        $proyectos_pendientes_asesor = Proyecto::where('Estado_acreditacion', 0)->get();
+        $proyectos_pendientes_asesor = proyectoAsesor::all();
     
         $numero_proyectos_pendientes_asesor = $proyectos_pendientes_asesor->count();
 
