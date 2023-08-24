@@ -73,7 +73,7 @@ class coordinadorController extends Controller
 
         //datos del coordinador
         $id_coordinador = request()->input('id_coordinador');
-        $clave_tecnologico=request()->input('Clave_tecnologico');
+        $clave_tecnologico = request()->input('Clave_tecnologico');
 
         $datosUsuario = $nombre . $apellidop . $apellidom . $correo;
         $idGenerada = substr(sha1($datosUsuario), 0, 10);
@@ -121,9 +121,11 @@ class coordinadorController extends Controller
         $usuario->save();
 
         //Agregamos el coordinador
+        $letra = 'COORD';
+        $nomenclatura = $letra + $idGenerada2;
 
         $Coordinador=new coordinador();
-        $Coordinador->Id_coordinador=$id_coordinador;
+        $Coordinador->Id_coordinador=$nomenclatura;
         $Coordinador->Id_persona=$idGenerada2;
         $Coordinador->Clave_tecnologico=$clave_tecnologico;
         $Coordinador->save();
