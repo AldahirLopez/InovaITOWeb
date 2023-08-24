@@ -178,11 +178,9 @@
                 <div class="input-field">
                     <label style="color: #2E2D2F;">Semestre:</label>
                     <select name="semestre">
-                        @foreach ($semestres as $semestre )
-                        <option value="{{$semestre->Id_semestre}}">{{$semestre->Numero_semestre}}</option>
-                        @endforeach
-
-
+                        <option value="SEM01">8</option>
+                        <option value="SEM02">9</option>
+                        <option value="SEM03">10</option>
                     </select>
                 </div>
 

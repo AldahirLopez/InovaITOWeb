@@ -4,45 +4,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            height: 60px;
+        }
+        .content {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table th, .table td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
-    <img src="{{ public_path('img/sep.png') }}" alt="" style="position: absolute; left: 0; top: 0; height: 60px;">
-    <img src="{{ public_path('img/logo_innovaITO.png') }}" alt="" style="position: absolute; left:45%; top: 0; height: 60px;">
-    <img src="{{ public_path('img/tecNM.png') }}" alt="Imagen 2" style="position: absolute; right: 0; top: 0;  height: 60px;">
-    <br>
-    <br>
-    <br>
-    <br>
-   <h2>Folio del proyecto:{{$proyecto->Folio}}</h2>
-   <h2>Nombre del proyecto:{{$proyecto->ficha->Nombre_corto}}</h2>
-   <h2>Objetivo:{{$proyecto->ficha->Objetivo}}</h2>
-   <p>Descripcion general:{{$proyecto->ficha->Descripcion_general}}</p>
-   <p>Prospecto resultados:{{$proyecto->ficha->Prospecto_resultados}}</p>
-   <p>Area:{{$proyecto->ficha->area->Nombre_area}}</p>
-   <p>Categoria:{{$proyecto->ficha->area->categoria->Nombre_categoria}}</p>
+    <div class="header">
+        <img src="{{ public_path('img/sep.png') }}" alt="">
+        <img src="{{ public_path('img/logo_innovaITO.png') }}" alt="">
+        <img src="{{ public_path('img/tecNM.png') }}" alt="">
+    </div>
 
-    <p>Memoria tecnica</p>
-    @if ($proyecto->memoria!=null)
-        
-        <p>Descripcion_problematica{{$proyecto->memoria->Descripcion_problematica}}</p>
-        <p>Estado_arte{{$proyecto->memoria->Estado_arte}}</p>
-        <p>Descripcion_innovacion{{$proyecto->memoria->Descripcion_innovacion}}</p>
-        <p>Propuesta_valor{{$proyecto->memoria->Propuesta_valor}}</p>
-        <p>Mercado_potencial{{$proyecto->memoria->Mercado_potencial}}</p>
-        <p>Viabilidad_tecnica{{$proyecto->memoria->Viabilidad_tecnica}}</p>
-        <p>Viabilidad_financiera{{$proyecto->memoria->Viabilidad_financiera}}</p>
-        <p>Estrategia_propiedadIntelectual{{$proyecto->memoria->Estrategia_propiedadIntelectual}}</p>
-        <p>Interpretacion_resultados{{$proyecto->memoria->Interpretacion_resultados}}</p>
-        <p>Fuentes_consultadas{{$proyecto->memoria->Fuentes_consultadas}}</p>
+    <div class="content">
+        <h2>Detalles del Proyecto</h2>
+    </div>
 
-
-
+    <table class="table">
+        <tr>
+            <th>Folio del proyecto</th>
+            <td>{{$proyecto->Folio}}</td>
+        </tr>
+        <tr>
+            <th>Nombre del proyecto</th>
+            <td>{{$proyecto->ficha->Nombre_corto}}</td>
+        </tr>
+        <tr>
+            <th>Objetivo</th>
+            <td>{{$proyecto->ficha->Objetivo}}</td>
+        </tr>
+        <tr>
+            <th>Descripción general</th>
+            <td>{{$proyecto->ficha->Descripcion_general}}</td>
+        </tr>
+        <tr>
+            <th>Prospecto resultados</th>
+            <td>{{$proyecto->ficha->Prospecto_resultados}}</td>
+        </tr>
+        <tr>
+            <th>Área</th>
+            <td>{{$proyecto->ficha->area->Nombre_area}}</td>
+        </tr>
+        <tr>
+            <th>Categoría</th>
+            <td>{{$proyecto->ficha->area->categoria->Nombre_categoria}}</td>
+        </tr>
+        @if ($proyecto->memoria!=null)
+        <tr>
+            <th colspan="2">Memoria técnica</th>
+        </tr>
+        <tr>
+            <th>Descripción problemática</th>
+            <td>{{$proyecto->memoria->Descripcion_problematica}}</td>
+        </tr>
+        <tr>
+            <th>Estado del arte</th>
+            <td>{{$proyecto->memoria->Estado_arte}}</td>
+        </tr>
+        <tr>
+            <th>Descripción de la innovación</th>
+            <td>{{$proyecto->memoria->Descripcion_innovacion}}</td>
+        </tr>
+        <tr>
+            <th>Propuesta de valor</th>
+            <td>{{$proyecto->memoria->Propuesta_valor}}</td>
+        </tr>
+        <tr>
+            <th>Mercado potencial</th>
+            <td>{{$proyecto->memoria->Mercado_potencial}}</td>
+        </tr>
+        <tr>
+            <th>Viabilidad técnica</th>
+            <td>{{$proyecto->memoria->Viabilidad_tecnica}}</td>
+        </tr>
+        <tr>
+            <th>Viabilidad financiera</th>
+            <td>{{$proyecto->memoria->Viabilidad_financiera}}</td>
+        </tr>
+        <tr>
+            <th>Estrategia propiedad intelectual</th>
+            <td>{{$proyecto->memoria->Estrategia_propiedadIntelectual}}</td>
+        </tr>
+        <tr>
+            <th>Interpretación de resultados</th>
+            <td>{{$proyecto->memoria->Interpretacion_resultados}}</td>
+        </tr>
+        <tr>
+            <th>Fuentes consultadas</th>
+            <td>{{$proyecto->memoria->Fuentes_consultadas}}</td>
+        </tr>
     @endif
 
-
-
-
-
-    
+</table>
 </body>
 </html>
