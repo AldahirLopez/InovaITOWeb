@@ -175,10 +175,10 @@ if (count($registros_proyecto) < 3 || count($registros_proyecto)> 5) {
                 <tbody>
                     @foreach($datosPersonas as $datosPersona)
                     <tr>
-                        <td>{{ $datosPersona['nombre'] . ' ' . $datosPersona['apellido1'] . ' ' . $datosPersona['apellido2'] }}</td>
+                        <td>{{ strtoupper($datosPersona['nombre'] . ' ' . $datosPersona['apellido1'] . ' ' . $datosPersona['apellido2'] )}}</td>
                         <td>{{ $datosPersona['matricula']}}</td>
                         <td>{{ $datosPersona['semestre']}}</td>
-                        <td>{{ $datosPersona['carrera']}}</td>
+                        <td>{{ strtoupper($datosPersona['carrera'])}}</td>
                         <td>
 
                             @if ($usuarioLogueado->rol->Id_rol=="ROL02" )
