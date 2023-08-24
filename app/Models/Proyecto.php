@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Ficha_Tecnica;
+use App\Models\Memoria_t;
 
 class Proyecto extends Model
 {
@@ -20,6 +21,13 @@ class Proyecto extends Model
     {
         return $this->belongsTo(Ficha_Tecnica::class, 'Id_fichaTecnica', 'Id_fichaTecnica');
     }
+
+    public function memoria()
+    {
+        return $this->belongsTo(Memoria_t::class, 'Id_memoriaTecnica', 'Id_memoriaTecnica');
+    }
+
+
 
     protected $fillable = [
         // ... otras columnas permitidas en asignación en masa
