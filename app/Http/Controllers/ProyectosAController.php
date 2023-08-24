@@ -7,6 +7,8 @@ use App\Models\validacionProyectoA;
 use App\Models\validacionProyectoC;
 use Illuminate\Support\Facades\DB;
 use App\Models\Usuario;
+use App\Http\Controllers\AsesorController;
+use App\Models\Asesor;
 class ProyectosAController extends Controller
 {
 
@@ -37,9 +39,10 @@ class ProyectosAController extends Controller
                 $usuario = session('usuario');
                 $idpersona = $usuario->Id_persona;
                 $usuarioLogueado=Usuario::where('Id_persona',$idpersona)->first();
+                $asesor=Asesor::Where('Id_persona',$idpersona)->first();
 
                 //Aqui debe ir el Id del asesor que este logueado
-                $validacionProyectoA->Id_asesor=$usuarioLogueado->rol->Id_rol;
+                $validacionProyectoA->Id_asesor=$asesor->Id_asesor;
                 $validacionProyectoA->Folio=$proyectoAprobado;
                 $validacionProyectoA->Fecha_validacion='2023-08-03';
                 $validacionProyectoA->Observaciones="zi";

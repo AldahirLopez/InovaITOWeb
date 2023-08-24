@@ -178,8 +178,17 @@
                 <div class="input-field">
                     <label style="color: #2E2D2F;">Semestre:</label>
                     <select name="semestre">
-                        <option value="SEM01">8</option>
-                        <option value="SEM02">9</option>
+                        <option value="SEM01">1</option>
+                        <option value="SEM02">2</option>
+                        <option value="SEM03">3</option>
+                        <option value="SEM01">4</option>
+                        <option value="SEM02">5</option>
+                        <option value="SEM03">6</option>
+                        <option value="SEM01">7</option>
+                        <option value="SEM02">8</option>
+                        <option value="SEM03">9</option>
+                        <option value="SEM01">10</option>
+                        <option value="SEM02">11</option>
                         <option value="SEM03">10</option>
                     </select>
                 </div>
