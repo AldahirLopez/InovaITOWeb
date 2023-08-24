@@ -140,8 +140,8 @@ class AsesorProyectoController extends Controller
 
 
 
-        $usuario = session('usuario');
-        $idpersona = $usuario->Id_persona;
+        $personainicida = session('usuario');
+        $idpersona = $personainicida->Id_persona;
         $persona = Estudiante::where('Id_persona', $idpersona)->first();
         $proyecto = ProyectoParticipante::where('Matricula', $persona->Matricula)->first();
         $folioproyecto = $proyecto->Folio;
