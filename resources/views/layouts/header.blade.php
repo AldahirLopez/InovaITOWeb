@@ -19,8 +19,9 @@ $editado=false;
 if($usuarioLogueado->rol->Id_rol=="ROL02"){
 $estudiante=Estudiante::where('Id_persona',$idpersona)->first();
 
-$proyectoParticipante= ProyectoParticipante::where('Matricula', $estudiante->Matricula)->get();
-if($proyectoParticipante!=null){
+$proyectoParticipante = ProyectoParticipante::where('Matricula', $estudiante->Matricula)->get();
+if ($proyectoParticipante->isNotEmpty()) {
+$proyecto = Proyecto::where('Folio', $proyectoParticipante[0]->Folio)->first();
 $proyecto=Proyecto::where('Folio',$proyectoParticipante[0]->Folio)->first();
 
 if($proyecto->memoria==null && $proyecto->Modelo_negocio==null){
