@@ -15,6 +15,24 @@ $modelo_negocios_registrada=False;
 $usuario = session('usuario');
 $idpersona = $usuario->Id_persona;
 $usuarioLogueado=Usuario::where('Id_persona',$idpersona)->first();
+$editar="";
+$editado=false;
+    if($usuarioLogueado->rol->Id_rol=="ROL02"){
+        $estudiante=Estudiante::where('Id_persona',$idpersona)->first();
+
+        $proyectoParticipante= ProyectoParticipante::where('Matricula', $estudiante->Matricula)->get();
+        
+        $proyecto=Proyecto::where('Folio',$proyectoParticipante[0]->Folio)->first();
+          
+        if($proyecto->memoria==null && $proyecto->Modelo_negocio==null){
+           $editar="El asesor te mando a corregir la memoria tecnica y el modelo de negocios / o falta agregarlos";
+          }else{
+           $editado=true;
+
+          }
+
+        }
+
 
 
 @endphp
@@ -62,10 +80,27 @@ $usuarioLogueado=Usuario::where('Id_persona',$idpersona)->first();
             @endif
 
 
+            @if ($usuarioLogueado->rol->Id_rol=="ROL02")
+                <span class="badge badge-danger">@if ($editado==false)
+                    1
+                @else
+                    0
+                @endif</span>
+           
+            
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                 <p>{{$editar}}</p>
+            </div>
+            @endif
+
+
+
 
         </li>
         <li class="nav-item">
             <span class="nav-link">{{ $nombreUsuario }}</span>
+    
         </li>
     </ul>
 </form>
