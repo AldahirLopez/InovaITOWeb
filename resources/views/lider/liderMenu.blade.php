@@ -178,7 +178,7 @@ Admin Login
 </form>
 
         <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
-            <h2 style="color: #2E2D2F; margin-bottom: 20px;">Formulario de Registro de Líder</h2>
+            <h2 style="color: #2E2D2F; margin-bottom: 20px;">Registro de Líder</h2>
             <form action="{{ route('lider.store') }}" method="POST" id="registration-form" onsubmit="return validateForm()">
                 @csrf
                 <div class="form-row">
@@ -223,7 +223,7 @@ Admin Login
                         <div class="input-field">
                             <label style="color: #2E2D2F;">Correo Institucional:</label>
                             <input type="email" name="correo" id="correo" placeholder="Ingrese correo institucional" required>
-                           <!-- <span id="correo-error" class="error-message" style="display: none;">El correo no es un correo institucional válido.</span>-->
+                        <span id="correo-error" class="error-message" style="display: none;">El correo no es un correo institucional válido.</span>
                         </div>
 
                         <div class="input-field">
