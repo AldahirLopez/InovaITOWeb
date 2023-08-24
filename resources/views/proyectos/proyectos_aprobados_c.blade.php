@@ -16,7 +16,7 @@
 }
 
 .table-custom {
-    background-color: #4E4B4D;
+    background-color: #BEBEBE;
     border-radius: 20px;
 }
 
@@ -69,12 +69,12 @@
 }
 
 </style>
-<div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
+<div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
 <a href="/proyectosCP" class="btn btn-primary" style="margin-bottom: 10px; background-color: #FA7A1E; border-radius: 20px; color: black;">Ver Proyectos Pendientes</a>
   <form id="aprobados-form" onsubmit="return validateForm()">
         @csrf
         <table class="table table-custom">
-            <thead style="background-color: #9D969B;">
+            <thead style="background-color: #FF9500;">
                 <tr class="table-header">
                     <th>Nombre del proyecto</th>
                     <th>Responsable</th>
