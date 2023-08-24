@@ -18,7 +18,9 @@ class participanteController extends Controller
 
     public function index()
     {
-        return view('participantes.participantes');
+        $carreras=Carrera::all();
+        $semestres=Semestre::all();
+        return view('participantes.participantes',compact('carreras','semestres'));
     }
 
     public function devolverEspectativa()
