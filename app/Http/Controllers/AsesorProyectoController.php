@@ -223,17 +223,21 @@ class AsesorProyectoController extends Controller
         
         $asesor = Asesor::where('Id_asesor',$id)->first();
      
+        DB::table('validacionProyectoA')
+        ->where('Id_asesor', $id)
+        ->delete();
+
         DB::table('proyectoAsesor')
-        ->where('Id_asesor', $asesor->Id_asesor)
+        ->where('Id_asesor', $id)
         ->delete();
 
         DB::table('asesorCargo')
-        ->where('Id_asesor', $asesor->Id_asesor)
+        ->where('Id_asesor', $id)
         ->delete();
 
 
         DB::table('asesor')
-        ->where('Id_asesor', $asesor->Id_asesor)
+        ->where('Id_asesor', $id)
         ->delete();
 
         DB::table('usuario')

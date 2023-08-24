@@ -113,18 +113,9 @@ class AsesorController extends Controller
 
         //Asiganar valores a Asesor
         $letra = 'ASE';
-        $numero = 1;
-        $nomenclatura = $letra . str_pad($numero, 2, '0', STR_PAD_LEFT);
+        $nomenclatura = $letra + $idGenerada2;
 
-        //Comprueba que el id no este registrado en la base de datos
-        // Verificar si la nomenclatura ya existe en la base de datos
-        $opciones = Asesor::where('Id_asesor', $nomenclatura)->get();
-
-        while ($opciones->count() > 0) {
-            $numero++; // Incrementar el número
-            $nomenclatura = $letra . str_pad($numero, 2, '0', STR_PAD_LEFT);
-            $opciones = Asesor::where('Id_asesor', $nomenclatura)->get();
-        }
+       
         //Guardar la informacion en jurado 
         $asesor = new Asesor();
         $asesor->Id_asesor = $nomenclatura;
