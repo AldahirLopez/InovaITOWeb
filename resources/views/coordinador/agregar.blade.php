@@ -41,6 +41,14 @@
 
 
 <style>
+    .custom-input {
+    background-color: #BEBEBE;
+    border-radius: 10px;
+    color: #2E2D2F;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    }
     .form-row {
         display: flex;
         justify-content: space-between;

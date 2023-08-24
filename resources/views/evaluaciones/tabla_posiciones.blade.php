@@ -12,11 +12,11 @@
     }
 
     .table td {
-        color: #FFFFFF;
+        color: #2E2D2F;
     }
 
     .table-custom {
-        background-color: #4E4B4D;
+        background-color: #BEBEBE;
         border-radius: 20px;
     }
 
@@ -29,6 +29,15 @@
 
     .switch-container input {
         display: none;
+    }
+
+    .input-field select {
+        background-color: #BEBEBE;
+        border-radius: 10px;
+        color: #2E2D2F;
+        border: none;
+        padding: 10px;
+        width: 100%;
     }
 
     .slider {
@@ -67,22 +76,52 @@
     .switch-container .slider:before {
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     }
+    .input-field {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .input-field label {
+        margin-right: 10px;
+    }
+
+    .input-field select {
+        background-color: #BEBEBE;
+        border-radius: 10px;
+        color: #2E2D2F;
+        border: none;
+        padding: 6px; /* Ajusta el tamaño vertical del select */
+        width: 180px; /* Ajusta el ancho del select */
+        margin-right: 10px; /* Agrega un margen derecho para separar del botón */
+    }
+
+    .input-field button {
+        background-color: #FF9500;
+        border: none;
+        border-radius: 10px;
+        color: #FFFFFF;
+        padding: 6px 10px; /* Ajusta el tamaño vertical y horizontal del botón */
+        cursor: pointer;
+    }
 </style>
-<div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
+<div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
     <form id="posiciones-form" action="{{ route('filtrar-proyectos') }}" method="post" onsubmit="return validateForm()">
         @csrf
-        <label for="categoria-select">Seleccionar Categoría:</label>
-        <select id="categoria-select" name="categoria">
-            <option value="all">Todas las Categorías</option>
-            @foreach ($categorias as $categoria)
-            <option value="{{$categoria->Id_categoria}}">{{$categoria->Nombre_categoria}}</option>
-            @endforeach
-        </select>
-        <button type="submit">Filtrar</button>
+        <div class="input-field">
+            <label for="categoria-select">Seleccionar Categoría:</label>
+            <select id="categoria-select" name="categoria">
+                <option value="all">Todas las Categorías</option>
+                @foreach ($categorias as $categoria)
+                <option value="{{$categoria->Id_categoria}}">{{$categoria->Nombre_categoria}}</option>
+                @endforeach
+            </select>
+            <button type="submit">Filtrar</button>
+        </div>
     </form>
     @csrf
     <table class="table table-custom">
-        <thead style="background-color: #9D969B;">
+        <thead style="background-color: #FF9500;">
             <tr class="table-header">
                 <th>Posicion</th>
                 <th>Nombre del proyecto</th>

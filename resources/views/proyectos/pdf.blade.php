@@ -10,13 +10,13 @@
             padding: 20px;
         }
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center; /* Cambio a "center" para centrar el texto */
             margin-bottom: 20px;
         }
         .header img {
             height: 60px;
+            margin: 0 auto; /* Centrar horizontalmente las imágenes */
+            display: block; /* Agregar esta línea para alinear correctamente las imágenes */
         }
         .content {
             text-align: center;
@@ -36,8 +36,9 @@
 <body>
     <div class="header">
         <img src="{{ public_path('img/sep.png') }}" alt="">
-        <img src="{{ public_path('img/logo_innovaITO.png') }}" alt="">
         <img src="{{ public_path('img/tecNM.png') }}" alt="">
+        <img src="{{ public_path('img/logo_innovaITO.png') }}" alt="">
+        
     </div>
 
     <div class="content">
