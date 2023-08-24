@@ -21,6 +21,7 @@ $usuario = session('usuario');
 $idpersona = $usuario->Id_persona;
 $usuarioLogueado=Usuario::where('Id_persona',$idpersona)->first();
 $persona = Estudiante::where('Id_persona', $idpersona)->first();
+if($usuarioLogueado->Id_rol=="ROL02"){
 $proyectoParticipante = ProyectoParticipante::where('Matricula', $persona->Matricula)->first();
 
 if($proyectoParticipante!=null){
@@ -33,6 +34,7 @@ $ficha_tecnica_registrada=True;
 
 }
 
+}
 }
 
 @endphp
