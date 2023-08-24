@@ -101,9 +101,9 @@
 <table class="table table-custom">
     <thead style="background-color: #FF9500;">
         <tr class="table-header">
-            <th>NOMBRE </th>
-            <th>LUGAR</th>
-            <th>ACCION</th>
+            <th>Nombre </th>
+            <th>Lugar</th>
+            <th>Acción</th>
         </tr>
     </thead>
     <tbody>
