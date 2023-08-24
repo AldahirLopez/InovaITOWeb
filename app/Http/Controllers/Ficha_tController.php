@@ -19,42 +19,44 @@ class Ficha_tController extends Controller
         return view('proyectos.ficha_t');
     }
 
-    public function generarIdFicha() {
+    public function generarIdFicha()
+    {
         $nomenclatura = 'F';
         $nomenclatura .= date('Y');
         $nomenclatura .= date('m');
         $nomenclatura .= date('d');
-    
+
         $numerosAleatorios = array();
-    
+
         while (count($numerosAleatorios) < 4) {
             $numero = mt_rand(0, 9);
-    
+
             if (!in_array($numero, $numerosAleatorios)) {
                 $numerosAleatorios[] = $numero;
             }
         }
-    
+
         $nomenclatura .= implode('', $numerosAleatorios);
-    
+
         return $nomenclatura;
     }
 
-    public function generarFolio() {
+    public function generarFolio()
+    {
         $nomenfolio = 'PRO';
-    
+
         $numerosAleatorios = array();
-    
+
         while (count($numerosAleatorios) < 4) {
             $numero = mt_rand(0, 9);
-    
+
             if (!in_array($numero, $numerosAleatorios)) {
                 $numerosAleatorios[] = $numero;
             }
         }
-    
+
         $nomenfolio .= implode('', $numerosAleatorios);
-    
+
         return $nomenfolio;
     }
 
@@ -70,8 +72,11 @@ class Ficha_tController extends Controller
         $objetivoProyecto = request()->input('objetivoProyecto');
         $descripcionGeneral = request()->input('descripcionGeneral');
         $resultadosProyecto = request()->input('resultadosProyecto');
-        $idFicha=$this->generarIdFicha();
-        $folio=$this->generarIdFicha();
+        // Generar el ID de la ficha técnica
+        $idFicha = $this->generarIdFicha();
+
+        // Asignar el mismo ID a la variable de folio
+        $folio = $idFicha;
 
         // Crear una nueva instancia de la clase Persona y asignar los valores
         $ficha = new Ficha_Tecnica();
@@ -101,13 +106,12 @@ class Ficha_tController extends Controller
         $informacionAdicional = Estudiante::where('Id_persona', $idPersona)->first();
         $proyectoParticipante->Folio = $folio;
         $proyectoParticipante->Matricula = $informacionAdicional->Matricula;
-        
+
         $proyectoParticipante->save();
-        
+
 
         // Redireccionar a la página de listar para mostrar la tabla actualizada
-       
+
         return redirect()->route('proyectos.index')->with('success', 'Ficha Tecnica registrada ');
-        
     }
 }
