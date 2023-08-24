@@ -12,7 +12,6 @@ class Asesor extends Model
     public $timestamps = false;
     protected $connection = 'mysql';
     protected $table = 'asesor';
-    protected $primaryKey = 'Id_asesor';
 
     public function departamento()
     {

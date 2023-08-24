@@ -25,16 +25,18 @@ class Tabla_partController extends Controller
             $matricula = ProyectoParticipante::where('Matricula', $persona->Matricula)->first();
             $folio = ProyectoParticipante::where('Folio', $matricula->Folio)->first();
 
-            $asesor=Asesor::all();
+            $asesor = Asesor::all();
             $asesoresProyectos = ProyectoAsesor::where('Folio', $matricula->Folio)->get();
-            
+
             $datosAsesores = [];
 
             foreach ($asesoresProyectos as $asesoresProyecto) {
-                $asesorEncontrado = Asesor::find($asesoresProyecto->Id_asesor);
+                $asesoresEncontrados = Asesor::where('Id_asesor', $asesoresProyecto->Id_asesor)->get();
 
-                if ($asesorEncontrado) {
-                    $datosAsesores[] = $asesorEncontrado;
+                if ($asesoresEncontrados->isNotEmpty()) {
+                    foreach ($asesoresEncontrados as $asesorEncontrado) {
+                        $datosAsesores[] = $asesorEncontrado;
+                    }
                 }
             }
             //Buscar todos los registros de ProyectoParticipante que coincidan con la Folio 

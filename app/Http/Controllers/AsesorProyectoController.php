@@ -173,7 +173,7 @@ class AsesorProyectoController extends Controller
         $usuario->save();
 
         // Redireccionar a la página de listar para mostrar la tabla actualizada
-        return redirect()->route('participantes.tabla_part')->with('success', 'Asesor registrado correctamente');
+        return redirect()->route('tabla_part.index')->with('success', 'Asesor registrado correctamente');
     }
 
 
@@ -223,7 +223,10 @@ class AsesorProyectoController extends Controller
         
         $asesor = Asesor::where('Id_asesor',$id)->first();
      
-    
+        DB::table('proyectoAsesor')
+        ->where('Id_asesor', $asesor->Id_asesor)
+        ->delete();
+
         DB::table('asesorCargo')
         ->where('Id_asesor', $asesor->Id_asesor)
         ->delete();
@@ -242,7 +245,7 @@ class AsesorProyectoController extends Controller
         ->delete();
 
 
-        return redirect()->route('participantes.tabla_part')->with('delete', 'Asesor eliminado correctamente');
+        return redirect()->route('tabla_part.index')->with('delete', 'Asesor eliminado correctamente');
 }
 
 }
