@@ -100,7 +100,6 @@ $editado=false;
         </li>
         <li class="nav-item">
             <span class="nav-link">{{ $nombreUsuario }}</span>
-    
         </li>
     </ul>
 </form>

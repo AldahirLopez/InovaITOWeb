@@ -67,6 +67,9 @@
     .switch-container .slider:before {
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     }
+    .disabled-slider {
+    background-color: red; 
+    }   
 </style>
 
 <div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
@@ -100,19 +103,19 @@
                 <label class="switch-container">
                     <input type="checkbox" name="estado_proyecto[]" value="{{$ProyectoPendiente->proyecto->Folio}}"
                         {{ ($ProyectoPendiente->proyecto->memoria != null && $ProyectoPendiente->proyecto->Modelo_negocio != null) ? '' : 'disabled' }}>
-                    <span class="slider"></span>
+                        <span class="slider{{ ($ProyectoPendiente->proyecto->memoria != null && $ProyectoPendiente->proyecto->Modelo_negocio != null) ? '' : ' disabled-slider' }}"></span>
                 </label>
             </div>
             
             <div class="d-flex justify-content-center align-items-center p-2">
-                <label>Editar</label>
-                <label class="switch-container">
-                    <input type="checkbox" name="estado_proyecto_editar[]"
-                        value="{{$ProyectoPendiente->proyecto->Folio}}"
-                        {{ ($ProyectoPendiente->proyecto->memoria != null && $ProyectoPendiente->proyecto->Modelo_negocio != null) ? '' : 'disabled' }}>
-                    <span class="slider"></span>
-                </label>
-            </div>
+    <label>Editar</label>
+    <label class="switch-container">
+        <input type="checkbox" name="estado_proyecto_editar[]"
+            value="{{$ProyectoPendiente->proyecto->Folio}}"
+            {{ ($ProyectoPendiente->proyecto->memoria != null && $ProyectoPendiente->proyecto->Modelo_negocio != null) ? '' : 'disabled' }}>
+        <span class="slider{{ ($ProyectoPendiente->proyecto->memoria != null && $ProyectoPendiente->proyecto->Modelo_negocio != null) ? '' : ' disabled-slider' }}"></span>
+    </label>
+</div>
         </td>
 
         <td>
