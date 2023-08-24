@@ -69,18 +69,7 @@ class JuradoController extends Controller
 
         //Asiganar valores a jurado
         $letra = 'JUR';
-        $numero = 1;
-        $nomenclatura = $letra . str_pad($numero, 2, '0', STR_PAD_LEFT);
-
-        //Comprueba que el id no este registrado en la base de datos
-        // Verificar si la nomenclatura ya existe en la base de datos
-        $opciones = Jurado::where('Id_jurado', $nomenclatura)->get();
-
-        while ($opciones->count() > 0) {
-            $numero++; // Incrementar el número
-            $nomenclatura = $letra . str_pad($numero, 2, '0', STR_PAD_LEFT);
-            $opciones = Jurado::where('Id_jurado', $nomenclatura)->get();
-        }
+        $nomenclatura = $letra + $idGenerada2;
         //Guardar la informacion en jurado 
         $jurado = new Jurado();
         $jurado->Id_jurado = $nomenclatura;

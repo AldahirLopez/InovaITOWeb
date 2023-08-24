@@ -130,7 +130,7 @@
             <div class="form-group">
                 <div class="input-field">
                     <label style="color: #2E2D2F;">Correo electronico:</label>
-                    <input type="email" name="correo" " placeholder="Ingrese correo institucional" required>
+                    <input type="email" name="correo" placeholder="Ingrese correo institucional" required>
                     
                 </div>
             </div>
@@ -156,11 +156,6 @@
             </div>
 
             <div class="form-group">
-                <div class="input-field">
-                    <label style="color: #2E2D2F;">ID_coordinador:</label>
-                    <input type="text" name="id_coordinador"  placeholder="Ingrese el id del coordinador" required>
-                
-                </div>
                 
                 <div class="input-field">
                     <label style="color: #2E2D2F;">Género:</label>
