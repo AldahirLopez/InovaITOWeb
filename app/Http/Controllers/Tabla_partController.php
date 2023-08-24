@@ -26,12 +26,12 @@ class Tabla_partController extends Controller
             $folio = ProyectoParticipante::where('Folio', $matricula->Folio)->first();
 
             $asesor=Asesor::all();
-            $asesoresProyecto = ProyectoAsesor::where('Folio', $matricula->Folio)->get();
+            $asesoresProyectos = ProyectoAsesor::where('Folio', $matricula->Folio)->get();
             
             $datosAsesores = [];
 
-            foreach ($asesoresProyecto as $asesor) {
-                $asesorEncontrado = Asesor::find($asesor->Id_asesor);
+            foreach ($asesoresProyectos as $asesoresProyecto) {
+                $asesorEncontrado = Asesor::find($asesoresProyecto->Id_asesor);
 
                 if ($asesorEncontrado) {
                     $datosAsesores[] = $asesorEncontrado;

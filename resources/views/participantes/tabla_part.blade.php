@@ -228,7 +228,7 @@ if (count($registros_proyecto) < 3 || count($registros_proyecto)> 5) {
             </table>
 
             @if (count($registros_proyecto)>=3 && $usuarioLogueado->rol->Id_rol=="ROL02" )
-            <a href="{{ route('asesores.create') }}" class="btn btn-primary" style="margin-bottom: 10px;">Registrar Asesor</a>
+            <a href="{{ route('asesoresproyectos.create') }}" class="btn btn-primary" style="margin-bottom: 10px;">Registrar Asesor</a>
             @endif
 
         </div>
@@ -250,7 +250,7 @@ if (count($registros_proyecto) < 3 || count($registros_proyecto)> 5) {
                     <tr>
                         <td>{{ $datosAsesor->Abreviatura_profesional}}</td>
                         <td>{{ $datosAsesor->persona->Nombre_persona}} </td>
-                        <td>{{ $datosAsesor->persona->Apellido1}} {{ $asesor->persona->Apellido2}}</td>
+                        <td>{{ $datosAsesor->persona->Apellido1}} {{ $datosAsesor->persona->Apellido2}}</td>
                         <td>{{ $datosAsesor->departamento->Nombre_departamento}}</td>
                         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-{{$datosAsesor->Id_asesor}}">Eliminar</button></td>
 
@@ -270,7 +270,7 @@ if (count($registros_proyecto) < 3 || count($registros_proyecto)> 5) {
                                     Estas seguro de eliminar al asesor {{ $datosAsesor->persona->Nombre_persona}}
                                 </div>
                                 <div class="modal-footer">
-                                    <form action="{{ route('asesoresproyectos.destroy', ['asesore' => $asesor->Id_asesor]) }}" method="POST">
+                                    <form action="{{ route('asesoresproyectos.destroy', ['asesoresproyecto' => $datosAsesor->Id_asesor]) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
 

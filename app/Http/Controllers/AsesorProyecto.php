@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 
-class AsesorController extends Controller
+class AsesorProyectoController extends Controller
 {
 
     public function index()
