@@ -36,7 +36,7 @@ $ficha_tecnica_registrada=True;
 
 <li class="side-menus">
 
-    @if ($usuarioLogueado->rol->Id_rol=="ROL02" || $usuarioLogueado->rol->Id_rol=="ROL07")
+    @if ($usuarioLogueado->rol->Id_rol=="ROL02")
     <a class="nav-link {{ Request::is('proyectos') ? 'active' : '' }}" href="/proyectos">
         <i class="fas fa-file-invoice"></i></i><span>Proyectos</span>
     </a>
@@ -48,7 +48,7 @@ $ficha_tecnica_registrada=True;
     </a>
     @endif
 
-    @if ($ficha_tecnica_registrada || $usuarioLogueado->rol->Id_rol=="ROL07")
+    @if ($ficha_tecnica_registrada)
     <a class="nav-link {{ Request::is('participante') ? 'active' : '' }}" href="/tabla_part">
         <i class="fas fa-users"></i><span>Participantes</span>
     </a>
