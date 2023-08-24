@@ -71,7 +71,7 @@ class Ficha_tController extends Controller
         $descripcionGeneral = request()->input('descripcionGeneral');
         $resultadosProyecto = request()->input('resultadosProyecto');
         $idFicha=$this->generarIdFicha();
-        $folio=$this->generarFolio();
+        $folio=$this->generarIdFicha();
 
         // Crear una nueva instancia de la clase Persona y asignar los valores
         $ficha = new Ficha_Tecnica();
