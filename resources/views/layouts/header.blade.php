@@ -20,7 +20,7 @@ if($usuarioLogueado->rol->Id_rol=="ROL02"){
 $estudiante=Estudiante::where('Id_persona',$idpersona)->first();
 
 $proyectoParticipante= ProyectoParticipante::where('Matricula', $estudiante->Matricula)->get();
-
+if($proyectoParticipante!=null){
 $proyecto=Proyecto::where('Folio',$proyectoParticipante[0]->Folio)->first();
 
 if($proyecto->memoria==null && $proyecto->Modelo_negocio==null){
@@ -29,6 +29,8 @@ $editar="El asesor te mando a corregir la memoria tecnica y el modelo de negocio
 $editado=true;
 
 }
+}
+
 
 }
 
@@ -39,11 +41,11 @@ $editado=true;
 
 
 <style>
-  .nav-link {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+    .nav-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 </style>
 
 
