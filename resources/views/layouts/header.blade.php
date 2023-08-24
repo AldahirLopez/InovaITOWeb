@@ -20,7 +20,7 @@ if($usuarioLogueado->rol->Id_rol=="ROL02"){
 $estudiante=Estudiante::where('Id_persona',$idpersona)->first();
 
 $proyectoParticipante= ProyectoParticipante::where('Matricula', $estudiante->Matricula)->get();
-if($proyectoParticipante==null){
+if($proyectoParticipante!=null){
 $proyecto=Proyecto::where('Folio',$proyectoParticipante[0]->Folio)->first();
 
 if($proyecto->memoria==null && $proyecto->Modelo_negocio==null){
