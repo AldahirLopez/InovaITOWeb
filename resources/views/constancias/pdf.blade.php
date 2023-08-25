@@ -21,7 +21,7 @@
         <h3>POR SU PARTICIPACIÓN EN EL PROYECTO {{ strtoupper($nombreProyecto) }}, </h3>
         <h3>EN LA CATEGORÍA {{strtoupper($categoria)}} </h3>
         <h3>EN EL EVENTO INNOVATEC 2023</h3>
-        <h3>CELEBRADO DEL  -"AQUI PONER RANGO DE FECHA DEL EVENTO"-</h3>
+        <h3>CELEBRADO DEL  -"AQUI PONER RANGO DE FECHA EVENTO"-</h3>
         <div style="display: flex;">
             <div>
                 <h3 style="flex: 1; text-align: left;">Rsponsable: {{ strtoupper($coordinador) }}</h3> <h3 style="flex: 1; text-align: right;">Director: {{ $director }}</h3>     
