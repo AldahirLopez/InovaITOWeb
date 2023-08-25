@@ -154,6 +154,16 @@
 
         return (horaNumero >= 7 && horaNumero < 20) && (minutoNumero >= 0 && minutoNumero <= 59);
     }
+
+    // Bloquear fechas anteriores a la fecha actual
+    var fechaInput = document.getElementsByName("fecha")[0];
+    var fechaActual = new Date();
+    var yyyy = fechaActual.getFullYear();
+    var mm = String(fechaActual.getMonth() + 1).padStart(2, '0');
+    var dd = String(fechaActual.getDate()).padStart(2, '0');
+    var fechaFormateada = yyyy + '-' + mm + '-' + dd;
+    fechaInput.min = fechaFormateada;
 </script>
+
 
 @endsection

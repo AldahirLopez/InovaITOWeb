@@ -14,12 +14,15 @@ class JuradoController extends Controller
 
     public function index()
     {
-        $jurados=Jurado::all();
-        return view('jurado.index',compact('jurados'));
+        $jurados = Jurado::all();
+        return view('jurado.index', compact('jurados'));
     }
 
+    public function create()
+    {
+        return view('jurado.jurado');
+    }
 
-   
     public function store(Request $request)
     {
         $nombres = request()->input('nombres');
@@ -75,7 +78,7 @@ class JuradoController extends Controller
         $jurado->Id_jurado = $nomenclatura;
         $jurado->Id_persona = $idGenerada2;
         $jurado->RFC = $rfc;
-        
+
         $jurado->save();
 
         //Enviamos el correo con la clave para que pueda hacer su login 
@@ -99,34 +102,29 @@ class JuradoController extends Controller
 
         // Redireccionar a la página de listar para mostrar la tabla actualizada
         return redirect()->route('jurado.index')->with('success', 'Jurado registrado correctamente ');
-
     }
 
 
-    public function destroy($id){
+    public function destroy($id)
+    {
 
-        $jurado = Jurado::where('Id_jurado',$id)->first();
- 
-  
+        $jurado = Jurado::where('Id_jurado', $id)->first();
+
+
         DB::table('jurado')
-        ->where('Id_jurado', $jurado->Id_jurado)
-        ->delete();
-    
-    
+            ->where('Id_jurado', $jurado->Id_jurado)
+            ->delete();
+
+
         DB::table('usuario')
-        ->where('Id_persona', $jurado->persona->Id_persona)
-        ->delete();
-    
+            ->where('Id_persona', $jurado->persona->Id_persona)
+            ->delete();
+
         DB::table('persona')
-        ->where('Id_persona', $jurado->persona->Id_persona)
-        ->delete();
-    
-    
+            ->where('Id_persona', $jurado->persona->Id_persona)
+            ->delete();
+
+
         return redirect()->route('jurado.index')->with('delete', 'Jurado eliminado correctamente');
-
     }
-
-
-
-
 }
