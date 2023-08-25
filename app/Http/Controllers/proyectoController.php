@@ -23,7 +23,7 @@ class proyectoController extends Controller
        
 
         //Boleanos para revisare si ya se registro 
-        $requerimientos_especiales_registrada=False;
+        $requerimientos_especiales_registrada=false;
         $memoria_tecnica_registrada=False;
         $modelo_negocios_registrada=False;
         $ficha_tecnica_registrada=False;
@@ -47,7 +47,7 @@ class proyectoController extends Controller
                 $ficha_tecnica_registrada=True;
                 $ficha_tecnica_habilitada=false;
                 //Habilitamos las demas cards
-                $requerimientos_especiales_habilitada=True;
+                $requerimientos_especiales_habilitada=true;
                 $memoria_tecnica_habilitada=True;
                 $modelo_negocios_habilitada=True;
     

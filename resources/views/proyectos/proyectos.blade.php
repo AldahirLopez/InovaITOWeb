@@ -35,7 +35,7 @@
                            
                             @if ($requerimientos_especiales_habilitada)
                             <div class="col-md-6 col-xl-6">
-                            <div class="card {{ $requerimientos_especiales_habilitada ? ' bg-c-green' : 'bg-danger' }} order-card ">
+                            <div class="card {{ $requerimientos_especiales_registrada ? ' bg-c-green' : 'bg-danger' }} order-card ">
                                     <div class="card-block">
                                         <h5>Requerimientos especiales</h5>
                                         <h2 class="text-right"><i class="fa fa-square-check f-left fa-2x"></i><span></span></h2>

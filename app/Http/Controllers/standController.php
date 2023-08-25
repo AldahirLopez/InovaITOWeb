@@ -8,6 +8,7 @@ use App\Models\Horario;
 use App\Models\evaluacionStand;
 use App\Models\asignarHStand;
 use Illuminate\Support\Facades\DB;
+
 class standController extends Controller
 {
     /**
@@ -15,8 +16,8 @@ class standController extends Controller
      */
     public function index()
     {
-        $stands=stand::all();
-        return view('stand.index',compact('stands'));
+        $stands = stand::all();
+        return view('stand.index', compact('stands'));
     }
 
     /**
@@ -24,8 +25,7 @@ class standController extends Controller
      */
     public function create()
     {
-        $horarios=Horario::all();
-        return view('stand.agregar',compact('horarios'));
+        return view('stand.agregar');
     }
 
     /**
@@ -33,12 +33,23 @@ class standController extends Controller
      */
     public function store(Request $request)
     {
-        $Stand=new stand();
-        $Stand->Id_stand=$request->id_stand;
-        $Stand->Lugar=$request->lugar;
-        $Stand->Id_horario=$request->id_horario;
+
+        $nomenclatura = '';
+        $nomenclaturaExistente = true;
+
+        while ($nomenclaturaExistente) {
+            $numeroAleatorio = str_pad(rand(1, 99), 2, '0', STR_PAD_LEFT);
+            $nomenclatura = "STAND" . $numeroAleatorio;
+
+            $nomenclaturaExistente = stand::where('Id_stand', $nomenclatura)->exists();
+        }
+
+
+        $Stand = new stand();
+        $Stand->Id_stand = $nomenclatura;
+        $Stand->Lugar = $request->lugar;
         $Stand->save();
-        return redirect()->route('stand.index')->with('success','Stand registrado correctamente');
+        return redirect()->route('stand.index')->with('success', 'Stand registrado correctamente');
     }
 
     /**
@@ -70,20 +81,20 @@ class standController extends Controller
      */
     public function destroy(string $id)
     {
-        $stand=stand::where('Id_stand',$id)->first();
+        $stand = stand::where('Id_stand', $id)->first();
 
 
-        if($stand!=null){
-            
-           
+        if ($stand != null) {
+
+
             evaluacionStand::where('Id_stand', $stand->Id_stand)->delete();
             asignarHStand::where('Id_stand', $stand->Id_stand)->delete();
 
             DB::table('stand')
-            ->where('Id_stand', $stand->Id_stand)
-            ->delete();
+                ->where('Id_stand', $stand->Id_stand)
+                ->delete();
         }
 
-        return redirect()->route('stand.index')->with('delete','Stand eliminada correctamente');
+        return redirect()->route('stand.index')->with('delete', 'Stand eliminada correctamente');
     }
 }
