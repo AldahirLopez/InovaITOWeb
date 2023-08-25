@@ -67,7 +67,7 @@ $ficha_tecnica_registrada=True;
     </a>
     @endif
 
-    @if ($usuarioLogueado->rol->Id_rol=="ROL07")
+    @if ($usuarioLogueado->rol->Id_rol=="ROL07"|| $usuarioLogueado->rol->Id_rol=="ROL01")
     <a class="nav-link {{ Request::is('jurado') ? 'active' : '' }}" href="/jurado">
         <i class=" fas fa-gavel"></i><span>Jurado</span>
     </a>

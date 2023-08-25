@@ -3,7 +3,7 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Coordinadores registrado</h3>
+        <h3 class="page__heading">Jurados registrados</h3>
     </div>
 </section>
 
@@ -99,7 +99,7 @@
 
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
 
-    <a href="/jurado/create" class="btn btn-primary" style="margin-bottom: 10px;">Registrar coordinador</a>
+    <a href="/jurado/create" class="btn btn-primary" style="margin-bottom: 10px;">Registrar jurado</a>
 
 
     <table class="table table-custom">

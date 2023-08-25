@@ -12,7 +12,7 @@
 }
 
 .table td {
-    color: #FFFFFF;
+    color: #2E2D2F;
 }
 
 .table-custom {

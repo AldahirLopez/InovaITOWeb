@@ -83,7 +83,7 @@
 
         <!-- Agregar inputs para coordinador y director -->
         <div class="input-field">
-            <label for="coordinador">Nombre del Coordinador</label>
+            <label for="coordinador">Nombre del Responsable</label>
             <input type="text" id="coordinador" name="coordinador">
         </div>
 
@@ -102,7 +102,7 @@
         </div>
 
         <div class="input-field">
-            <label for="matricula">Seleccionar Matrícula</label>
+            <label for="matricula">Seleccionar Participante</label>
             <select id="matricula" name="matricula">
 
             </select>
