@@ -3,11 +3,7 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-<<<<<<< HEAD
         <h3 class="page__heading">Jurados</h3>
-=======
-        <h3 class="page__heading">Jurados registrados</h3>
->>>>>>> c4d83c7bf258f1996516f9d4f1b7585e53915f02
     </div>
 </section>
 
