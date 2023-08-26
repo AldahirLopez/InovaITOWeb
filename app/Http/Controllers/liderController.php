@@ -23,11 +23,25 @@ class liderController extends Controller
 
     public function index()
     {
-        $carreras=Carrera::all();
-        $semestres=Semestre::all();
-        return view('lider.lider',compact('carreras','semestres'));
+        $carreras = Carrera::all();
+        $semestres = Semestre::all();
+        $lideres = Usuario::whereHas('rol', function ($query) {
+            $query->where('Id_rol', 'ROL02');
+        })
+        ->with('persona') // Cargar la relación 'persona'
+        ->get();
+        return view('lider.index', compact('carreras', 'semestres','lideres'));
     }
-
+    public function create()
+    {
+        $carreras = Carrera::all();
+        $semestres = Semestre::all();
+        $lideres = Usuario::whereHas('rol', function ($query) {
+            $query->where('Id_rol', 'ROL02');
+        })->get();
+        
+        return view('lider.lider', compact('carreras', 'semestres','lideres'));
+    }
     public function store(Request $request)
     {
 
@@ -38,12 +52,12 @@ class liderController extends Controller
         $correo = request()->input('correo');
         $nivel = request()->input('nivel');
         // lo que faltaba de estudiante 
-    
-        $semestre=request()->input('semestre');
-        $carrera=request()->input('carrera');
+
+        $semestre = request()->input('semestre');
+        $carrera = request()->input('carrera');
 
 
-     
+
 
         //Generar ID Unico
         $datosUsuario = $nombre . $apellidop . $apellidom . $correo;
@@ -60,14 +74,13 @@ class liderController extends Controller
 
         $hash = password_hash($contrasena, PASSWORD_BCRYPT);
 
-            //comprobar si esa persona existe 
-        if(Estudiante::where('Id_persona',$idGenerada2)->exists()){
+        //comprobar si esa persona existe 
+        if (Estudiante::where('Id_persona', $idGenerada2)->exists()) {
             return redirect()->route('lid.index')->with('error', 'Error:Lider ya existente');
         }
 
-        if(Persona::where('Correo_electronico',$correo)->first()){
+        if (Persona::where('Correo_electronico', $correo)->first()) {
             return redirect()->route('lid.index')->with('c_existente', 'Error:Correo ya registrado');
-
         }
 
 
@@ -86,7 +99,7 @@ class liderController extends Controller
         $usuario->Nombre_usuario = $correo;
         $usuario->Contrasena = $hash;
         $usuario->Id_persona = $idGenerada2;
-        $usuario->Id_rol="ROL02";
+        $usuario->Id_rol = "ROL02";
 
         $estudiante = new Estudiante();
         $estudiante->Matricula = $matricula;
@@ -96,31 +109,30 @@ class liderController extends Controller
         $estudiante->Id_semestre = $semestre;
 
         $persona->save();
-        
+
         $estudiante->save();
 
         // Guardar la persona en la base de datos
-         //Enviamos el correo con la clave para que pueda hacer su login 
-         $subject = "Datos de Login";
-         $for = $correo;
-         
-         $data = [
-             'contraena' => $contrasena,
-             'correo' => $correo,
-             // Agrega más variables aquí si es necesario
-         ];
-         
-         Mail::send('email', $data, function($msj) use($subject, $for) {
-             $msj->from("hectoralr21@gmail.com", "Datos Login");
-             $msj->subject($subject);
-             $msj->to($for);
-         });
+        //Enviamos el correo con la clave para que pueda hacer su login 
+        $subject = "Datos de Login";
+        $for = $correo;
 
-         //Se guarda 
+        $data = [
+            'contraena' => $contrasena,
+            'correo' => $correo,
+            // Agrega más variables aquí si es necesario
+        ];
+
+        Mail::send('email', $data, function ($msj) use ($subject, $for) {
+            $msj->from("hectoralr21@gmail.com", "Datos Login");
+            $msj->subject($subject);
+            $msj->to($for);
+        });
+
+        //Se guarda 
         $usuario->save();
 
         // Redireccionar a la página de listar para mostrar la tabla actualizada
         return redirect('/')->with('success', 'Lider registrado correctamente');
-
     }
 }
