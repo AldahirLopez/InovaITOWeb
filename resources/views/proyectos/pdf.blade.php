@@ -74,10 +74,15 @@
             <th>Categoría</th>
             <td>{{$proyecto->ficha->area->categoria->Nombre_categoria}}</td>
         </tr>
+
+        </table>
+
+        
         @if ($proyecto->memoria!=null)
-        <tr>
-            <th colspan="2">Memoria técnica</th>
-        </tr>
+        <div class="content">
+        <h2>Memoria técnica</h2>
+        </div>
+        <table class="table">
         <tr>
             <th>Descripción problemática</th>
             <td>{{$proyecto->memoria->Descripcion_problematica}}</td>

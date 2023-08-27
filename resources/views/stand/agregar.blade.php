@@ -80,7 +80,7 @@
 </style>
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
 
-    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Formulario para el stand</h2>
+    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Registrar Stand</h2>
     <form action="{{ route('stand.store') }}" method="POST">
         @csrf
         <div class="form-row">

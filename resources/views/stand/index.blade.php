@@ -98,7 +98,7 @@
 
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
 
-    <a href="/stand/create" class="btn btn-primary" style="margin-bottom: 10px;">Registrar stand</a>
+    <a href="/stand/create" class="btn btn-primary" style="margin-bottom: 10px;">Registrar Stand</a>
 
 
     <table class="table table-custom">

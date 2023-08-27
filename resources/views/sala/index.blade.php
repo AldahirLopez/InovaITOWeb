@@ -95,7 +95,7 @@
 
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
 
-<a href="/sala/create" class="btn btn-primary" style="margin-bottom: 10px;" >Registrar sala</a>
+<a href="/sala/create" class="btn btn-primary" style="margin-bottom: 10px;" >Registrar Sala</a>
 
 
 <table class="table table-custom">

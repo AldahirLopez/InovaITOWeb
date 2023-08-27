@@ -79,13 +79,13 @@
 </style>
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
 
-    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Formulario para sala</h2>
+    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Registrar Sala</h2>
     <form action="{{ route('sala.store') }}" method="POST">
     @csrf
         <div class="form-row">
             
             <div class="form-group input-field">
-                <label for="nombreDescriptivo">Nombre de la sala</label>
+                <label for="nombreDescriptivo">Nombre de la Sala</label>
                 <input type="text" name="nombre" placeholder="Ingrese el nombre de la sala" maxlength="100" required>
             </div>
 

@@ -8,6 +8,7 @@ use App\Models\usuario;
 use App\Models\rol;
 use Illuminate\Http\Request;
 
+
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -44,20 +45,27 @@ class ConstanciaController extends Controller
         $nombre_instituto=$instituto->Nombre_tecnologico;
         $estudiante=Estudiante::where('Matricula',$request->matricula)->first();
         $nombre_participante=$estudiante->persona->Nombre_persona;
+        $apellido1= $estudiante->persona->Apellido1;
+        $apellido2= $estudiante->persona->Apellido2;
 
         
         $usuario=Usuario::where('Id_persona',$estudiante->persona->Id_persona)->first();
        // $rol_participante=rol::where('Id_rol',$usuario->Id_rol)
-       $rol_participante=$usuario->rol->Nombre_rol;
+      // $rol_participante=$usuario->rol->Nombre_rol;
 
     $datos = [
         'nombreProyecto' => $nombre_proyecto,
         'instituto' => $nombre_instituto,
         'coordinador' => $request->input('coordinador'),
+        'cargo' => $request->input('cargo'),
         'director' => $request->input('director'),
+        'fecha_inicio' => $request->input('fecha_inicio'),
+        'fecha_fin' => $request->input('fecha_fin'),
         'categoria'=>$categoria_proyecto,
         'nombre_participante'=>$nombre_participante,
-        'rol_participante'=>$rol_participante,
+        'apellido1'=>$apellido1,
+        'apellido2'=>$apellido2,
+        //'rol_participante'=>$rol_participante,
     ];
 
     $pdf = Pdf::loadView('constancias.pdf', $datos);
