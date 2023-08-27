@@ -80,7 +80,7 @@
                     <th>ID Del Proyecto</th>
                     <th>Nombre Del Proyecto</th>
                     <th>Categoría</th>           
-                    <th>Autorizar</th>
+                    <th>Acciones</th>
                     <th>Descargar</th>
 
             

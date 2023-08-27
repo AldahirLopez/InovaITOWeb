@@ -31,8 +31,19 @@ class salaController extends Controller
      */
     public function store(Request $request)
     {
+
+        $nomenclatura = '';
+        $nomenclaturaExistente = true;
+
+        while ($nomenclaturaExistente) {
+            $numeroAleatorio = str_pad(rand(1, 99), 2, '0', STR_PAD_LEFT);
+            $nomenclatura = "SALA" . $numeroAleatorio;
+
+            $nomenclaturaExistente = sala::where('Id_sala', $nomenclatura)->exists();
+        }
+
         $Sala=new sala();
-        $Sala->Id_sala=$request->id_sala;
+        $Sala->Id_sala=$nomenclatura;
         $Sala->Nombre_sala=$request->nombre;
         $Sala->Lugar=$request->lugar;
 

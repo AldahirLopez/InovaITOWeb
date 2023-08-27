@@ -154,15 +154,14 @@
             <div class="form-group input-field">
                 <label for="numIne">Numero de INE</label>
                 <input type="text" id="numIne" name="numIne" placeholder="Ingrese número de INE" required>
-                <span id="numIne-error" class="error-message" style="display: none;">La cantidad de digitos del numero de INE no es valido.</span>
+                <span id="numIne-error" class="error-message" style="display: none;">El número de INE no es
+                    válido.</span>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group input-field">
                 <label for="rfc">RFC</label>
                 <input type="text" id="rfc" name="rfc" placeholder="Ingrese RFC" required>
-                <span id="rfc-error" class="error-message" style="display: none;">El RFC no es
-                    válido.</span>
             </div>
             <div class="form-group input-field">
                 <label for="telefono">Teléfono</label>

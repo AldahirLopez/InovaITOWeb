@@ -6,7 +6,7 @@
     <div class="section-header">
         <h3 class="page__heading">Stand</h3>
     </div>
- 
+
 </section>
 
 
@@ -82,35 +82,14 @@
 
     <h2 style="color: #2E2D2F; margin-bottom: 20px;">Formulario para el stand</h2>
     <form action="{{ route('stand.store') }}" method="POST">
-    @csrf
+        @csrf
         <div class="form-row">
-            
-            <div class="form-group input-field">
-                <label for="nombreCorto">ID stand</label>
-                <input type="text" name="id_stand" placeholder="Ingrese el id del sala" maxlength="30" required>
-              
-            </div>
             <div class="form-group input-field">
                 <label for="nombreDescriptivo">Lugar</label>
                 <input type="text" name="lugar" placeholder="Ingrese el nombre de la sala" maxlength="100" required>
             </div>
-
-           
-            <div class="form-group input-field">
-                <label for="categoria">Horario</label>
-                <select name="id_horario">
-                    @foreach ($horarios as $horario )
-                    <option value="{{$horario->Id_horario}}">{{$horario->Fecha}}  :  {{$horario->Hora}}</option>
-                    @endforeach
-                   
-
-                </select>
-            </div>
-
-
         </div>
-     
-       
+
         <button type="submit" class="submit-button">Registrar</button>
     </form>
 </div>

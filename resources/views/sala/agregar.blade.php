@@ -85,11 +85,6 @@
         <div class="form-row">
             
             <div class="form-group input-field">
-                <label for="nombreCorto">ID SALA</label>
-                <input type="text" name="id_sala" placeholder="Ingrese el id del sala" maxlength="30" required>
-              
-            </div>
-            <div class="form-group input-field">
                 <label for="nombreDescriptivo">Nombre de la sala</label>
                 <input type="text" name="nombre" placeholder="Ingrese el nombre de la sala" maxlength="100" required>
             </div>

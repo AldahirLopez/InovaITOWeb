@@ -4,7 +4,7 @@
 
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Registro de Coordinador</h3>
+        <h3 class="page__heading">Coordinadores</h3>
     </div>
 </section>
 
@@ -105,7 +105,7 @@
     }
 </style>
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
-    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Formulario de Registro de Coordinador</h2>
+    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Registro de Coordinador</h2>
     <form action="{{ route('coordinador.store') }}" method="POST" id="registration-form" onsubmit="return validateForm()">
         @csrf
         <div class="form-row">
