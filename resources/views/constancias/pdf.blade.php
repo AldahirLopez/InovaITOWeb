@@ -3,24 +3,25 @@
 
 <head>
     <title>Constancia</title>
+    <meta charset="UTF-8"> 
 </head>
 
 <body>
-    <img src="{{ public_path('img/sep.png') }}" alt="" style="position: absolute; left: 0; top: 0; height: 60px;">
+    <img src="{{ public_path('img/sep.png') }}" alt="" style="position: absolute; left: 0; top: 10; height: 60px;">
     <img src="{{ public_path('img/tecNM.png') }}" alt="Imagen 2"
-        style="position: absolute; right: 0; top: 0;  height: 60px;">
+        style="position: absolute; right: 0; top: 10;  height: 60px;">
     <br>
     <br>
 
     <div style="text-align: center; margin-top: 140px;">
         <br>
-        <h3>EL TECNOLÓGICO NACIONAL DE MÉXICO A TRAVES DEL {{ strtoupper($instituto) }} OTORGAN EL PRESENTE</h3>
+        <h3>EL TECNOLÓGICO NACIONAL DE MÉXICO A TRAVES DEL {{ mb_strtoupper($instituto) }} OTORGAN EL PRESENTE</h3>
         <br>
         <h2>RECONOCIMIENTO</h2>
         <h2>A</h2>
-        <h2>{{strtoupper($nombre_participante)}} {{strtoupper($apellido1)}} {{strtoupper($apellido2)}}</h2>
+        <h2>{{mb_strtoupper($nombre_participante)}} {{mb_strtoupper($apellido1)}} {{mb_strtoupper($apellido2)}}</h2>
         <br>
-        <h3>POR SU DESTACADA PARTICIPACIÓN EN EL PROYECTO {{ strtoupper($nombreProyecto) }}, EN LA CATEGORÍA {{strtoupper($categoria)}} </h3>
+        <h3>POR SU DESTACADA PARTICIPACIÓN EN EL PROYECTO {{ mb_strtoupper($nombreProyecto) }}, EN LA CATEGORÍA {{mb_strtoupper($categoria)}} </h3>
         <br>
         @php
             function formatFecha($fecha) {
@@ -55,19 +56,20 @@
                 $formatted_fecha = "DEL $inicio_day DE " . strtoupper($meses[$inicio_month - 1]) . " AL $fin_day DE " . strtoupper($meses[$fin_month - 1]) . " DE $fin_year";
             }
         @endphp
+        <h3>EN EL EVENTO INNOVATEC 2023</h3>
         <h3>CELEBRADO {{ $formatted_fecha }}</h3>
         
     </div>
     <div style="display: flex; justify-content: space-between; margin-top: 40px;">
-            <div style="flex: 1; text-align: left; width: 50%;">
-                <h3>{{ strtoupper($coordinador) }}</h3>
-                <h3>{{ strtoupper($cargo) }}</h3>
-            </div>
-            <div style="flex: 1; text-align: right; width: 50%;">
-                <h3>{{ $director }}</h3>
-                <h3>DIRECTOR DEL {{ strtoupper($instituto) }}</h3>
-            </div>
+        <div style="text-align: center; position: absolute; left: 0; top: 600; width: 50%;">
+            <h3>{{ mb_strtoupper($coordinador) }}</h3>
+            <h3>{{ mb_strtoupper($cargo) }}</h3>
         </div>
+        <div style="text-align: center; position: absolute; right: 0; top: 600; width: 50%;">
+            <h3>{{ mb_strtoupper($director) }}</h3>
+            <h3>DIRECTOR DEL {{ mb_strtoupper($instituto) }}</h3>
+        </div>
+    </div>
 </body>
 
 </html>
