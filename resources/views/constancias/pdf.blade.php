@@ -23,14 +23,10 @@
         <h3>{{strtoupper($rol_participante)}} DEL PROYECTO {{ strtoupper($nombreProyecto) }}, </h3>
         <h3>EN LA CATEGORÍA {{strtoupper($categoria)}} </h3>
         <h3>EN EL EVENTO INNOVATEC 2023</h3>
-<<<<<<< HEAD
         <h3>CELEBRADO DEL  -"AQUI PONER RANGO DE FECHA EVENTO"-</h3>
-=======
-        <h3>CELEBRADO DEL</h3> <h3>-AQUI VA LA FECHA-</h3>
->>>>>>> 61909859011096b7b37778c72d8ef8155f387565
         <div style="display: flex;">
             <div>
-                <h3 style="flex: 1; text-align: left;">Coordinador: {{ strtoupper($coordinador) }}</h3> <h3 style="flex: 1; text-align: right;">Director: {{ $director }}</h3>     
+                <h3 style="flex: 1; text-align: left;">Encargado: {{ strtoupper($coordinador) }}</h3> <h3 style="flex: 1; text-align: right;">Director: {{ $director }}</h3>     
         </div>
     </div>
 </body>
