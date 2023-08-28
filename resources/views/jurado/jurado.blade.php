@@ -123,6 +123,14 @@
                 <span id="telefono-error" class="error-message" style="display: none;">El número de teléfono no es
                     válido.</span>
             </div>
+            
+            <div class="form-group input-field">
+                <label for="area">Área de su Preferencia</label>
+                <select name="area" id="area">
+
+                </select>
+            </div>
+            
         </div>
         <button type="submit" class="submit-button">Registrar</button>
     </form>

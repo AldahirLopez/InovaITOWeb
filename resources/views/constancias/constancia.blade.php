@@ -83,7 +83,7 @@
 
         <div class="input-field">
             <label for="instituto">Seleccionar Instituto</label>
-            <select id="instituto" name="instituto">
+            <select id="instituto" name="instituto" required>
                 @foreach ($institutos as $instituto)
                 <option value="{{ $instituto->Clave_tecnologico}}">{{ $instituto->Nombre_tecnologico }}</option>
                 @endforeach
@@ -93,35 +93,35 @@
         <div class="form-row">
             <div class="input-field" style="flex-basis: 47%;">
                 <label for="fecha_inicio">Fecha de Inicio</label>
-                <input type="date" id="fecha_inicio" name="fecha_inicio" class="custom-input">
+                <input type="date" id="fecha_inicio" name="fecha_inicio" class="custom-input" required>
             </div>
 
             <div class="input-field" style="flex-basis: 47%;">
                 <label for="fecha_fin">Fecha Fin</label>
-                <input type="date" id="fecha_fin" name="fecha_fin" class="custom-input">
+                <input type="date" id="fecha_fin" name="fecha_fin" class="custom-input" required>
             </div>
         </div>
 
         <div class="form-row">
             <div class="input-field" style="flex-basis: 47%;">
                 <label for="coordinador">Nombre del Encargado</label>
-                <input type="text" id="coordinador" name="coordinador">
+                <input type="text" id="coordinador" name="coordinador" required>
             </div>
 
             <div class="input-field" style="flex-basis: 47%;">
                 <label for="cargo">Cargo del Encargado</label>
-                <input type="text" id="cargo" name="cargo">
+                <input type="text" id="cargo" name="cargo" required>
             </div>
         </div>
 
         <div class="input-field">
             <label for="director">Nombre del Director</label>
-            <input type="text" id="director" name="director">
+            <input type="text" id="director" name="director" required>
         </div>
 
         <div class="input-field">
             <label for="proyecto">Seleccionar Proyecto</label>
-            <select id="proyecto" name="proyecto">
+            <select id="proyecto" name="proyecto" required>
                 <option value=""></option> <!-- Opción vacía -->
                 @foreach ($proyectos as $proyecto)
                 <option value="{{ $proyecto->Folio }}">{{ $proyecto->ficha->Nombre_corto }}</option>
@@ -131,7 +131,7 @@
 
         <div class="input-field">
             <label for="matricula">Seleccionar Participante</label>
-            <select id="matricula" name="matricula">
+            <select id="matricula" name="matricula" required>
 
             </select>
         </div>

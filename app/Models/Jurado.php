@@ -17,4 +17,5 @@ class Jurado extends Model
     {
         return $this->belongsTo(Persona::class, 'Id_persona', 'Id_persona');
     }
+    
 }
