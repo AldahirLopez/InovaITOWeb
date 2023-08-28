@@ -21,7 +21,7 @@
         <h2>A</h2>
         <h2>{{mb_strtoupper($nombre_participante)}} {{mb_strtoupper($apellido1)}} {{mb_strtoupper($apellido2)}}</h2>
         <br>
-        <h3>POR SU DESTACADA PARTICIPACIÓN EN EL PROYECTO {{ mb_strtoupper($nombreProyecto) }}, EN LA CATEGORÍA {{mb_strtoupper($categoria)}} </h3>
+        <h3>POR SU PARTICIPACIÓN EN EL PROYECTO {{ mb_strtoupper($nombreProyecto) }}, EN LA CATEGORÍA {{mb_strtoupper($categoria)}} </h3>
         <br>
         @php
             function formatFecha($fecha) {
@@ -51,7 +51,7 @@
             $fin_year = (int)$fecha_fin_parts[0];
 
             if ($inicio_month === $fin_month && $inicio_year === $fin_year) {
-                $formatted_fecha = "DEL $inicio_day AL $fin_day DE " . strtoupper($meses[$inicio_month - 1]) . " DE $inicio_year";
+                $formatted_fecha = "EL $inicio_day DE " . strtoupper($meses[$inicio_month - 1]) . " DE $inicio_year";
             } else {
                 $formatted_fecha = "DEL $inicio_day DE " . strtoupper($meses[$inicio_month - 1]) . " AL $fin_day DE " . strtoupper($meses[$fin_month - 1]) . " DE $fin_year";
             }
