@@ -61,21 +61,43 @@ class horarioStandController extends Controller
     {
         $horariostand = new asignarHStand();
         $horariostand->Id_stand = $request->id_stand;
-
         $horariostand->Hora_inicio = $request->hora1;
         $horariostand->Hora_final = $request->hora2;
         $horariostand->Fecha = $request->fecha;
 
+        // Verificar si las horas ya están ocupadas en el stand
+        $horarioExistenteStand = asignarHStand::where('Id_stand', $horariostand->Id_stand)
+            ->where(function ($query) use ($horariostand) {
+                $query->where(function ($q) use ($horariostand) {
+                    $q->where('Hora_inicio', '<=', $horariostand->Hora_inicio)
+                        ->where('Hora_final', '>', $horariostand->Hora_inicio);
+                })->orWhere(function ($q) use ($horariostand) {
+                    $q->where('Hora_inicio', '<', $horariostand->Hora_final)
+                        ->where('Hora_final', '>=', $horariostand->Hora_final);
+                });
+            })
+            ->where('Fecha', $horariostand->Fecha)
+            ->first();
 
-        //Consulta del folio del proyecto 
+        if ($horarioExistenteStand) {
+            return redirect()->route('horariostand.index')->with('error', 'Las horas seleccionadas ya están ocupadas en este stand.');
+        }
+
+        // Consulta del folio del proyecto 
         $proyecto = Proyecto::where('Folio', $request->id_proyecto)->first();
 
         if ($proyecto != null) {
+            // Validar si la nueva hora (Hora_inicio) está dentro del rango de horas
+            $nuevaHora = $request->hora1;
+            if ($nuevaHora >= $request->hora1 && $nuevaHora <= $request->hora2) {
+                return redirect()->route('horariostand.index')->with('error', 'La hora ingresada está dentro del rango de horas existente.');
+            }
+
             $horariostand->Folio = $proyecto->Folio;
             $horariostand->save();
-            return redirect()->route('horariostand.index')->with('success', 'Horario de sala registrado correctamente');
+            return redirect()->route('horariostand.index')->with('success', 'Horario de stand registrado correctamente');
         } else {
-            return redirect()->route('horariostand.index')->with('error', 'Horario de sala no registrado correctamente');
+            return redirect()->route('horariostand.index')->with('error', 'Horario de stand no registrado correctamente');
         }
     }
     /**
