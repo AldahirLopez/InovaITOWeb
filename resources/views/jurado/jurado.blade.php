@@ -9,13 +9,13 @@
 
 
 @if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('success') }}  
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('success') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
 
 <style>
     .form-row {
@@ -77,13 +77,13 @@
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
     <h2 style="color: #2E2D2F; margin-bottom: 20px;">Registrar Jurado</h2>
     <form action="{{ route('jurado.store') }}" method="POST" id="registration-form" onsubmit="return validateForm()">
-    @csrf
+        @csrf
         <div class="form-row">
             <div class="form-group input-field">
                 <label for="nombres">Nombre(s)</label>
                 <input type="text" id="nombres" name="nombres" placeholder="Ingrese nombre(s)" required>
             </div>
-            <div class="form-group input-field" >
+            <div class="form-group input-field">
                 <label for="apellidoPaterno">Primer Apellido</label>
                 <input type="text" id="apellidoPaterno" name="apellidoPaterno" placeholder="Ingrese primer apellido" required>
             </div>
@@ -123,14 +123,17 @@
                 <span id="telefono-error" class="error-message" style="display: none;">El número de teléfono no es
                     válido.</span>
             </div>
-            
+
             <div class="form-group input-field">
                 <label for="area">Área de su Preferencia</label>
                 <select name="area" id="area">
-
+                    <option value="">Seleccione un área</option>
+                    @foreach($areas as $area)
+                    <option value="{{ $area->Id_area }}">{{ $area->Nombre_area }}</option>
+                    @endforeach
                 </select>
             </div>
-            
+
         </div>
         <button type="submit" class="submit-button">Registrar</button>
     </form>

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Area;
 use App\Models\Jurado;
 use App\Models\Persona;
+use App\Models\Preferencia;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -20,7 +22,8 @@ class JuradoController extends Controller
 
     public function create()
     {
-        return view('jurado.jurado');
+        $areas = Area::all();
+        return view('jurado.jurado',compact('areas'));
     }
 
     public function store(Request $request)
@@ -72,15 +75,24 @@ class JuradoController extends Controller
 
         //Asiganar valores a jurado
         $letra = 'JUR';
-        $nomenclatura = $letra + $idGenerada2;
+        $nomenclatura = $letra . $idGenerada2;
         //Guardar la informacion en jurado 
         $jurado = new Jurado();
         $jurado->Id_jurado = $nomenclatura;
         $jurado->Id_persona = $idGenerada2;
         $jurado->RFC = $rfc;
 
+
         $jurado->save();
 
+        //Guardamos la preferencia del jurado
+        $preferencia=request()->input('area');
+
+        $areapreferencia = new Preferencia();
+        $areapreferencia->Id_jurado = $jurado->Id_jurado;
+        $areapreferencia->Id_area = $preferencia;
+
+        $areapreferencia->save();
         //Enviamos el correo con la clave para que pueda hacer su login 
         $subject = "Datos de Login";
         $for = $correo;

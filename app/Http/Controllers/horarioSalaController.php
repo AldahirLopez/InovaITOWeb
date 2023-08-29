@@ -18,7 +18,7 @@ class horarioSalaController extends Controller
     public function index()
     {
         $salas = asignarHSala::all();
-        
+
         return view('horarioSala.index', compact('salas'));
     }
 
@@ -59,27 +59,45 @@ class horarioSalaController extends Controller
     {
         $horariosala = new asignarHSala();
         $horariosala->Id_sala = $request->id_sala;
-
         $horariosala->Hora_inicio = $request->hora1;
         $horariosala->Hora_final = $request->hora2;
         $horariosala->Fecha = $request->fecha;
 
+        // Verificar si las horas ya están ocupadas en la sala
+        $horarioExistenteSala = asignarHSala::where('Id_sala', $horariosala->Id_sala)
+            ->where(function ($query) use ($horariosala) {
+                $query->where(function ($q) use ($horariosala) {
+                    $q->where('Hora_inicio', '<=', $horariosala->Hora_inicio)
+                        ->where('Hora_final', '>', $horariosala->Hora_inicio);
+                })->orWhere(function ($q) use ($horariosala) {
+                    $q->where('Hora_inicio', '<', $horariosala->Hora_final)
+                        ->where('Hora_final', '>=', $horariosala->Hora_final);
+                });
+            })
+            ->where('Fecha', $horariosala->Fecha)
+            ->first();
 
-        //Consulta del folio del proyecto 
-        $proyecto = Proyecto::where('Folio', $request->id_proyecto)->first();
-
-        if ($proyecto!=null) {
-            $horariosala->Folio = $proyecto->Folio;
-            $horariosala->save();
-            return redirect()->route('horariosala.index')->with('success', 'Horario de sala registrado correctamente');
-        } else {
-            return redirect()->route('horariosala.index')->with('error', 'Horario de sala no registrado correctamente');
-            
+        if ($horarioExistenteSala) {
+            return redirect()->route('horariosala.index')->with('error', 'Las horas seleccionadas ya están ocupadas en esta sala.');
         }
 
+        // Verificar si el proyecto ya está registrado en la tabla asignarHSala
+        $proyectoExistente = asignarHSala::where('Folio', $request->id_proyecto)->first();
 
+        if ($proyectoExistente) {
+            return redirect()->route('horariosala.index')->with('error', 'El proyecto ya está registrado en la base de datos.');
+        }
 
-        
+        // Validar si la nueva hora está dentro del rango de horas
+        $nuevaHora = $request->Hora_inicio;
+        if ($nuevaHora >= $request->hora1 && $nuevaHora <= $request->hora2) {
+            return redirect()->route('horariosala.index')->with('error', 'La hora ingresada está dentro del rango de horas existente.');
+        }
+
+        $horariosala->Folio = $request->id_proyecto;
+        $horariosala->save();
+
+        return redirect()->route('horariosala.index')->with('success', 'Horario de sala registrado correctamente');
     }
 
 
@@ -128,7 +146,7 @@ class horarioSalaController extends Controller
         // You might need to adjust your model and primary key based on your schema
         $sala = asignarHSala::findOrFail($horariosala);
         $sala->delete();
-    
+
         // Optionally, you can redirect back to the listing page
         return redirect()->route('horariosala.index')->with('success', 'Horario eliminado exitosamente.');
     }
