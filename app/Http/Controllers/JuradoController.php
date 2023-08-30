@@ -23,7 +23,7 @@ class JuradoController extends Controller
     public function create()
     {
         $areas = Area::all();
-        return view('jurado.jurado',compact('areas'));
+        return view('jurado.jurado', compact('areas'));
     }
 
     public function store(Request $request)
@@ -86,7 +86,7 @@ class JuradoController extends Controller
         $jurado->save();
 
         //Guardamos la preferencia del jurado
-        $preferencia=request()->input('area');
+        $preferencia = request()->input('area');
 
         $areapreferencia = new Preferencia();
         $areapreferencia->Id_jurado = $jurado->Id_jurado;
@@ -122,11 +122,13 @@ class JuradoController extends Controller
 
         $jurado = Jurado::where('Id_jurado', $id)->first();
 
+        DB::table('preferencia')
+            ->where('Id_jurado', $jurado->Id_jurado)
+            ->delete();
 
         DB::table('jurado')
             ->where('Id_jurado', $jurado->Id_jurado)
             ->delete();
-
 
         DB::table('usuario')
             ->where('Id_persona', $jurado->persona->Id_persona)
@@ -135,6 +137,10 @@ class JuradoController extends Controller
         DB::table('persona')
             ->where('Id_persona', $jurado->persona->Id_persona)
             ->delete();
+
+        
+
+
 
 
         return redirect()->route('jurado.index')->with('delete', 'Jurado eliminado correctamente');
