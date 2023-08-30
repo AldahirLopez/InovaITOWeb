@@ -8,9 +8,9 @@
 </section>
 <style>
 .custom-input {
-    background-color: #4E4B4D;
+    background-color: #BEBEBE;
     border-radius: 10px;
-    color: #FFFFFF;
+    color: #2E2D2F;
     border: none;
     padding: 10px;
     width: 100%;
@@ -32,15 +32,15 @@
 }
 
 .input-field label {
-    color: #FFFFFF;
+    color: #2E2D2F;
 }
 
 .input-field input[type="text"],
 .input-field input[type="email"],
 .input-field select {
-    background-color: #4E4B4D;
+    background-color: #BEBEBE;
     border-radius: 10px;
-    color: #FFFFFF;
+    color: #2E2D2F;
     border: none;
     padding: 10px;
     width: 100%;
@@ -72,28 +72,28 @@
     display: none;
 }
 </style>
-<div style="background-color: #2E2D2F; border-radius: 30px; padding: 30px;">
-    <h2 style="color: #FFFFFF; margin-bottom: 20px;">Formulario de Registro de horarios</h2>
+<div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
+    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Registro de horarios de Stand</h2>
     <form action="{{route('horariostand.update',['horariostand'=> $horario->Id_stand])}}" method="POST">
         @csrf
         @method('PUT')
         <div class="row">
             <div class="col-6">
                 <div class="input-field">
-                    <label style="color: #FFFFFF;">Fecha:</label>
+                    <label style="color: #2E2D2F;">Fecha:</label>
                     <input type="date" name="fecha" class="custom-input" required value="{{$horario->Fecha}}">
                 </div>
             </div>
 
             <div class="col-6">
                 <div class="input-field">
-                    <label style="color: #FFFFFF;">Hora inicio:</label>
+                    <label style="color: #2E2D2F;">Hora inicio:</label>
                     <input type="time" name="horainicio" class="custom-input" required value="{{$horario->Hora_inicio}}">
                 </div>
             </div>
             <div class="col-6">
                 <div class="input-field">
-                    <label style="color: #FFFFFF;">Hora fin:</label>
+                    <label style="color: #2E2D2F;">Hora fin:</label>
                     <input type="time" name="horafin" class="custom-input" required value="{{$horario->Hora_final}}">
                 </div>
             </div>

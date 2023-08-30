@@ -3,7 +3,7 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Registro</h3>
+        <h3 class="page__heading">Registro Horario</h3>
     </div>
 </section>
 <style>
@@ -73,7 +73,7 @@
     }
 </style>
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
-    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Formulario de Registro de horarios de stand</h2>
+    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Registro de horarios de stand</h2>
     <form action="{{ route('horariostand.store') }}" method="POST" id="registration-form">
         @csrf
 
