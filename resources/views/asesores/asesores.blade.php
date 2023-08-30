@@ -201,8 +201,8 @@
             <div class="input-field">
                     <label style="color: #2E2D2F;">Género:</label>
                     <select name="genero">
-                        <option value="GEN01">Masculino</option>
-                        <option value="GEN02">Femenino</option>
+                        <option value="GEN01">Hombre</option>
+                        <option value="GEN02">Mujer</option>
                     </select>
                 </div>
 

@@ -142,11 +142,11 @@
                     <label style="color: #2E2D2F;">Género:</label>
                     <select name="genero">
                         @if ($personaparticipante->Id_genero=="GEN02")
-                            <option value="GEN01">Masculino</option>
-                            <option value="GEN02" selected>Femenino</option>
+                            <option value="GEN01">Hombre</option>
+                            <option value="GEN02" selected>Mujer</option>
                         @else
-                            <option value="GEN01" selected>Masculino</option>
-                            <option value="GEN02">Femenino</option>
+                            <option value="GEN01" selected>Hombre</option>
+                            <option value="GEN02">Mujer</option>
                         @endif
                         
                     </select>
