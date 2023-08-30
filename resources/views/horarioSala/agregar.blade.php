@@ -130,20 +130,36 @@
 </div>
 <script>
     document.getElementById("registration-form").addEventListener("submit", function(event) {
+        // Obtener los valores de fecha, hora de inicio y hora de fin
+        var fechaInput = document.getElementsByName("fecha")[0];
         var horaInicio = document.getElementsByName("hora1")[0].value;
         var horaFin = document.getElementsByName("hora2")[0].value;
-        var fechaSeleccionada = new Date(document.getElementsByName("fecha")[0].value);
+
+        // Obtener los componentes de fecha (año, mes y día)
+        var fechaSeleccionada = new Date(fechaInput.value)+1;
+        var añoSeleccionado = fechaSeleccionada.getFullYear();
+        var mesSeleccionado = fechaSeleccionada.getMonth() + 1; // Los meses son base 0, por eso se suma 1
+        var diaSeleccionado = fechaSeleccionada.getDate();
+
+        // Obtener la fecha actual y la fecha límite superior
         var fechaActual = new Date();
         var limiteSuperiorFecha = new Date();
         limiteSuperiorFecha.setDate(limiteSuperiorFecha.getDate() + 3);
 
         var horaInicioValida = validarHora(horaInicio);
         var horaFinValida = validarHora(horaFin);
-        var fechaValida = fechaSeleccionada >= fechaActual && fechaSeleccionada <= limiteSuperiorFecha;
 
-        if (!horaInicioValida || !horaFinValida || !fechaValida) {
-            event.preventDefault(); // Evitar el envío del formulario si no pasa las validaciones
-            alert("Seleccione una fecha actual, la hora de inicio debe estar entre las 8am y 8pm respectivamente");
+        var fechaValida = fechaSeleccionada >= fechaActual && fechaSeleccionada <= limiteSuperiorFecha ;
+     
+
+        // Realizar las validaciones y mostrar el mensaje de alerta si es necesario
+        if (!horaInicioValida || !horaFinValida ) {
+            event.preventDefault();
+            alert("La hora de inicio debe estar entre las 8am y 8pm respectivamente"+limiteSuperiorFecha);
+        }
+        if( !fechaValida){
+            event.preventDefault();
+            alert("Seleccione una fecha actual");
         }
     });
 
