@@ -31,6 +31,7 @@ use App\Http\Controllers\ModeloController;
 use App\Http\Controllers\horarioSalaController;
 use App\Http\Controllers\horarioStandController;
 use App\Http\Controllers\coordinadorController;
+use App\Http\Controllers\ImportarDatosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/etapas', [App\Http\Controllers\HomeController::class, 'index'])->name('etapas'); //borrar esto es solo para prueba
 Route::resource('lider', LiderController::class);
 Route::resource('usuario', UsuarioController::class);
 Route::resource('participantes', ParticipanteController::class);
@@ -62,6 +64,7 @@ Route::resource('ficha_t', Ficha_tController::class);
 Route::resource('memoria_t', Memoria_tController::class);
 Route::resource('jurado', JuradoController::class);
 Route::resource('horariosala', horarioSalaController::class);
+Route::resource('importarD', ImportarDatosController::class);
 Route::get('horariosala/{horariosala}/edit', [horarioSalaController::class, 'edit'])->name('horariosala.edit');
 Route::get('horariosala/{horariosala}/destroy', [horarioSalaController::class, 'destroy'])->name('horariosala.destroy');
 Route::resource('horariostand', horarioStandController::class);

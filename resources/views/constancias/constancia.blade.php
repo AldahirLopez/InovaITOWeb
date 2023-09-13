@@ -77,7 +77,7 @@
 </style>
 
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
-    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Generación de Constancias</h2>
+    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Generar Constancia</h2>
     <form action="{{ route('generar.pdf') }}" method="POST" id="constancias-form">
         @csrf
 

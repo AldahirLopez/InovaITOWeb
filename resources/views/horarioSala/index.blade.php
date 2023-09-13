@@ -148,6 +148,7 @@ $ficha_tecnica_registrada=True;
             <tr class="table-header">
                 <th>Lugar</th>
                 <th>Sala</th>
+                <th>Folio Proyecto</th>
                 <th>Nombre Proyecto</th>
                 <th>Fecha</th>
                 <th>Hora </th>
@@ -184,11 +185,22 @@ $ficha_tecnica_registrada=True;
                     $fichaTecnica = Ficha_Tecnica::where('Id_fichaTecnica', $sala->Folio)->first();
                     @endphp
                     @if ($fichaTecnica)
+                    {{$fichaTecnica->Id_fichaTecnica}}
+                    @else
+                    Folio no encontrado
+                    @endif
+                </td>
+                <td>
+                    @php
+                    $fichaTecnica = Ficha_Tecnica::where('Id_fichaTecnica', $sala->Folio)->first();
+                    @endphp
+                    @if ($fichaTecnica)
                     {{$fichaTecnica->Nombre_corto}}
                     @else
                     Folio no encontrado
                     @endif
                 </td>
+              
                 <td>{{$sala->Fecha}}</td>
                 <td>{{$sala->Hora_inicio}} - {{$sala->Hora_final}}</td>
                 @if ($usuarioLogueado->rol->Id_rol=="ROL01" || $usuarioLogueado->rol->Id_rol=="ROL07" )
