@@ -124,7 +124,7 @@ $ficha_tecnica_registrada=True;
     </a>
     @endif
     @if ($usuarioLogueado->rol->Id_rol=="ROL01" || $usuarioLogueado->rol->Id_rol=="ROL07")
-    <a class="nav-link {{ Request::is('importarD') ? 'active' : '' }} " href="/importarD">
+    <a class="nav-link {{ Request::is('importarMenu') ? 'active' : '' }} " href="/importarMenu">
         <i class=" fas fa-file-excel"></i><span>Importar Datos</span>
     </a>
     @endif

@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-12">
             <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
-                    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Subir Archivo EXCEL</h2>
+                    <h2 style="color: #2E2D2F; margin-bottom: 20px;">Importar datos de los proyectos</h2>
                     
                     <div class="card-body">
                         <p>Selecciona un archivo Excel para importar datos:</p>
