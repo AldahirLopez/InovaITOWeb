@@ -47,7 +47,7 @@ use App\Http\Controllers\ImportarMenuController;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('regional.etapas');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -97,6 +97,7 @@ Route::resource('stand', standController::class);
 Route::resource('coordinador',coordinadorController::class);
 
 Route::post('/login', [App\Http\Controllers\UsuarioController::class, 'login'])->name('login');
+Route::get('/login', [UsuarioController::class, 'showLoginForm'])->name('login.get');
 Route::get('/logout', [App\Http\Controllers\UsuarioController::class, 'logout'])->name('logout');
 Route::get('/centroTecnologicos/{selectedValue}', [App\Http\Controllers\CentrosController::class, 'cargarTecnologicos'])->name('centroTecnologicos');
 Route::get('/centroDepartamentos/{selectedValue}', [App\Http\Controllers\CentrosController::class, 'cargarDepartamentos'])->name('centroDepartamentos');
@@ -110,6 +111,10 @@ Route::get('/validar-correo', 'App\Http\Controllers\ValidarCorreoController@chec
 Route::get('recuperar', [RContrasenaController::class, 'index'])->name('recuperar.index');
 Route::post('recuperar', [RContrasenaController::class, 'RecuperarContrasena'])->name('recuperar.recuperar');
 Route::post('/filtrar-proyectos', [T_PosicionesController::class,'filtrar'])->name('filtrar-proyectos');
+
+Route::post('/importar-datos-pro', [ImportarDatosProController::class,'importarDatos'])->name('importar.datos.pro');
+
+
 
 
     //parte del pdf

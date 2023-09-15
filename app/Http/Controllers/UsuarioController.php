@@ -29,11 +29,16 @@ class UsuarioController extends Controller
                 Session::put('usuario', $consulta);
                 return view('home');
             } else {
-                return redirect('/')->with('passoword', 'Contraseñas no coinciden');
+                return redirect('login')->with('passoword', 'Contraseñas no coinciden');
             }
         } else {
-            return redirect('/')->with('correo', 'Usuario no registrado');
+            return redirect('login')->with('correo', 'Usuario no registrado');
         }
+    }
+
+    public function showLoginForm()
+    {
+        return view('login'); // Reemplaza 'auth.login' con la vista que desees mostrar.
     }
 }
 
