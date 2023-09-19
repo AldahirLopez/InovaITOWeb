@@ -113,6 +113,7 @@ Route::post('recuperar', [RContrasenaController::class, 'RecuperarContrasena'])-
 Route::post('/filtrar-proyectos', [T_PosicionesController::class,'filtrar'])->name('filtrar-proyectos');
 
 Route::post('/importar-datos-pro', [ImportarDatosProController::class,'importarDatos'])->name('importar.datos.pro');
+Route::post('/importar-datos-part', [ImportarDatosPartController::class,'importarDatos'])->name('importar.datos.part');
 
 
 

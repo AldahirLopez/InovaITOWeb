@@ -11,4 +11,11 @@ class Persona extends Model
     public $timestamps = false;
     protected $connection = 'mysql';
     protected $table = 'persona';
+
+    protected $fillable = [
+        'Id_persona',
+        'Nombre_persona',
+        'Apellido1',
+        'Apellido2',
+    ];
 }
