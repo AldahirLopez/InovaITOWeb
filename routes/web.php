@@ -33,6 +33,7 @@ use App\Http\Controllers\horarioStandController;
 use App\Http\Controllers\coordinadorController;
 use App\Http\Controllers\ImportarDatosProController;
 use App\Http\Controllers\ImportarDatosPartController;
+use App\Http\Controllers\ImportarDatosAseController;
 use App\Http\Controllers\ImportarMenuController;
 
 /*
@@ -68,6 +69,7 @@ Route::resource('jurado', JuradoController::class);
 Route::resource('horariosala', horarioSalaController::class);
 Route::resource('importarDatPro', ImportarDatosProController::class);
 Route::resource('importarDatPart', ImportarDatosPartController::class);
+Route::resource('importarDatAse', ImportarDatosAseController::class);
 Route::resource('importarMenu', ImportarMenuController::class);
 Route::get('horariosala/{horariosala}/edit', [horarioSalaController::class, 'edit'])->name('horariosala.edit');
 Route::get('horariosala/{horariosala}/destroy', [horarioSalaController::class, 'destroy'])->name('horariosala.destroy');

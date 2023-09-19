@@ -8,7 +8,7 @@
 
     @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('success') }}  
+            {{ session('success') }}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -17,30 +17,32 @@
 
     <div class="section-body">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="card align-items-stretch"> <!-- Agregamos la clase 'align-items-stretch' al contenedor de tarjetas -->
-                    <div class="card-body rounded-circle"> <!-- Cambiamos la clase 'rounded' por 'rounded-circle' aquí -->
-                        <div class="row">
-                            <div class="col-md-6 col-xl-6">
-                                <div class="card bg-c-gris order-card h-100"> <!-- Agregamos la clase 'h-100' para igualar el tamaño -->
-                                    <div class="card-block">     
-                                        <h5>Importar proyectos</h5>
-                                        <h2 class="text-right"><i class="fa fa-sheet-plastic f-left fa-2x"></i><span></span></h2>
-                                        <p class="m-b-0 text-right"><a href="/importarDatPro" class="text-white">Agregar</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                           
-                            <div class="col-md-6 col-xl-6">
-                                <div class="card bg-c-gris order-card h-100"> <!-- Agregamos la clase 'h-100' para igualar el tamaño -->
-                                    <div class="card-block">          
-                                        <h5>Importar Participantes</h5>
-                                        <h2 class="text-right"><i class="fa fa-people-group f-left fa-2x"></i><span></span></h2>
-                                        <p class="m-b-0 text-right"><a href="/importarDatPart" class="text-white">Agregar</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body rounded-circle">
+                        <h5 class="card-title">Importar proyectos</h5>
+                        <h2 class="text-right"><i class="fa fa-sheet-plastic f-left fa-2x"></i><span></span></h2>
+                        <p class="m-b-0 text-right"><a href="/importarDatPro" style="color: #6c757d;">Agregar</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body rounded-circle">
+                        <h5 class="card-title">Importar Participantes</h5>
+                        <h2 class="text-right"><i class="fa fa-people-group f-left fa-2x"></i><span></span></h2>
+                        <p class="m-b-0 text-right"><a href="/importarDatPart" style="color: #6c757d;">Agregar</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body rounded-circle">
+                        <h5 class="card-title">Importar Asesores</h5>
+                        <h2 class="text-right"><i class="fa fa-people-group f-left fa-2x"></i><span></span></h2>
+                        <p class="m-b-0 text-right"><a href="/importarDatAse" style="color: #6c757d;">Agregar</a></p>
                     </div>
                 </div>
             </div>
