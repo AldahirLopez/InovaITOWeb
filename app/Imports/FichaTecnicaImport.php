@@ -16,27 +16,6 @@ use Illuminate\Support\Facades\Session;
 
 class FichaTecnicaImport implements ToModel, WithHeadingRow
 {
-    public function generarIdFicha()
-    {
-        $nomenclatura = 'F';
-        $nomenclatura .= date('Y');
-        $nomenclatura .= date('m');
-        $nomenclatura .= date('d');
-
-        $numerosAleatorios = array();
-
-        while (count($numerosAleatorios) < 4) {
-            $numero = mt_rand(0, 9);
-
-            if (!in_array($numero, $numerosAleatorios)) {
-                $numerosAleatorios[] = $numero;
-            }
-        }
-
-        $nomenclatura .= implode('', $numerosAleatorios);
-
-        return $nomenclatura;
-    }
     public function model(array $row)
     {
         // Asignar la categoría basada en la columna 'categoria'
@@ -63,12 +42,11 @@ class FichaTecnicaImport implements ToModel, WithHeadingRow
                 $categoria = $row['categoria']; // Mantener el valor actual en otros casos
         }
 
-        // Crear una instancia de Ficha_Tecnica con los datos del Excel
-        $idFicha = $this->generarIdFicha();
+        $idFicha = $row['folio'];
         $fichaTecnica = new \App\Models\Ficha_Tecnica([
             'Id_fichaTecnica' => $idFicha,
-            'Nombre_corto' => $row['nombrecorto'],
-            'Nombre_proyecto' => $row['nombredescriptivo'],
+            'Nombre_corto' => $row['cortonombre'] ,
+            'Nombre_proyecto' => $row['nombredescriptivo'] ,
             'Id_nivel' => $row['nivel'] === 'Licenciatura' ? 'NIV02' : 'NIV01',
             'Id_categoria' => $categoria,
         ]);
@@ -81,6 +59,9 @@ class FichaTecnicaImport implements ToModel, WithHeadingRow
         $proyecto->Folio = $idFicha;
         $proyecto->Plan_negocio = "default";
         $proyecto->Id_fichaTecnica = $idFicha;
+
+        //Guardamos primero proyecto 
+        $proyecto->save();
 
         // Devolver la instancia creada
         return $fichaTecnica;
