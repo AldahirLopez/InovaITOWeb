@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Proyecto;
+
 class proyectoAsesor extends Model
 {
-    
+
     use HasFactory;
     public $timestamps = false;
     protected $connection = 'mysql';
@@ -19,4 +20,8 @@ class proyectoAsesor extends Model
         return $this->belongsTo(Proyecto::class, 'Folio', 'Folio');
     }
 
+    protected $fillable = [
+        'Folio',
+        'Id_asesorpersona',
+    ];
 }
