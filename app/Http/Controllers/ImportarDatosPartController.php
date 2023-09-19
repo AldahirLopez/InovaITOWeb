@@ -35,17 +35,21 @@ class ImportarDatosPartController extends Controller
         foreach ($data as $row) {
 
             // Acceder a los datos de cada columna según el índice
-            $idfolio = $row[2];
-            $nombre = $row[3];
+            $idfolio = $row[0];
+            $nombre = $row[1];
+            $apellido1 = $row[2];
+            $apellido2 = $row[3];
 
             //Generar ID Unico
-            $datosUsuario = $nombre . $idfolio;
+            $datosUsuario = $nombre . $apellido1 . $apellido2 . $idfolio;
             $idGenerada = substr(sha1($datosUsuario), 0, 10);
             $idGenerada2 = strtolower($idGenerada);
 
             $persona = new \App\Models\Persona([
                 'Id_persona' => $idGenerada2,
                 'Nombre_persona' => $nombre,
+                'Apellido1' => $apellido1,
+                'Apellido2' => $apellido2,
             ]);
 
             // Guardar la instancia en la base de datos        

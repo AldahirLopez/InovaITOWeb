@@ -12,7 +12,10 @@ class ProyectoParticipante extends Model
     protected $connection = 'mysql';
     protected $table = 'proyectoParticipante';
 
-
+    protected $fillable = [
+        'Idpersona',
+        'Folio',
+    ];
     public function estudiante()
     {
         return $this->belongsTo(Estudiante::class, 'Matricula', 'Matricula');
