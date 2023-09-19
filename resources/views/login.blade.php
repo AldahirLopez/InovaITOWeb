@@ -128,7 +128,7 @@ body {
     <div class="col-md-6">
         <div class="card card-primary left-card" style="background-color: #F2F2F2; height: 520px;">
             <div class="card-header d-flex flex-column align-items-center">
-                <img src="img/logo_innovaITO.png" alt="Logo INNOVAITO" style="max-width: 100%; height: auto;">
+                <img src="img/logo_innovaV3.png" alt="Logo INNOVAITO" style="background-color: #F2F2F2; max-width: 100%; height: auto;">
                 <h4>ACCESO</h4>
             </div>
             <br>
