@@ -101,9 +101,12 @@
 <table class="table table-custom">
     <thead style="background-color: #FF9500;">
         <tr class="table-header">
-            <th>Nombre </th>
+            <th>Nombre</th>
             <th>Lugar</th>
+            <th>Jurados</th>
+            <th>Moderador</th>
             <th>Acción</th>
+
         </tr>
     </thead>
     <tbody>
@@ -111,6 +114,8 @@
         <tr>
             <td>{{ $sala->Nombre_sala}}</td>
             <td>{{ $sala->Lugar}}</td>
+            <td></td>
+            <td></td>
             <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-{{$sala->Id_sala}}">Eliminar</button></td>
         </tr>
         

@@ -85,8 +85,8 @@
         @csrf
         <div class="form-row">
             <div class="form-group input-field">
-                <label for="nombreDescriptivo">Lugar</label>
-                <input type="text" name="lugar" placeholder="Ingrese el nombre de la sala" maxlength="100" required>
+                <label for="nombreDescriptivo">Nombre del Stand</label>
+                <input type="text" name="lugar" placeholder="Ingrese el nombre del Stand" maxlength="100" required>
             </div>
         </div>
 

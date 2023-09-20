@@ -17,7 +17,7 @@
     }
 
     .form-group {
-        flex-basis: calc(33.33% - 10px);
+        flex-basis: calc(50% - 10px); /* Cambiamos el ancho a 50% para dos por fila */
     }
 
     .input-field {
@@ -78,31 +78,52 @@
     }
 </style>
 <div style="background-color: #FFFFFF; border-radius: 30px; padding: 30px;">
-
     <h2 style="color: #2E2D2F; margin-bottom: 20px;">Registrar Sala</h2>
     <form action="{{ route('sala.store') }}" method="POST">
-    @csrf
+        @csrf
         <div class="form-row">
-            
             <div class="form-group input-field">
                 <label for="nombreDescriptivo">Nombre de la Sala</label>
                 <input type="text" name="nombre" placeholder="Ingrese el nombre de la sala" maxlength="100" required>
             </div>
-
             <div class="form-group input-field">
                 <label for="lugar">Lugar</label>
                 <input type="text" name="lugar" placeholder="Ingrese el lugar" maxlength="100" required>
             </div>
-
-
-
+            <!-- Selector para el primer jurado -->
+            <div class="form-group input-field">
+                <label for="jurado1">Jurado 1</label>
+                <select name="jurado1" required>
+                    <option value="">Seleccione un jurado</option>
+                </select>
+            </div>
+            <!-- Selector para el segundo jurado -->
+            <div class="form-group input-field">
+                <label for="jurado2">Jurado 2</label>
+                <select name="jurado2" required>
+                    <option value="">Seleccione un jurado</option>
+                    <!-- Repite el mismo proceso para el segundo jurado -->
+                </select>
+            </div>
+            <!-- Selector para el tercer jurado -->
+            <div class="form-group input-field">
+                <label for="jurado3">Jurado 3</label>
+                <select name="jurado3" required>
+                    <option value="">Seleccione un jurado</option>
+                    <!-- Repite el mismo proceso para el tercer jurado -->
+                </select>
+            </div>
+            <!-- Selector para el moderador -->
+            <div class="form-group input-field">
+                <label for="moderador">Moderador</label>
+                <select name="moderador" required>
+                    <option value="">Seleccione un moderador</option>
+                </select>
+            </div>
         </div>
-     
-       
         <button type="submit" class="submit-button">Registrar</button>
     </form>
 </div>
-
 
 <script src="{{ asset('js/areas.js') }}"></script>
 @endsection
