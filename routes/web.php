@@ -116,6 +116,7 @@ Route::post('/filtrar-proyectos', [T_PosicionesController::class,'filtrar'])->na
 
 Route::post('/importar-datos-pro', [ImportarDatosProController::class,'importarDatos'])->name('importar.datos.pro');
 Route::post('/importar-datos-part', [ImportarDatosPartController::class,'importarDatos'])->name('importar.datos.part');
+Route::post('/importar-datos-ase', [ImportarDatosAseController::class,'importarDatos'])->name('importar.datos.ase');
 
 
 

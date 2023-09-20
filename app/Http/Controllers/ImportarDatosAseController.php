@@ -35,30 +35,34 @@ class ImportarDatosAseController extends Controller
         foreach ($data as $row) {
 
             // Acceder a los datos de cada columna según el índice
-            $idfolio = $row[2];
-            $nombre = $row[3];
+            $idfolio = $row[0];
+            $nombre = $row[1];
+            $apellido1 = $row[2];
+            $apellido2 = $row[3];
 
             //Generar ID Unico
-            $datosUsuario = $nombre . $idfolio;
+            $datosUsuario = $nombre . $apellido1 . $apellido2 . $idfolio;
             $idGenerada = substr(sha1($datosUsuario), 0, 10);
-            $idGenerada2 = strtolower($idGenerada);
+            $idGenerada2 = 'ASE' . strtolower($idGenerada);
 
             $persona = new \App\Models\Persona([
                 'Id_persona' => $idGenerada2,
                 'Nombre_persona' => $nombre,
+                'Apellido1' => $apellido1,
+                'Apellido2' => $apellido2,
             ]);
 
             // Guardar la instancia en la base de datos        
             $persona->save();
 
             //Se compara el folio para agregarlo en Proyecto Participante
-            $proyectoparticipante = new \App\Models\ProyectoParticipante([
-                'Idpersona' => $idGenerada2,
+            $proyectoasesor = new \App\Models\proyectoAsesor([
+                'Id_asesorpersona' => $idGenerada2,
                 'Folio' => $idfolio,
             ]);
 
             // Guardar la instancia en la base de datos        
-            $proyectoparticipante->save();
+            $proyectoasesor->save();
         }
 
         return redirect()->back()->with('success', 'Datos importados correctamente');

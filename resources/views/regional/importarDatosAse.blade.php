@@ -66,7 +66,7 @@
                     
                     <div class="card-body">
                         <p>Selecciona un archivo Excel para importar datos:</p>
-                        <form action="{{ route('importar.datos.part') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('importar.datos.ase') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="input-group mb-3" >
                                 <input type="file" class="form-control" name="excel_file" accept=".xlsx, .xls, .csv">
