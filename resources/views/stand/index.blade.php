@@ -104,8 +104,8 @@
     <table class="table table-custom">
         <thead style="background-color: #FF9500;">
             <tr class="table-header">
-                <th>LUGAR</th>
-                <th>ACCION</th>
+                <th>Stand</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
