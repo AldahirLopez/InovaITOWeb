@@ -41,9 +41,9 @@ class ImportarDatosPartController extends Controller
             $apellido2 = $row[3];
 
             //Generar ID Unico
-            $datosUsuario = 'PART'. $nombre . $apellido1 . $apellido2 . $idfolio;
+            $datosUsuario = $nombre . $apellido1 . $apellido2 . $idfolio;
             $idGenerada = substr(sha1($datosUsuario), 0, 10);
-            $idGenerada2 = strtolower($idGenerada);
+            $idGenerada2 = 'PART' . strtolower($idGenerada);
 
             $persona = new \App\Models\Persona([
                 'Id_persona' => $idGenerada2,
