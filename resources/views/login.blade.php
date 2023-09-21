@@ -176,13 +176,14 @@ body {
                             INGRESAR
                         </button>
                         <br>
-
+                         <!--
                         <div class="d-flex justify-content-center">
                             <a href="{{ route('recuperar.index') }}" class="btn btn-primary mr-3">Recuperar Contraseña</a>
                             <br>
                             <br>
                             <a href="{{ route('lid.index') }}" class="btn btn-primary">Registrar Lider</a>
                         </div>
+-->
                     </div>
                 </form>
             </div>
