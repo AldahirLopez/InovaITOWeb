@@ -90,36 +90,47 @@
                 <label for="lugar">Lugar</label>
                 <input type="text" name="lugar" placeholder="Ingrese el lugar" maxlength="100" required>
             </div>
-            <!-- Selector para el primer jurado -->
+            <!-- 
+
             <div class="form-group input-field">
                 <label for="jurado1">Jurado 1</label>
                 <select name="jurado1" required>
                     <option value="">Seleccione un jurado</option>
+                    @foreach ($jurados as $jurado )
+                    <option value="{{$jurado->Id_jurado	}}">{{$jurado->persona->Nombre_persona}}</option>
+                    @endforeach
                 </select>
             </div>
-            <!-- Selector para el segundo jurado -->
+
             <div class="form-group input-field">
                 <label for="jurado2">Jurado 2</label>
                 <select name="jurado2" required>
                     <option value="">Seleccione un jurado</option>
-                    <!-- Repite el mismo proceso para el segundo jurado -->
+                    @foreach ($jurados as $jurado )
+                    <option value="{{$jurado->Id_jurado	}}">{{$jurado->persona->Nombre_persona}}</option>
+                    @endforeach
                 </select>
             </div>
-            <!-- Selector para el tercer jurado -->
+
             <div class="form-group input-field">
                 <label for="jurado3">Jurado 3</label>
                 <select name="jurado3" required>
                     <option value="">Seleccione un jurado</option>
-                    <!-- Repite el mismo proceso para el tercer jurado -->
+                    @foreach ($jurados as $jurado )
+                    <option value="{{$jurado->Id_jurado	}}">{{$jurado->persona->Nombre_persona}}</option>
+                    @endforeach
                 </select>
             </div>
-            <!-- Selector para el moderador -->
             <div class="form-group input-field">
                 <label for="moderador">Moderador</label>
                 <select name="moderador" required>
                     <option value="">Seleccione un moderador</option>
+                    @foreach ($moderadores as $moderador )
+
+                    @endforeach
                 </select>
             </div>
+            -->
         </div>
         <button type="submit" class="submit-button">Registrar</button>
     </form>

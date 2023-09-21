@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Horario;
+use App\Models\Jurado;
+use App\Models\Moderador;
 use App\Models\sala;
 use Illuminate\Support\Facades\DB;
+
 class salaController extends Controller
 {
     /**
@@ -13,8 +16,8 @@ class salaController extends Controller
      */
     public function index()
     {
-        $salas=sala::all();
-        return view('sala.index',compact('salas'));
+        $salas = sala::all();
+        return view('sala.index', compact('salas'));
     }
 
     /**
@@ -22,8 +25,9 @@ class salaController extends Controller
      */
     public function create()
     {
-
-       return view('sala.agregar');
+        $jurados = Jurado::all();
+        $moderadores = Moderador::all();
+        return view('sala.agregar', compact('jurados', 'moderadores'));
     }
 
     /**
@@ -42,16 +46,14 @@ class salaController extends Controller
             $nomenclaturaExistente = sala::where('Id_sala', $nomenclatura)->exists();
         }
 
-        $Sala=new sala();
-        $Sala->Id_sala=$nomenclatura;
-        $Sala->Nombre_sala=$request->nombre;
-        $Sala->Lugar=$request->lugar;
+        $Sala = new sala();
+        $Sala->Id_sala = $nomenclatura;
+        $Sala->Nombre_sala = $request->nombre;
+        $Sala->Lugar = $request->lugar;
 
         $Sala->save();
 
-        return redirect()->route('sala.index')->with('success','Sala registrada correctamente');
-
-
+        return redirect()->route('sala.index')->with('success', 'Sala registrada correctamente');
     }
 
     /**
@@ -83,17 +85,17 @@ class salaController extends Controller
      */
     public function destroy(string $id)
     {
-       
-        $sala=sala::where('Id_sala',$id)->first();
 
-        if($sala!=null){
-            
+        $sala = sala::where('Id_sala', $id)->first();
+
+        if ($sala != null) {
+
+            sala::where('Id_stand', $sala->Id_stand)->delete();
             DB::table('sala')
-            ->where('Id_sala', $sala->Id_sala)
-            ->delete();
+                ->where('Id_sala', $sala->Id_sala)
+                ->delete();
         }
 
-        return redirect()->route('sala.index')->with('delete','Sala eliminada correctamente');
-
+        return redirect()->route('sala.index')->with('delete', 'Sala eliminada correctamente');
     }
 }
