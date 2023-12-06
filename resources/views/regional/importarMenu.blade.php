@@ -46,6 +46,16 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body rounded-circle">
+                        <h5 class="card-title">Importar Stand</h5>
+                        <h2 class="text-right"><i class="fa fa-people-group f-left fa-2x"></i><span></span></h2>
+                        <p class="m-b-0 text-right"><a href="/importarDatStand" style="color: #6c757d;">Agregar</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

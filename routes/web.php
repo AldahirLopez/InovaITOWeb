@@ -34,6 +34,7 @@ use App\Http\Controllers\coordinadorController;
 use App\Http\Controllers\ImportarDatosProController;
 use App\Http\Controllers\ImportarDatosPartController;
 use App\Http\Controllers\ImportarDatosAseController;
+use App\Http\Controllers\ImportarDatosStandController;
 use App\Http\Controllers\ImportarMenuController;
 
 /*
@@ -70,6 +71,7 @@ Route::resource('horariosala', horarioSalaController::class);
 Route::resource('importarDatPro', ImportarDatosProController::class);
 Route::resource('importarDatPart', ImportarDatosPartController::class);
 Route::resource('importarDatAse', ImportarDatosAseController::class);
+Route::resource('importarDatStand', ImportarDatosStandController::class);
 Route::resource('importarMenu', ImportarMenuController::class);
 Route::get('horariosala/{horariosala}/edit', [horarioSalaController::class, 'edit'])->name('horariosala.edit');
 Route::get('horariosala/{horariosala}/destroy', [horarioSalaController::class, 'destroy'])->name('horariosala.destroy');
@@ -117,6 +119,7 @@ Route::post('/filtrar-proyectos', [T_PosicionesController::class,'filtrar'])->na
 Route::post('/importar-datos-pro', [ImportarDatosProController::class,'importarDatos'])->name('importar.datos.pro');
 Route::post('/importar-datos-part', [ImportarDatosPartController::class,'importarDatos'])->name('importar.datos.part');
 Route::post('/importar-datos-ase', [ImportarDatosAseController::class,'importarDatos'])->name('importar.datos.ase');
+Route::post('/importar-datos-stand', [ImportarDatosStandController::class,'importarDatos'])->name('importar.datos.stand');
 
 
 

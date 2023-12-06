@@ -12,4 +12,13 @@ class asignarHStand extends Model
     public $timestamps = false;
     protected $connection = 'mysql';
     protected $table = 'asignarHStand';
+
+    protected $fillable = [
+        'Hora_inicio',
+        'Hora_final',
+        'Fecha',
+        'Folio',
+        'Id_stand',
+        // Agrega otros campos aquí si es necesario
+    ];
 }
